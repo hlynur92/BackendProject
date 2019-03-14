@@ -1,0 +1,130 @@
+DROP DATABASE IF EXISTS DuckDB;
+CREATE DATABASE DuckDB;
+USE DuckDB;
+
+CREATE TABLE SpecialOffers(
+	SpecialOfferID int AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    Discount int NOT NULL,
+    StartDate date NOT NULL,
+    EndDate date NOT NULL
+);
+
+CREATE TABLE Products(
+	ProductID int AUTO_INCREMENT NOT NULL PRIMARY KEY,
+	ProductName varchar(255) NOT NULL,
+	Description varchar(255) NOT NULL,
+    Price float NOT NULL,
+    Colour varchar(255) NOT NULL,
+    Size  varchar(255) NOT NULL,
+    SpecialOfferID int NOT NULL,
+    FOREIGN KEY(SpecialOfferID) REFERENCES SpecialOffers(SpecialOfferID)
+);
+
+CREATE TABLE ProductImgs(
+	ProductImgID int AUTO_INCREMENT NOT NULL PRIMARY KEY,
+	ImgPath varchar(255) NOT NULL,
+    ProductID int NOT NULL,
+	FOREIGN KEY(ProductID) REFERENCES Products(ProductID)
+);
+
+CREATE TABLE ProductTags(
+	ProductTagID int AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    Tag varchar(255) NOT NULL
+);
+
+CREATE TABLE TagsOfProduct(
+	TagsOfProductID int AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    ProductID int NOT NULL,
+    ProductTagID int NOT NULL,
+    FOREIGN KEY(ProductID) REFERENCES Products(ProductID),
+    FOREIGN KEY(ProductTagID) REFERENCES ProductTags(ProductTagID)
+);
+
+CREATE TABLE PostalCodes(
+	PostalCode int NOT NULL PRIMARY KEY,
+    City varchar(255) NOT NULL
+);
+
+CREATE TABLE Address(
+	AddressID int AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    Street varchar(255),
+    PostalCode int NOT NULL,
+    FOREIGN KEY(PostalCode) REFERENCES PostalCodes(PostalCode)
+);
+
+CREATE TABLE Company(
+	CompanyID int AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    PhoneNr int NOT NULL,
+    Email varchar(255) NOT NULL,
+    Title varchar(255) NOT NULL,
+    Content varchar(255) NOT NULL,
+    OpeningHours varchar(255) NOT NULL,
+    AddressID int NOT NULL,
+    FOREIGN KEY(AddressID) REFERENCES Address(AddressID)
+);
+
+CREATE TABLE Users(
+	UserID int AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    FirstName varchar(255) NOT NULL,
+    LastName varchar(255) NOT NULL,
+    PhoneNr int NOT NULL,
+    Email varchar(255) NOT NULL,
+    UserPassword varchar(255) NOT NULL,
+    Premission int(3) NOT NULL
+);
+
+CREATE TABLE News(
+	NewsID int AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    Title varchar(255) NOT NULL,
+    TitleImg varchar(255) NOT NULL,
+    UserID int NOT NULL,
+    FOREIGN KEY(UserID) REFERENCES Users(UserID)
+);
+
+CREATE TABLE UsersAddress(
+	UsersAddressID int AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    UserID int NOT NULL,
+    AddressID int NOT NULL,
+    FOREIGN KEY(UserID) REFERENCES Users(UserID),
+    FOREIGN KEY(AddressID) REFERENCES Address(AddressID)
+);
+
+CREATE TABLE Reviews(
+	ReviewID int AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    Description varchar(255) NOT NULL,
+    Rating int(5) NOT NULL,
+    UserID int NOT NULL,
+    ProductID int NOT NULL,
+    FOREIGN KEY(UserID) REFERENCES Users(UserID),
+    FOREIGN KEY(ProductID) REFERENCES Products(ProductID)
+);
+
+CREATE TABLE Orders(
+	OrderID int AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    OrderDate date NOT NULL,
+    AddressID int NOT NULL,
+    UserID int NOT NULL,
+    FOREIGN KEY(AddressID) REFERENCES Address(AddressID),
+    FOREIGN KEY(UserID) REFERENCES Users(UserID)
+);
+
+CREATE TABLE OrderRows(
+	OrderRowsID int AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    Quantity int NOT NULL,
+    ProductID int NOT NULL,
+    OrderID int NOT NULL,
+    FOREIGN KEY(ProductID) REFERENCES Products(ProductID),
+    FOREIGN KEY(OrderID) REFERENCES Orders(OrderID)
+);
+
+CREATE TABLE Invoice(
+	InvoiceID int AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    TotalPrice float NOT NULL,
+    IssueDate date NOT NULL,
+    Content varchar(255),
+    Attatchment varchar(255),
+    CompanyID int NOT NULL,
+    OrderID int NOT NULL,
+    FOREIGN KEY(CompanyID) REFERENCES Company(CompanyID),
+    FOREIGN KEY(OrderID) REFERENCES Orders(OrderID)
+);

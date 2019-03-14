@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="632511a3-4f01-4a9e-a323-49d27a52c711" name="Default Changelist" comment="" />
+    <list default="true" id="632511a3-4f01-4a9e-a323-49d27a52c711" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/db/DBFacade.php" beforeDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,21 +26,23 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="php" value="1" />
+          <entry key="php" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="PHP" value="1" />
+          <entry key="PHP" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
+          <entry key="php" value="666" />
           <entry key="txt" value="14" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
+          <entry key="PHP" value="666" />
           <entry key="PLAIN_TEXT" value="14" />
         </counts>
       </usages-collector>
@@ -74,10 +79,21 @@
     </session>
   </component>
   <component name="FileEditorManager">
+<<<<<<< HEAD
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Controllers/DBFacade.php">
           <provider selected="true" editor-type-id="text-editor" />
+=======
+    <leaf>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/db/DBFacade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="192">
+              <caret line="21" column="29" lean-forward="true" selection-start-line="21" selection-start-column="29" selection-end-line="21" selection-end-column="29" />
+            </state>
+          </provider>
+>>>>>>> bd69a248d9f388d38442b3a2ce52395ff6e841da
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
@@ -106,7 +122,14 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+<<<<<<< HEAD
         <option value="$PROJECT_DIR$/views/index.php" />
+=======
+        <option value="$PROJECT_DIR$/Controllers/DBFacade.php" />
+        <option value="$PROJECT_DIR$/Controllers/db/constants.php" />
+        <option value="$PROJECT_DIR$/Controllers/db/DBFacade.php" />
+        <option value="$PROJECT_DIR$/db/DBFacade.php" />
+>>>>>>> bd69a248d9f388d38442b3a2ce52395ff6e841da
       </list>
     </option>
   </component>
@@ -116,11 +139,22 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
+<<<<<<< HEAD
   <component name="ProjectFrameBounds">
     <option name="x" value="482" />
     <option name="y" value="23" />
     <option name="width" value="1438" />
     <option name="height" value="1105" />
+=======
+  <component name="PhpServers">
+    <servers />
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="283" />
+    <option name="y" value="-9" />
+    <option name="width" value="643" />
+    <option name="height" value="688" />
+>>>>>>> bd69a248d9f388d38442b3a2ce52395ff6e841da
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -141,6 +175,7 @@
               <item name="node_modules" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
+<<<<<<< HEAD
               <item name="BackendProject" type="b2602c69:ProjectViewProjectNode" />
               <item name="BackendProject" type="462c0819:PsiDirectoryNode" />
               <item name="node_modules" type="462c0819:PsiDirectoryNode" />
@@ -150,6 +185,11 @@
               <item name="BackendProject" type="b2602c69:ProjectViewProjectNode" />
               <item name="BackendProject" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
+=======
+              <item name="Backend Project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Backend Project" type="462c0819:PsiDirectoryNode" />
+              <item name="db" type="462c0819:PsiDirectoryNode" />
+>>>>>>> bd69a248d9f388d38442b3a2ce52395ff6e841da
             </path>
           </expand>
           <select />
@@ -160,8 +200,14 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../2nd Semester" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\wamp\www\Backend Project\Controllers\db" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -185,8 +231,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1552555630059</updated>
+<<<<<<< HEAD
       <workItem from="1552555638122" duration="1122000" />
       <workItem from="1552562483614" duration="973000" />
+=======
+      <workItem from="1552555638122" duration="6791000" />
+>>>>>>> bd69a248d9f388d38442b3a2ce52395ff6e841da
     </task>
     <task id="LOCAL-00001" summary="DBFacade Class">
       <created>1552556738287</created>
@@ -199,6 +249,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< HEAD
     <option name="totallyTimeSpent" value="2095000" />
   </component>
   <component name="ToolWindowManager">
@@ -207,6 +258,22 @@
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.33954155" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
+=======
+    <option name="totallyTimeSpent" value="6791000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Favorites" side_tool="true" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24962178" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" />
+      <window_info anchor="bottom" id="Terminal" visible="true" weight="0.3289689" />
+      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+>>>>>>> bd69a248d9f388d38442b3a2ce52395ff6e841da
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" />
@@ -237,8 +304,26 @@
     <option name="LAST_COMMIT_MESSAGE" value="DBFacade Class" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Controllers/DBFacade.php">
-      <provider selected="true" editor-type-id="text-editor" />
+    <entry file="file://$PROJECT_DIR$/Controllers/db/constants.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="26" lean-forward="true" selection-start-line="2" selection-start-column="26" selection-end-line="2" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Controllers/db/DBFacade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="223">
+          <caret line="22" column="109" selection-start-line="22" selection-start-column="109" selection-end-line="22" selection-end-column="109" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/DBFacade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="21" column="29" lean-forward="true" selection-start-line="21" selection-start-column="29" selection-end-line="21" selection-end-column="29" />
+        </state>
+      </provider>
     </entry>
     <entry file="file://$USER_HOME$/Downloads/parallax-template/index.html">
       <provider selected="true" editor-type-id="text-editor">
