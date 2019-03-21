@@ -52,9 +52,49 @@
         </counts>
       </usages-collector>
     </session>
+    <session id="-2047583353">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.open.time.2" value="1" />
+          <entry key="project.opened" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="html" value="1" />
+          <entry key="php" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="HTML" value="1" />
+          <entry key="PHP" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="php" value="6" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="PHP" value="6" />
+        </counts>
+      </usages-collector>
+    </session>
   </component>
   <component name="FileEditorManager">
+<<<<<<< HEAD
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+=======
+<<<<<<< HEAD
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Controllers/DBFacade.php">
+          <provider selected="true" editor-type-id="text-editor" />
+=======
+    <leaf>
+>>>>>>> 1f5b972c0686fb5117661f1ae9de9e714000e8c1
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/db/DBFacade.php">
           <provider selected="true" editor-type-id="text-editor">
@@ -71,6 +111,25 @@
               <caret line="10" column="29" selection-start-line="10" selection-start-column="29" selection-end-line="10" selection-end-column="29" />
             </state>
           </provider>
+>>>>>>> bd69a248d9f388d38442b3a2ce52395ff6e841da
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/views/index.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="135">
+              <caret line="14" column="38" selection-start-line="14" selection-start-column="38" selection-end-line="14" selection-end-column="38" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/Downloads/parallax-template/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret selection-end-line="164" />
+            </state>
+          </provider>
         </entry>
       </file>
     </leaf>
@@ -81,11 +140,18 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+<<<<<<< HEAD
+        <option value="$PROJECT_DIR$/views/index.php" />
+=======
         <option value="$PROJECT_DIR$/Controllers/DBFacade.php" />
         <option value="$PROJECT_DIR$/Controllers/db/constants.php" />
         <option value="$PROJECT_DIR$/Controllers/db/DBFacade.php" />
         <option value="$PROJECT_DIR$/db/DBFacade.php" />
+<<<<<<< HEAD
         <option value="$PROJECT_DIR$/Controllers/ProductController.php" />
+=======
+>>>>>>> bd69a248d9f388d38442b3a2ce52395ff6e841da
+>>>>>>> 1f5b972c0686fb5117661f1ae9de9e714000e8c1
       </list>
     </option>
   </component>
@@ -95,6 +161,13 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
+<<<<<<< HEAD
+  <component name="ProjectFrameBounds">
+    <option name="x" value="482" />
+    <option name="y" value="23" />
+    <option name="width" value="1438" />
+    <option name="height" value="1105" />
+=======
   <component name="PhpServers">
     <servers />
   </component>
@@ -103,6 +176,7 @@
     <option name="y" value="-9" />
     <option name="width" value="643" />
     <option name="height" value="688" />
+>>>>>>> bd69a248d9f388d38442b3a2ce52395ff6e841da
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -110,15 +184,30 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
-              <item name="Backend Project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Backend Project" type="462c0819:PsiDirectoryNode" />
+              <item name="BackendProject" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BackendProject" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
+              <item name="BackendProject" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BackendProject" type="462c0819:PsiDirectoryNode" />
+              <item name="node_modules" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+<<<<<<< HEAD
+              <item name="BackendProject" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BackendProject" type="462c0819:PsiDirectoryNode" />
+              <item name="node_modules" type="462c0819:PsiDirectoryNode" />
+              <item name="materialize-css" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BackendProject" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BackendProject" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+=======
               <item name="Backend Project" type="b2602c69:ProjectViewProjectNode" />
               <item name="Backend Project" type="462c0819:PsiDirectoryNode" />
               <item name="Controllers" type="462c0819:PsiDirectoryNode" />
@@ -127,11 +216,13 @@
               <item name="Backend Project" type="b2602c69:ProjectViewProjectNode" />
               <item name="Backend Project" type="462c0819:PsiDirectoryNode" />
               <item name="db" type="462c0819:PsiDirectoryNode" />
+>>>>>>> bd69a248d9f388d38442b3a2ce52395ff6e841da
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -167,10 +258,19 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1552555630059</updated>
+<<<<<<< HEAD
       <workItem from="1552555638122" duration="9982000" />
       <workItem from="1552642047966" duration="1524000" />
       <workItem from="1552984630102" duration="3366000" />
       <workItem from="1553156224861" duration="1191000" />
+=======
+<<<<<<< HEAD
+      <workItem from="1552555638122" duration="1122000" />
+      <workItem from="1552562483614" duration="973000" />
+=======
+      <workItem from="1552555638122" duration="6791000" />
+>>>>>>> bd69a248d9f388d38442b3a2ce52395ff6e841da
+>>>>>>> 1f5b972c0686fb5117661f1ae9de9e714000e8c1
     </task>
     <task id="LOCAL-00001" summary="DBFacade Class">
       <created>1552556738287</created>
@@ -183,6 +283,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< HEAD
     <option name="totallyTimeSpent" value="16063000" />
   </component>
   <component name="TodoView">
@@ -193,25 +294,57 @@
       <are-packages-shown value="true" />
       <is-autoscroll-to-source value="true" />
     </todo-panel>
+=======
+<<<<<<< HEAD
+    <option name="totallyTimeSpent" value="2095000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="482" y="23" width="1438" height="1105" extended-state="0" />
+    <layout>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.33954155" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+=======
+    <option name="totallyTimeSpent" value="6791000" />
+>>>>>>> 1f5b972c0686fb5117661f1ae9de9e714000e8c1
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26096824" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+<<<<<<< HEAD
       <window_info id="Favorites" order="2" side_tool="true" />
+=======
+      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" />
+      <window_info anchor="bottom" id="Terminal" visible="true" weight="0.3289689" />
+      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+>>>>>>> bd69a248d9f388d38442b3a2ce52395ff6e841da
+>>>>>>> 1f5b972c0686fb5117661f1ae9de9e714000e8c1
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+<<<<<<< HEAD
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3289689" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="9" />
       <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.3289689" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
+=======
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="9" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.32872656" />
+      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
+      <window_info anchor="right" id="Nativescript Palette" />
+>>>>>>> 1f5b972c0686fb5117661f1ae9de9e714000e8c1
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -242,6 +375,20 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="10" column="29" selection-start-line="10" selection-start-column="29" selection-end-line="10" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Downloads/parallax-template/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-line="164" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="14" column="38" selection-start-line="14" selection-start-column="38" selection-end-line="14" selection-end-column="38" />
         </state>
       </provider>
     </entry>
