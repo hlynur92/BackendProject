@@ -10,10 +10,10 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<?php include 'includes/header.php';?>
+<?php include 'presentation/partials/header.php';?>
 <body>
 
-<?php include 'includes/navigation.php';?>
+<?php include 'presentation/partials/navigation.php';?>
 
 
 <div id="index-banner" class="parallax-container">
@@ -115,7 +115,7 @@
     <div class="parallax"><img src="background3.jpg" alt="Unsplashed background img 3"></div>
 </div>
 
-<?php include 'includes/footer.php';?>
+<?php include 'presentation/partials/footer.php';?>
 
 
 </body>
