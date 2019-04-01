@@ -1,4 +1,4 @@
-<footer class="pt-4 my-md-5 pt-md-5 border-top container-fluid">
+<footer class="pt-4 my-md-0 pt-md-5 border-top container-fluid bg-teal">
     <div class="container">
     <div class="row">
         <div class="col-12 col-md">
@@ -38,6 +38,7 @@
     </div>
 </footer>
 
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script>window.jQuery || document.write('<script src="/docs/4.3/assets/js/vendor/jquery-slim.min.js"><\/script>')</script><script src="includes/js/bootstrap.bundle.min.js"></script>
 
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script>window.jQuery || document.write('<script src="/docs/4.3/assets/js/vendor/jquery-slim.min.js"><\/script>')</script><script src="includes/js/bootstrap.bundle.min.js" integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" crossorigin="anonymous"></script></body>
+</body>
