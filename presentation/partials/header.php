@@ -1,10 +1,13 @@
+<!doctype html>
+<html lang="en">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <title>Parallax Template - Materialize</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- CSS  -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="includes/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-    <link href="includes/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="includes/css/bootstrap.min.css">
+    <link rel="stylesheet" href="includes/css/style.css">
+
+    <title>Hello, world!</title>
 </head>
