@@ -1,9 +1,9 @@
 
-<?php include 'includes/settings.php'; ?>
-<?php include 'presentation/partials/header.php';?>
+<?php include 'partials/header.php';?>
+
 <body>
 
-<?php include 'presentation/partials/navigation.php';?>
+<?php include 'partials/navigation.php';?>
 
 
 <main role="main">
@@ -121,6 +121,6 @@
     </div>
 
 </main>
-<?php include 'presentation/partials/footer.php';?>
+<?php include '../presentation/partials/footer.php';?>
 
 </html>
