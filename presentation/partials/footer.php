@@ -1,4 +1,4 @@
-<footer class="pt-4 my-md-0 pt-md-5 border-top container-fluid bg-teal">
+<footer class="pt-4 my-md-0 pt-md-5 border-top container-fluid">
     <div class="container">
     <div class="row">
         <div class="col-12 col-md">
@@ -28,10 +28,8 @@
         <div class="col-6 col-md">
             <h5>About</h5>
             <ul class="list-unstyled text-small">
-                <li><a class="text-muted" href="#">Team</a></li>
-                <li><a class="text-muted" href="#">Locations</a></li>
-                <li><a class="text-muted" href="#">Privacy</a></li>
-                <li><a class="text-muted" href="#">Terms</a></li>
+                <li><a class="text-muted" href="<?php echo $GLOBALS['URL']; ?>presentation/aboutus.php">About us</a></li>
+                <li><a class="text-muted" href="<?php echo $GLOBALS['URL']; ?>presentation/terms.php">Terms</a></li>
             </ul>
         </div>
     </div>
