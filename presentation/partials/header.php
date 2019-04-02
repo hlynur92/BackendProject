@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href=<?php echo $GLOBALS['URL']; ?>"includes/css/bootstrap.min.css">
-    <link rel="stylesheet" href="http://localhost/BackendProject/includes/css/style.css">
+    <link rel="stylesheet" href="<?php echo $GLOBALS['URL']; ?>includes/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<?php echo $GLOBALS['URL']; ?>includes/css/style.css">
 
     <title>Hello, world!</title>
 </head>

@@ -124,3 +124,4 @@
 <?php include 'presentation/partials/footer.php';?>
 
 </html>
+</body>
