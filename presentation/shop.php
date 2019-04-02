@@ -1,4 +1,5 @@
 
+<?php include '../includes/settings.php'; ?>
 <?php include 'partials/header.php';?>
 
 <body>
