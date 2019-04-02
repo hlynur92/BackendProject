@@ -54,5 +54,5 @@ $products = $instance->GetProducts();
 </main>
 <?php include 'presentation/partials/footer.php';?>
 
-</html>
 </body>
+</html>
