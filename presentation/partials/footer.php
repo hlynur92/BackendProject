@@ -2,18 +2,16 @@
     <div class="container">
     <div class="row">
         <div class="col-12 col-md">
-            <img class="mb-2" src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt="" width="24" height="24">
-            <small class="d-block mb-3 text-muted">© 2017-2018</small>
+            <img src="<?php echo $GLOBALS['URL']; ?>includes/images/duckworld.png" alt="">
+            <small class="d-block mb-3 text-muted">© 2017-2019</small>
         </div>
         <div class="col-6 col-md">
             <h5>Shortcuts</h5>
             <ul class="list-unstyled text-small">
-                <li><a class="text-muted" href="#">Cool stuff</a></li>
-                <li><a class="text-muted" href="#">Random feature</a></li>
-                <li><a class="text-muted" href="#">Team feature</a></li>
-                <li><a class="text-muted" href="#">Stuff for developers</a></li>
-                <li><a class="text-muted" href="#">Another one</a></li>
-                <li><a class="text-muted" href="#">Last time</a></li>
+                <li><a class="text-muted" href="<?php echo $GLOBALS['URL']; ?>index.php"">Home</a></li>
+                <li><a class="text-muted" href="<?php echo $GLOBALS['URL']; ?>presentation/shop.php"">Shop</a></li>
+                <li><a class="text-muted" href="<?php echo $GLOBALS['URL']; ?>presentation/aboutus.php"">About us</a></li>
+                <li><a class="text-muted" href="<?php echo $GLOBALS['URL']; ?>presentation/news.php"">News</a></li>
             </ul>
         </div>
         <div class="col-6 col-md">
@@ -26,9 +24,8 @@
             </ul>
         </div>
         <div class="col-6 col-md">
-            <h5>About</h5>
+            <h5>Terms and conditions</h5>
             <ul class="list-unstyled text-small">
-                <li><a class="text-muted" href="<?php echo $GLOBALS['URL']; ?>presentation/aboutus.php">About us</a></li>
                 <li><a class="text-muted" href="<?php echo $GLOBALS['URL']; ?>presentation/terms.php">Terms</a></li>
             </ul>
         </div>
