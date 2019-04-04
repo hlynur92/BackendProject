@@ -54,5 +54,5 @@ $products = $instance->getLatestSpecialOffers();
 </main>
 <?php include 'presentation/partials/footer.php';?>
 
-</html>
 </body>
+</html>

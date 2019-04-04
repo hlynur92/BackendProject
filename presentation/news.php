@@ -53,4 +53,5 @@
 </main>
 <?php include '../presentation/partials/footer.php';?>
 
+</body>
 </html>
