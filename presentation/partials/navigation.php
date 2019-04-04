@@ -21,6 +21,9 @@
                 <li class="nav-item ml-3">
                     <a class="nav-link" href="<?php echo $GLOBALS['URL']; ?>presentation/news.php">News</a>
                 </li>
+                <li class="nav-item ml-3">
+                    <a class="nav-link" href="<?php echo $GLOBALS['URL']; ?>presentation/admin/login.php">Log in</a>
+                </li>
                 <li class="nav-item dropdown ml-5">
                     <button onclick="window.location.href = 'cart.php';" class="btn btn-secondary dropdown bg-info" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Cart <i class="fa fa-shopping-cart fa-lg"></i>
