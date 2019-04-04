@@ -17,7 +17,7 @@
 
 <?php
 $instance = new ProductController();
-$products = $instance->GetProducts();
+$products = $instance->getLatestSpecialOffers();
 //var_dump($products);
 
 ?>
