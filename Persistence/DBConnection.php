@@ -3,7 +3,7 @@
 class DBConnection{
     private $_server = "localhost";
     private $_user = "root";
-    private $_password = "123456";
+    private $_password = "agnarsson92";
     private $_dbName = "duckdb";
     private $_connection;
 

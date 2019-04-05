@@ -20,6 +20,7 @@ $instance = new ProductController();
 $products = $instance->getLatestSpecialOffers();
 //var_dump($products);
 
+$_
 ?>
 
 <main role="main">

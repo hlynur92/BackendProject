@@ -5,7 +5,9 @@
 <body>
 
 <?php include 'partials/navigation.php';?>
+<?php
 
+?>
 
 <main role="main">
 
