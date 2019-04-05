@@ -1,0 +1,8 @@
+$theme-colors: (
+        "light": #E8E8E8
+);
+
+
+@import "variables";
+@import "../../node_modules/bootstrap/scss/bootstrap";
+@import 'style';
