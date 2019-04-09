@@ -9,8 +9,6 @@
 
     $product_controller_path = __DIR__ . "/business/ProductController.php";
 
-    //echo "Path: $product_controller_path <br>";
-
     require $product_controller_path;
 ?>
 
@@ -18,9 +16,7 @@
 <?php
 $instance = new ProductController();
 $products = $instance->getLatestSpecialOffers();
-//var_dump($products);
 
-$_
 ?>
 
 <main role="main">
