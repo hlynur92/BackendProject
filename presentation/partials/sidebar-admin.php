@@ -17,23 +17,44 @@
     </li>
     <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="fa fa-folder"></i>
-            <span>Pages</span>
+            <i class="fa fa-shopping-cart"></i>
+            <span>Products</span>
         </a>
         <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-            <h6 class="dropdown-header">Login Screens:</h6>
-            <a class="dropdown-item" href="login.html">Login</a>
-            <a class="dropdown-item" href="register.html">Register</a>
-            <a class="dropdown-item" href="forgot-password.html">Forgot Password</a>
-            <div class="dropdown-divider"></div>
-            <h6 class="dropdown-header">Other Pages:</h6>
-            <a class="dropdown-item" href="404.html">404 Page</a>
-            <a class="dropdown-item" href="blank.html">Blank Page</a>
+            <a class="dropdown-item" href="dashboard.php">Edit Product</a>
+            <a class="dropdown-item" href="addProduct.php">Add Product</a>
         </div>
     </li>
-    <li class="nav-item">
-        <a class="nav-link" href="tables.html">
-            <i class="fa fa-table" aria-hidden="true"></i>
-            <span>Tables</span></a>
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fa fa-newspaper-o"></i>
+            <span>News</span>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+            <a class="dropdown-item" href="addNews.php">Add News</a>
+            <a class="dropdown-item" href="editNews.php">Edit News</a>
+        </div>
+    </li>
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fa fa-building-o"></i>
+            <span>Company</span>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+            <a class="dropdown-item" href="addCompany.php">Add Company details</a>
+            <a class="dropdown-item" href="editCompany.php">Edit Company details</a>
+
+        </div>
+    </li>
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fa fa-tag"></i>
+            <span>Special Offers</span>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+            <a class="dropdown-item" href="addOffer.php">Add Special Offer</a>
+            <a class="dropdown-item" href="editOffer.php">Edit Special Offer</a>
+
+        </div>
     </li>
 </ul>
