@@ -16,6 +16,13 @@ class ProductController{
 
         return $products;
     }
+    public function getAllProducts(){
+        $prodDAO = new ProductDAO();
+
+        $products = $prodDAO->getAllProducts();
+
+        return $products;
+    }
 
     public  function getProductTemplate($products){
         $tempProducts = array();
@@ -29,14 +36,19 @@ class ProductController{
                             <title>Placeholder</title>
                             <rect width=\"100%\" height=\"100%\" fill=\"#55595c\"/><text x=\"50%\" y=\"50%\" fill=\"#eceeef\" dy=\".3em\"></text>
                         </image>
-                        <div class=\"card-body bg-info\">
+                        <div class=\"card-body bg-light text-dark\">
                             <h3 name=\"productname\">" . $product['ProductName'] . "</h3>
                             <p name=\"description\" class=\"card-text\">" . $product['Description'] . "</p>
-                            <div class=\"d-flex justify-content-between align-items-center\">
+                            <div class=\"justify-content-between text-right\">
+               
+                                <small name=\"price\" class=\"text-info\"><del> " . $product['Price'] . " </del>Discount: " . $product['Discount'] . "% <br><h3>" . round($discountPrice, 2) . " </h3></small>
+  
+                            </div>
+                            <div class=\"d-flex justify-content-between align-items-center clearfix\">
                                 <div class=\"btn-group\">
-                                    <button type=\"button\" class=\"btn btn-sm btn-outline-secondary\" onclick=\"location.href='" . $GLOBALS['URL'] . "Presentation/shop-detail.php  '\">Detail</button>
+                                    <button type=\"button\" class=\"btn btn-sm btn-success\" onclick=\"location.href='" . $GLOBALS['URL'] . "Presentation/shop-detail.php  '\">View more</button>
                                 </div>
-                                <small name=\"price\" class=\"text-warning\">Full Price: " . $product['Price'] . " Discount Price: " . round($discountPrice, 2) . " Discount: " . $product['Discount'] . "%</small>
+  
                             </div>
                         </div>
                     </div>
