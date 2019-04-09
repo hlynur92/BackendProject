@@ -14,6 +14,12 @@ class ProductController{
         $products = $prodDAO->getAllProducts();
         return $products;
     }
+
+    public function getSpecificProduct(){
+        $prodDAO = new ProductDAO();
+        $products = $prodDAO->getSpecificProduct();
+        return $products;
+    }
 }
 
 

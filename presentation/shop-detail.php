@@ -6,9 +6,10 @@
 
 <?php include 'partials/navigation.php';?>
 <?php
-    session_start();
-    $var_value = $_SESSION['productid'];
-    var_dump($var_value);
+    $productid = $_GET['productid'];
+    $specialofferid = $_GET['specialofferid'];
+    var_dump($productid);
+    var_dump($specialofferid);
 ?>
 
 <main role="main">

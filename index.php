@@ -56,7 +56,7 @@ $products = $instance->getLatestSpecialOffers();
                                     </div>
                                     <div class=\"d-flex justify-content-between align-items-center clearfix\">
                                         <div class=\"btn-group\">
-                                            <button type=\"button\" class=\"btn btn-sm btn-success\" onclick=\"location.href='" . $GLOBALS['URL'] . "Presentation/shop-detail.php  '\">View more</button>
+                                            <button type=\"button\" class=\"btn btn-sm btn-success\" onclick=\"location.href='" . $GLOBALS['URL'] . "Presentation/shop-detail.php?productid=" . $product['ProductID'] . "&specialofferid=" . $product['SpecialOfferID'] . "  '\">View more</button>
                                         </div>
                                     </div>
                                 </div>
