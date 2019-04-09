@@ -25,6 +25,7 @@ class ProductDAO
             echo "Error Message: " . $e;
         }
     }
+
     public function getAllProducts(){
         try{
             $dbmanager = new DBConnection();
