@@ -15,9 +15,9 @@ class ProductController{
         return $products;
     }
 
-    public function getSpecificProduct(){
+    public function getSpecificProduct($productid, $specialofferid){
         $prodDAO = new ProductDAO();
-        $products = $prodDAO->getSpecificProduct();
+        $products = $prodDAO->getSpecificProduct($productid, $specialofferid);
         return $products;
     }
 }

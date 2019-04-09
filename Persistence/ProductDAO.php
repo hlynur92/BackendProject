@@ -45,13 +45,13 @@ class ProductDAO
         }
     }
 
-    public function getSpecificProduct(){
+    public function getSpecificProduct($productid, $specialofferid){
         try{
             $dbmanager = new DBConnection();
 
             $dbconnection = $dbmanager->connectToDB();
 
-            $result = mysqli_query($dbconnection, "CALL GetSpecificProduct()") or die("Query Failed: " . mysqli_error($dbconnection));
+            $result = mysqli_query($dbconnection, "CALL GetSpecificProduct(" . $productid . ", " . $specialofferid . ")") or die("Query Failed: " . mysqli_error($dbconnection));
             //var_dump($result);
 
             $result = mysqli_fetch_all($result,MYSQLI_BOTH);
