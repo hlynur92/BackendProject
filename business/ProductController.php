@@ -21,7 +21,7 @@ class ProductController{
         $tempProducts = array();
         foreach ($products as $product){
             $discount = $product['Discount']/100;
-            $discountPrice = $product['Price'] * ( 1 - $discount);
+            $discountPrice = $product['Price'] * (1 - $discount);
             $temp = "
                 <div class=\"col-md-3\">
                     <div class=\"card mb-4 shadow-sm\">
@@ -34,7 +34,7 @@ class ProductController{
                             <p name=\"description\" class=\"card-text\">" . $product['Description'] . "</p>
                             <div class=\"d-flex justify-content-between align-items-center\">
                                 <div class=\"btn-group\">
-                                    <button type=\"button\" class=\"btn btn-sm btn-outline-secondary\" onclick=\"location.href='" . $GLOBALS['URL'] . "Presentation/shop-detail.php  '\">Detail</button>
+                                    <button name='detailbutton' type=\"button\" class=\"btn btn-sm btn-outline-secondary\" onclick=\"location.href='" . $GLOBALS['URL'] . "Presentation/shop-detail.php  '\">Detail</button>
                                 </div>
                                 <small name=\"price\" class=\"text-warning\">Full Price: " . $product['Price'] . " Discount Price: " . round($discountPrice, 2) . " Discount: " . $product['Discount'] . "%</small>
                             </div>

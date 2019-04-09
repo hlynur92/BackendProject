@@ -6,7 +6,9 @@
 
 <?php include 'partials/navigation.php';?>
 <?php
-
+    session_start();
+    $var_value = $_SESSION['productid'];
+    var_dump($var_value);
 ?>
 
 <main role="main">
