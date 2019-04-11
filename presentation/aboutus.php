@@ -40,7 +40,7 @@
 
                     <div class="form-group ml-4">
                         <label class="mr-sm-2" for="inlineFormCustomSelect">Subject</label>
-                        <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                        <select name="subject" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
                             <option selected>Please select subject</option>
                             <option value="feedback">Feedback</option>
                             <option value="reclamations">Reclamations</option>
@@ -59,14 +59,22 @@
                     $name = $_REQUEST['name'];
                     $email = $_REQUEST['email'];
                     $message = $_REQUEST['message'];
+                    $subject = $_REQUEST['subject'];
 
-                    htmlspecialchars(trim($name));
-                    htmlspecialchars(trim($email));
-                    htmlspecialchars(trim($message));
+                    if ($subject != "Please select subject" && $name != null && $email != null && $message != null){
+                        htmlspecialchars(trim($name));
+                        htmlspecialchars(trim($email));
+                        htmlspecialchars(trim($message));
+                        htmlspecialchars(trim($subject));
 
-                    $mailcontroller = new MailController();
+                        $mailcontroller = new MailController();
 
-                    $mailcontroller->contactFormMail($email, $name, $message);
+                        $mailcontroller->contactFormMail($email, $name, $subject, $message);
+                    }else if ($subject == "Please select subject"){
+                        echo "<script type='text/javascript'>";
+                        echo "alert('Please Select a Subject');";
+                        echo "</script>";
+                    }
                 }
                 ?>
             </div>

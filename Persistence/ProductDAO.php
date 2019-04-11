@@ -14,10 +14,7 @@ class ProductDAO
             $dbconnection = $dbmanager->connectToDB();
 
             $result = mysqli_query($dbconnection, "CALL GetLatestSpecialOffers()") or die("Query Failed: " . mysqli_error($dbconnection));
-            //var_dump($result);
-
             $result = mysqli_fetch_all($result,MYSQLI_BOTH);
-            //var_dump($result);
 
             return $result;
             mysqli_close($dbconnection);
