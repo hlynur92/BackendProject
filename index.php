@@ -32,6 +32,7 @@ $products = $instance->getLatestSpecialOffers();
 
     <div class="album py-5 bg-light">
         <div class="container">
+            <h2 class="align-items-center">Featured products</h2>
 
             <div class="row">
 
