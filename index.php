@@ -40,23 +40,22 @@ $products = $instance->getLatestSpecialOffers();
                     $discount = $product['Discount']/100;
                     $discountPrice = $product['Price'] * ( 1 - $discount);
                     $template = "
-                        <div class=\"col-md-3\">
+                        <div class=\"col-md-3 card-group\">
                             <div class=\"card mb-4 shadow-sm\">
-                                    <image name=\"productimg\" class=\"bd-placeholder-img card-img-top\" width=\"100%\" height=\"100%\" src=" . $product['ImgPath'] . " preserveAspectRatio=\"xMidYMid slice\" focusable=\"false\" role=\"img\" aria-label=\"Placeholder: Thumbnail\">
-                                    <title>Placeholder</title>
-                                    <rect width=\"100%\" height=\"100%\" fill=\"#55595c\"/><text x=\"50%\" y=\"50%\" fill=\"#eceeef\" dy=\".3em\"></text>
-                                    </image>
-                                <div class=\"card-body bg-light text-dark\">
+                                    <img name=\"productimg\" class=\"bd-placeholder-img card-img-top h-50 d-inline-block\" width=\"100%\" height=\"100%\" src=" . $GLOBALS['URL'] . $product['ImgPath'] . " preserveAspectRatio=\"xMidYMid slice\" focusable=\"false\" role=\"img\" aria-label=\"Placeholder: Thumbnail\">        
+                                    </img>
+                                <div class=\"card-body bg-light text-dark h-25 d-inline-block\">
                                     <h3 name=\"productname\">" . $product['ProductName'] . "</h3>
                                     <p name=\"description\" class=\"card-text\">" . $product['Description'] . "</p>
                                     <div class=\"justify-content-between text-right\">
-                                        <small name=\"price\" class=\"text-info\"><del> " . $product['Price'] . " </del>Discount: " . $product['Discount'] . "% <br><h3>" . round($discountPrice, 2) . " </h3></small>
+                                        <small name=\"price\" class=\"text-info\"><del> " . $product['Price'] . " </del>Discount: " . $product['Discount'] . "% <br></small>
                                     </div>
-                                    <div class=\"d-flex justify-content-between align-items-center clearfix\">
+                                </div>
+                                <div class=\"card-footer\">
                                         <div class=\"btn-group\">
                                             <button type=\"button\" class=\"btn btn-sm btn-success\" onclick=\"location.href='" . $GLOBALS['URL'] . "Presentation/shop-detail.php?productid=" . $product['ProductID'] . "&specialofferid=" . $product['SpecialOfferID'] . "  '\">View more</button>
                                         </div>
-                                    </div>
+                                        <h3 name=\"price\" class=\"text-info float-right\">" . round($discountPrice, 2) . " </h3>
                                 </div>
                             </div>
                         </div>
