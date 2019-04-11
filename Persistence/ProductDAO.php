@@ -51,11 +51,12 @@ class ProductDAO
 
             $dbconnection = $dbmanager->connectToDB();
 
+            $productid = $dbmanager->sanitizeValue($productid);
+            $specialofferid = $dbmanager->sanitizeValue($specialofferid);
+
             $result = mysqli_query($dbconnection, "CALL GetSpecificProduct(" . $productid . ", " . $specialofferid . ")") or die("Query Failed: " . mysqli_error($dbconnection));
-            //var_dump($result);
 
             $result = mysqli_fetch_all($result,MYSQLI_BOTH);
-            //var_dump($result);
 
             return $result;
             mysqli_close($dbconnection);

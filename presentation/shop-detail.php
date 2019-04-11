@@ -7,9 +7,7 @@
 <?php include 'partials/navigation.php';?>
 
 <?php
-$product_controller_path = __DIR__ . "../../business/ProductController.php";
-
-require $product_controller_path;
+    require __DIR__ . "../../business/ProductController.php";
 ?>
 <?php
     $productid = $_GET['productid'];

@@ -5,7 +5,9 @@
 <body>
 
 <?php include 'partials/navigation.php';?>
-
+<?php
+    require __DIR__ . "../../business/MailController.php";
+?>
 
 <main role="main">
 
@@ -26,7 +28,7 @@
             </div>
             <div class="col-md-6">
                 <h3 class="ml-4">Contact us</h3>
-                <p><form>
+                <p><form action="aboutus.php" method="post">
                     <div class="form-group ml-4">
                         <label for="name">Name</label>
                         <input name="name" class="form-control" type="text" id="name" placeholder="Name">
@@ -40,17 +42,21 @@
                         <label for="message">Message</label>
                         <textarea name="message" class="form-control" id="email" rows="3"></textarea>
                     </div>
-                    <button name="contactbutton" type="submit" class="btn btn-primary ml-4">Send</button>
+                    <button name="submit" type="submit" class="btn btn-primary ml-4">Send</button>
                 </form></p>
                 <?php
-                if(isset($_POST['contactbutton'])){
-                    $var1 = $_POST['name'];
-                    $var2 = $_POST['email'];
-                    $var3 = $_POST['message'];
+                if(isset($_POST['submit'])){
+                    $name = $_REQUEST['name'];
+                    $email = $_REQUEST['email'];
+                    $message = $_REQUEST['message'];
 
-                    var_dump($var1);
-                    var_dump($var2);
-                    var_dump($var3);
+                    htmlspecialchars(trim($name));
+                    htmlspecialchars(trim($email));
+                    htmlspecialchars(trim($message));
+
+                    $mailcontroller = new MailController();
+
+                    $mailcontroller->contactFormMail($email, $name, $message);
                 }
                 ?>
             </div>
