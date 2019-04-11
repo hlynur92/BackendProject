@@ -36,6 +36,7 @@ $products = $instance->getAllProducts();
             <div class="row equal">
                 <?php
                 foreach ($products as $product){
+                    var_dump($product);
                     $template = "
                         <div class=\"col-md-3 card-group\">
                             <div class=\"card mb-4 shadow-sm\">
