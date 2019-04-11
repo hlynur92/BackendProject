@@ -29,19 +29,30 @@
                 <p><form>
                     <div class="form-group ml-4">
                         <label for="name">Name</label>
-                        <input class="form-control" type="text" id="name" placeholder="Name">
+                        <input name="name" class="form-control" type="text" id="name" placeholder="Name">
                     </div>
                     <div class="form-group ml-4">
                         <label for="email">Email address</label>
-                        <input type="email" class="form-control" id="email" placeholder="name@example.com">
+                        <input name="email" type="email" class="form-control" id="email" placeholder="name@example.com">
                     </div>
 
                     <div class="form-group ml-4">
                         <label for="message">Message</label>
-                        <textarea class="form-control" id="email" rows="3"></textarea>
+                        <textarea name="message" class="form-control" id="email" rows="3"></textarea>
                     </div>
-                    <button type="submit" class="btn btn-primary ml-4">Send</button>
+                    <button name="contactbutton" type="submit" class="btn btn-primary ml-4">Send</button>
                 </form></p>
+                <?php
+                if(isset($_POST['contactbutton'])){
+                    $var1 = $_POST['name'];
+                    $var2 = $_POST['email'];
+                    $var3 = $_POST['message'];
+
+                    var_dump($var1);
+                    var_dump($var2);
+                    var_dump($var3);
+                }
+                ?>
             </div>
         </div>
 

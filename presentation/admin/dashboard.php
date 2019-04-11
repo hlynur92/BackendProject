@@ -10,7 +10,19 @@
 
 <?php include '../../includes/settings.php'; ?>
 <?php include '../partials/header-admin.php';?>
+<?php
 
+$product_controller_path = __DIR__ . "/../../business/ProductController.php";
+
+require $product_controller_path;
+?>
+
+
+<?php
+$instance = new ProductController();
+$products = $instance->getAllProducts();
+
+?>
 
 <body id="page-top">
 
@@ -46,54 +58,37 @@
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                             <thead>
                             <tr>
-                                <th>ID</th>
-                                <th>Image</th>
-                                <th>Title</th>
-                                <th>Decription</th>
-                                <th>Price</th>
-                                <th>Edit</th>
-                                <th>Remove</th>
+                                <th width="10%">Id</th>
+                                <th width="10%">Image</th>
+                                <th width="15%">Product name</th>
+                                <th width="25%">Description</th>
+                                <th width="10%">Price</th>
+                                <th width="10%">Edit Image</th>
+                                <th width="10%">Edit</th>
+                                <th width="10%">Remove</th>
                             </tr>
                             </thead>
-                            <tfoot>
-                            <tr>
-                                <th>ID</th>
-                                <th>Image</th>
-                                <th>Title</th>
-                                <th>Decription</th>
-                                <th>Price</th>
-                                <th>Edit</th>
-                                <th>Remove</th>
-                            </tr>
-                            </tfoot>
                             <tbody>
+
+                            <?php
+                                foreach ($products as $product){
+                                    $template = "
                             <tr>
-                                <td>001</td>
-                                <td>Image here</td>
-                                <td>Title here</td>
-                                <td>Description here</td>
-                                <td>800 DKK</td>
-                                <td><a href="#" class="btn btn-primary">Edit</a></td>
-                                <td><a href="#" class="btn btn-primary">Remove</a></td>
+                                <td>" . $product['ProductID'] . "</td>
+                                <td style=\"max-width: 100px\"><image name=\"productimg\" class=\"bd-placeholder-img card-img-top\" max-width=\"100px\" height=\"100px\" src=" . $GLOBALS['URL'] . $product['ImgPath'] . " preserveAspectRatio=\"xMidYMid slice\" focusable=\"false\" role=\"img\" aria-label=\"Placeholder: Thumbnail\"></td>
+                                <td><strong>" . $product['ProductName'] . "</td>
+                                <td>" . $product['Description'] . "</td>
+                                <td>" . $product['Price'] . "</td>
+                                <td><a href='#'>Edit Image</a></td>
+                                <td><a href='#'>Edit</a></td>
+                                <td><a href='#'>Remove</a></td>
+
                             </tr>
-                            <tr>
-                                <td>001</td>
-                                <td>Image here</td>
-                                <td>Title here</td>
-                                <td>Description here</td>
-                                <td>800 DKK</td>
-                                <td><a href="#" class="btn btn-primary">Edit</a></td>
-                                <td><a href="#" class="btn btn-primary">Remove</a></td>
-                            </tr>
-                            <tr>
-                                <td>001</td>
-                                <td>Image here</td>
-                                <td>Title here</td>
-                                <td>Description here</td>
-                                <td>800 DKK</td>
-                                <td><a href="#" class="btn btn-primary">Edit</a></td>
-                                <td><a href="#" class="btn btn-primary">Remove</a></td>
-                            </tr>
+                            ";
+                            echo $template;
+                            }
+                            ?>
+
                             </tbody>
                         </table>
                     </div>
