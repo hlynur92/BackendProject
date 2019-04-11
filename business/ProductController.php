@@ -15,8 +15,8 @@ class ProductController{
         return $products;
     }
     public function getAllNews(){
-        $newsDAO = new NewsDAO();
-        $news = $newsDAO->getAllNews();
+        $prodDAO = new ProductDAO();
+        $news = $prodDAO->getAllNews();
         return $news;
     }
 
