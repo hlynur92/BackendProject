@@ -7,7 +7,7 @@ class ProductDAO
 
     }
 
-    public function getLatestSpecialOffers(){
+    public function GetLatestSpecialOffers(){
         try{
             $dbmanager = new DBConnection();
 

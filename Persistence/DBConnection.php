@@ -1,10 +1,10 @@
 <?php
 
 class DBConnection{
-    private $_server = "localhost";
-    private $_user = "root";
-    private $_password = "agnarsson92";
-    private $_dbName = "duckdb";
+    private $_server = "mysql16.cliche.dk";
+    private $_user = "majlander.dk";
+    private $_password = "gjfakV/L!4v0";
+    private $_dbName = "majlander_dk";
     private $_connection;
 
     public function __construct(){

@@ -1,3 +1,3 @@
 <?php
 
-$GLOBALS['URL'] = "http://localhost/BackendProject/";
+$GLOBALS['URL'] = "http://www.majlander.dk/";
