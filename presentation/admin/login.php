@@ -7,7 +7,7 @@
 <div class="container">
     <div class="row justify-content-md-center mb-5 mt-5">
         <form class="form-signin mb-5 mt-5 p-5 bg-light border border-dark">
-            <img src="<?php echo $GLOBALS['URL']; ?>includes/images/duckworld-logo.png" alt="" class="mb-5">
+            <a href="<?php echo $GLOBALS['URL']; ?>/index.php"><img border="0" alt="Home" src="<?php echo $GLOBALS['URL']; ?>includes/images/duckworld-logo.png" class="mb-5"></a>
             <h1 class="h3 mb-3 font-weight-normal text-center">Admin sign in</h1>
             <label for="inputEmail" class="sr-only">Email address</label>
             <input type="email" id="inputEmail" class="form-control mb-3" placeholder="Email address" required="" autofocus="">
