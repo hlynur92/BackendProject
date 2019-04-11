@@ -39,6 +39,16 @@
                     </div>
 
                     <div class="form-group ml-4">
+                        <label class="mr-sm-2" for="inlineFormCustomSelect">Subject</label>
+                        <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                            <option selected>Please select subject</option>
+                            <option value="feedback">Feedback</option>
+                            <option value="reclamations">Reclamations</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group ml-4">
                         <label for="message">Message</label>
                         <textarea name="message" class="form-control" id="email" rows="3"></textarea>
                     </div>
