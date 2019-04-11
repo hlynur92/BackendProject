@@ -50,6 +50,10 @@
                     $email = $_REQUEST['email'];
                     $message = $_REQUEST['message'];
 
+                    htmlspecialchars(trim($name));
+                    htmlspecialchars(trim($email));
+                    htmlspecialchars(trim($message));
+
                     $mailcontroller = new MailController();
 
                     $mailcontroller->contactFormMail($email, $name, $message);
