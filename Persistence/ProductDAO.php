@@ -7,17 +7,14 @@ class ProductDAO
 
     }
 
-    public function GetLatestSpecialOffers(){
+    public function getLatestSpecialOffers(){
         try{
             $dbmanager = new DBConnection();
 
             $dbconnection = $dbmanager->connectToDB();
 
             $result = mysqli_query($dbconnection, "CALL GetLatestSpecialOffers()") or die("Query Failed: " . mysqli_error($dbconnection));
-            //var_dump($result);
-
             $result = mysqli_fetch_all($result,MYSQLI_BOTH);
-            //var_dump($result);
 
             return $result;
             mysqli_close($dbconnection);
@@ -33,6 +30,25 @@ class ProductDAO
             $dbconnection = $dbmanager->connectToDB();
 
             $result = mysqli_query($dbconnection, "CALL GetAllProducts()") or die("Query Failed: " . mysqli_error($dbconnection));
+            //var_dump($result);
+
+            $result = mysqli_fetch_all($result,MYSQLI_BOTH);
+            //var_dump($result);
+
+            return $result;
+            mysqli_close($dbconnection);
+        }catch (mysqli_sql_exception $e){
+            echo "Error Message: " . $e;
+        }
+    }
+
+    public function getAllNews(){
+        try{
+            $dbmanager = new DBConnection();
+
+            $dbconnection = $dbmanager->connectToDB();
+
+            $result = mysqli_query($dbconnection, "CALL GetAllNews()") or die("Query Failed: " . mysqli_error($dbconnection));
             //var_dump($result);
 
             $result = mysqli_fetch_all($result,MYSQLI_BOTH);

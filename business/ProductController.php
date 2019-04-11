@@ -14,6 +14,11 @@ class ProductController{
         $products = $prodDAO->getAllProducts();
         return $products;
     }
+    public function getAllNews(){
+        $prodDAO = new ProductDAO();
+        $news = $prodDAO->getAllNews();
+        return $news;
+    }
 
     public function getSpecificProduct($productid, $specialofferid){
         $prodDAO = new ProductDAO();
