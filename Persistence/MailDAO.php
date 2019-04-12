@@ -13,10 +13,10 @@ class MailDAO{
 
             $dbconnection = $dbmanager->connectToDB();
 
-            $dbmanager->sanitizeValue($email);
-            $dbmanager->sanitizeValue($name);
-            $dbmanager->sanitizeValue($subject);
-            $dbmanager->sanitizeValue($message);
+            $email = $dbmanager->sanitizeValue($email);
+            $name = $dbmanager->sanitizeValue($name);
+            $subject = $dbmanager->sanitizeValue($subject);
+            $message = $dbmanager->sanitizeValue($message);
 
             $result = mysqli_query($dbconnection, "CALL StoreUserMail('" . $email . "', '" . $name . "', '" . $subject . "', '" . $message . "', " . 0 . ")") or die("Query Failed: " . mysqli_error($dbconnection));
 
