@@ -37,7 +37,33 @@ $products = $instance->getAllProducts();
                 <?php
                 foreach ($products as $product){
                     var_dump($product);
-                    $template = "
+                    if($product['SpecialProductOfferID']){
+                        $discount = $product['Discount']/100;
+                        $discountPrice = $product['Price'] * ( 1 - $discount);
+                        $template = "
+                        <div class=\"col-md-3 card-group\">
+                            <div class=\"card mb-4 shadow-sm\">
+                                    <img name=\"productimg\" class=\"bd-placeholder-img card-img-top h-50 d-inline-block\" width=\"100%\" height=\"100%\" src=" . $GLOBALS['URL'] . $product['ImgPath'] . " preserveAspectRatio=\"xMidYMid slice\" focusable=\"false\" role=\"img\" aria-label=\"Placeholder: Thumbnail\">        
+                                    </img>
+                                <div class=\"card-body bg-light text-dark h-25 d-inline-block\">
+                                    <h3 name=\"productname\">" . $product['ProductName'] . "</h3>
+                                    <p name=\"description\" class=\"card-text\">" . $product['Description'] . "</p>
+                                    <div class=\"justify-content-between text-right\">
+                                        <small name=\"price\" class=\"text-info\"><del> " . $product['Price'] . " </del>Discount: " . $product['Discount'] . "% <br></small>
+                                    </div>
+                                </div>
+                                <div class=\"card-footer\">
+                                        <div class=\"btn-group\">
+                                            <button type=\"button\" class=\"btn btn-sm btn-success\" onclick=\"location.href='" . $GLOBALS['URL'] . "Presentation/shop-detail-so.php?productid=" . $product['ProductID'] . "&specialofferid=" . $product['SpecialOfferID'] . "  '\">View more</button>
+                                        </div>
+                                        <h3 name=\"price\" class=\"text-info float-right\">" . round($discountPrice, 2) . " </h3>
+                                </div>
+                            </div>
+                        </div>
+                        ";
+                        echo $template;
+                    }else{
+                        $template = "
                         <div class=\"col-md-3 card-group\">
                             <div class=\"card mb-4 shadow-sm\">
                                     <img name=\"productimg\" class=\"bd-placeholder-img card-img-top h-50 d-inline-block\" width=\"100%\" height=\"100%\" src=" . $GLOBALS['URL'] . $product['ImgPath'] . " preserveAspectRatio=\"xMidYMid slice\" focusable=\"false\" role=\"img\" aria-label=\"Placeholder: Thumbnail\">        
@@ -57,8 +83,9 @@ $products = $instance->getAllProducts();
                                 </div>
                             </div>
                         </div>
-                    ";
-                    echo $template;
+                        ";
+                        echo $template;
+                    }
                 }
                 ?>
             </div>

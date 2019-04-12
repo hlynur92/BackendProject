@@ -7,14 +7,15 @@
 <?php include 'partials/navigation.php';?>
 
 <?php
-require __DIR__ . "../../business/ProductController.php";
+    require __DIR__ . "../../business/ProductController.php";
 ?>
 <?php
-$productid = $_GET['productid'];
+    $productid = $_GET['productid'];
+    $specialofferid = $_GET['specialofferid'];
 
-$prodcontroller = new ProductController();
-$products = $prodcontroller->getSpecificProduct($productid);
-$product = $products[0];
+    $prodcontroller = new ProductController();
+    $products = $prodcontroller->getSpecificSpecialOfferProduct($productid, $specialofferid);
+    $product = $products[0];
 ?>
 
 <main role="main">
@@ -31,12 +32,15 @@ $product = $products[0];
         </div>
     </section>
 
-    <div class="container dark-grey-text mt-5">
+        <div class="container dark-grey-text mt-5">
 
-        <div class="row wow fadeIn">
+            <div class="row wow fadeIn">
 
-            <?php
-            $template = "
+                <?php
+                $discount = $product['Discount']/100;
+                $discountPrice = $product['Price'] * ( 1 - $discount);
+
+                $template = "
                     <div class=\"col-md-6 mb-4\">
                         <img src=" . $GLOBALS['URL'] . $product['ImgPath'] . " class=\"img-fluid\" alt=\"\">
                     </div>
@@ -49,6 +53,7 @@ $product = $products[0];
                             </div>
                             <p class=\"lead\">
                             <span class=\"mr-1\"><del>" . $product['Price'] . "$</del></span>
+                            <span>Discount: " . $product['Discount'] . "% " . round($discountPrice, 2) . "$</span>
                             </p>
                             <p class=\"lead font-weight-bold\">Description</p>
                             <p>" . $product['Description'] . "</p>
@@ -60,47 +65,47 @@ $product = $products[0];
                             </form>
                         </div>
                     </div>";
-            echo $template;
-            ?>
+                echo $template;
+                ?>
 
-        </div>
+            </div>
 
-        <hr>
+            <hr>
 
-        <div class="row d-flex justify-content-center wow fadeIn">
+            <div class="row d-flex justify-content-center wow fadeIn">
 
-            <div class="col-md-6 text-center">
+                <div class="col-md-6 text-center">
 
-                <h4 class="my-4 h4">Related products</h4>
+                    <h4 class="my-4 h4">Related products</h4>
 
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus suscipit modi sapiente illo soluta odit
-                    voluptates,
-                    quibusdam officia. Neque quibusdam quas a quis porro? Molestias illo neque eum in laborum.</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus suscipit modi sapiente illo soluta odit
+                        voluptates,
+                        quibusdam officia. Neque quibusdam quas a quis porro? Molestias illo neque eum in laborum.</p>
+
+                </div>
+
+            </div>
+            <div class="row wow fadeIn">
+
+                <div class="col-lg-4 col-md-12 mb-4">
+
+                    <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/11.jpg" class="img-fluid" alt="">
+
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+
+                    <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/12.jpg" class="img-fluid" alt="">
+
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+
+                    <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/13.jpg" class="img-fluid" alt="">
+
+                </div>
 
             </div>
 
         </div>
-        <div class="row wow fadeIn">
-
-            <div class="col-lg-4 col-md-12 mb-4">
-
-                <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/11.jpg" class="img-fluid" alt="">
-
-            </div>
-            <div class="col-lg-4 col-md-6 mb-4">
-
-                <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/12.jpg" class="img-fluid" alt="">
-
-            </div>
-            <div class="col-lg-4 col-md-6 mb-4">
-
-                <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/13.jpg" class="img-fluid" alt="">
-
-            </div>
-
-        </div>
-
-    </div>
 
 </main>
 <?php include '../presentation/partials/footer.php';?>

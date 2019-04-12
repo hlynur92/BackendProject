@@ -20,9 +20,15 @@ class ProductController{
         return $news;
     }
 
-    public function getSpecificProduct($productid, $specialofferid){
+    public function getSpecificProduct($productid){
         $prodDAO = new ProductDAO();
-        $products = $prodDAO->getSpecificProduct($productid, $specialofferid);
+        $products = $prodDAO->getSpecificProduct($productid);
+        return $products;
+    }
+
+    public function getSpecificSpecialOfferProduct($productid, $specialofferid){
+        $prodDAO = new ProductDAO();
+        $products = $prodDAO->getSpecificSpecialOfferProduct($productid, $specialofferid);
         return $products;
     }
 }
@@ -51,7 +57,7 @@ class ProductController{
                            </div>
                            <div class=\"d-flex justify-content-between align-items-center clearfix\">
                                <div class=\"btn-group\">
-                                   <button type=\"button\" class=\"btn btn-sm btn-success\" onclick=\"location.href='" . $GLOBALS['URL'] . "Presentation/shop-detail.php  '\">View more</button>
+                                   <button type=\"button\" class=\"btn btn-sm btn-success\" onclick=\"location.href='" . $GLOBALS['URL'] . "Presentation/shop-detail-so.php  '\">View more</button>
                                </div>
 
                            </div>
