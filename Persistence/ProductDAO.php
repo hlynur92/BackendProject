@@ -30,10 +30,8 @@ class ProductDAO
             $dbconnection = $dbmanager->connectToDB();
 
             $result = mysqli_query($dbconnection, "CALL GetAllProducts()") or die("Query Failed: " . mysqli_error($dbconnection));
-            //var_dump($result);
 
             $result = mysqli_fetch_all($result,MYSQLI_BOTH);
-            //var_dump($result);
 
             mysqli_close($dbconnection);
             return $result;
@@ -49,10 +47,8 @@ class ProductDAO
             $dbconnection = $dbmanager->connectToDB();
 
             $result = mysqli_query($dbconnection, "CALL GetAllNews()") or die("Query Failed: " . mysqli_error($dbconnection));
-            //var_dump($result);
 
             $result = mysqli_fetch_all($result,MYSQLI_BOTH);
-            //var_dump($result);
 
             mysqli_close($dbconnection);
             return $result;

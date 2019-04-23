@@ -45,8 +45,7 @@ $news = $instance->getAllNews();
                                     <p name=\"description\" class=\"card-text mb-auto\">" . $post['Content'] . "</p>
                                     <a href=''>Continue Reading></a> 
                                 </div>    
-                                    <img name=\"productimg\" class=\"card-img-right flex-auto d-none d-md-block\" width=\"100%\" height=\"100%\" src=" . $GLOBALS['URL'] . $post['ImgPath'] . " preserveAspectRatio=\"xMidYMid slice\" focusable=\"false\" role=\"img\" aria-label=\"Placeholder: Thumbnail\">        
-                                        </img>
+                                    <img name=\"productimg\" class=\"card-img-right flex-auto d-none d-md-block\" width=\"100%\" height=\"100%\" src=" . $GLOBALS['URL'] . $post['ImgPath'] . " preserveAspectRatio=\"xMidYMid slice\" focusable=\"false\" role=\"img\" aria-label=\"Placeholder: Thumbnail\">
                             </div>
                         </div>
                     ";

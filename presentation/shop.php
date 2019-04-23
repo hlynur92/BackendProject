@@ -77,7 +77,7 @@ $products = $instance->getAllProducts();
                                 </div>    
                                 <div class=\"card-footer\">
                                        
-                                  <button type=\"button\" class=\"btn btn-sm btn-success\" onclick=\"location.href='" . $GLOBALS['URL'] . "Presentation/shop-detail.php?productid=" . $product['ProductID'] . "  '\">View more</button>
+                                  <button type=\"button\" class=\"btn btn-sm btn-success\" onclick=\"location.href='" . $GLOBALS['URL'] . "Presentation/shop-detail.php?productid=" . $product[0]  . "  '\">View more</button>
                                   <h3 name=\"price\" class=\"text-info float-right\">" . $product['Price'] . "<br></h3>
                                         
                                 </div>
