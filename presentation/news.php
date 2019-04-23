@@ -31,7 +31,9 @@ $news = $instance->getAllNews();
 
     <div class="container mb-5">
         <div class="row equal">
+
             <?php
+            // var_dump($news);
             foreach ($news as $post){
                 $template = "
                         <div class=\"card-group col-md-6\">
@@ -44,6 +46,8 @@ $news = $instance->getAllNews();
                                     <p class=\"mb-1 card-text text-muted\">" . $post['CreationDate'] . "</p>
                                     <p name=\"description\" class=\"card-text mb-auto\">" . $post['Content'] . "</p>
                                         <a href=''>Continue Reading></a> 
+                                        
+                                        <button type=\"button\" class=\"btn btn-sm btn-success\" onclick=\"location.href='" . $GLOBALS['URL'] . "Presentation/news-detail.php?newsid=" . $news[0]  . "  '\">View more</button>
                                  </div>    
                               </div>
                         </div>

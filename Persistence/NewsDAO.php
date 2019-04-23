@@ -20,4 +20,23 @@ class NewsDAO {
         }
     }
 
+    public function getSpecificNews($newsid){
+        try{
+            $dbmanager = new DBConnection();
+
+            $dbconnection = $dbmanager->connectToDB();
+
+            $newsid = $dbmanager->sanitizeValue($newsid);
+
+            $result = mysqli_query($dbconnection, "CALL GetSpecificNews(" . $newsid . ")") or die("Query Failed: " . mysqli_error($dbconnection));
+
+            $result = mysqli_fetch_all($result,MYSQLI_BOTH);
+
+            mysqli_close($dbconnection);
+            return $result;
+        }catch (mysqli_sql_exception $e){
+            echo "Error Message: " . $e;
+        }
+    }
+
 }

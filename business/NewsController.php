@@ -8,5 +8,10 @@ class NewsController {
         $news = $newsDAO->getAllNews();
         return $news;
     }
+    public function getSpecificNews($newsid){
+        $newsDAO = new NewsDAO();
+        $news = $newsDAO->getSpecificNews($newsid);
+        return $news;
+    }
 
 }
