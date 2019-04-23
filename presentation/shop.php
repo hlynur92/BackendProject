@@ -36,7 +36,6 @@ $products = $instance->getAllProducts();
             <div class="row equal">
                 <?php
                 foreach ($products as $product){
-                    var_dump($product);
                     if($product['SpecialProductOfferID']){
                         $discount = $product['Discount']/100;
                         $discountPrice = $product['Price'] * ( 1 - $discount);
@@ -77,7 +76,7 @@ $products = $instance->getAllProducts();
                                 </div>    
                                 <div class=\"card-footer\">
                                        
-                                  <button type=\"button\" class=\"btn btn-sm btn-success\" onclick=\"location.href='" . $GLOBALS['URL'] . "Presentation/shop-detail.php?productid=" . $product[0]  . "  '\">View more</button>
+                                  <button type=\"button\" class=\"btn btn-sm btn-success\" onclick=\"location.href='" . $GLOBALS['URL'] . "Presentation/shop-detail.php?productid=" . $product['ProductID']  . "  '\">View more</button>
                                   <h3 name=\"price\" class=\"text-info float-right\">" . $product['Price'] . "<br></h3>
                                         
                                 </div>
