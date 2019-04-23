@@ -7,6 +7,14 @@
 <?php include 'partials/navigation.php';?>
 <?php
     require __DIR__ . "../../business/MailController.php";
+    require __DIR__ . "/../business/CompanyController.php.php";
+
+
+?>
+<?php
+    $instance = new CompanyController();
+    $company = $instance->getCompanyInfo();
+
 ?>
 
 <main role="main">
@@ -24,6 +32,7 @@
         <div class="row border-0">
             <div class="col-md-6">
                 <h3>Company information</h3>
+                <h4></h4>
                 <p class="mr-4">Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
             </div>
             <div class="col-md-6">

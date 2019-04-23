@@ -40,3 +40,6 @@ class NewsDAO {
     }
 
 }
+
+//<button type=\"button\" class=\"btn btn-sm btn-success\" onclick=\"location.href='" . $GLOBALS['URL'] . "Presentation/news-detail.php?newsid=" . $news['NewsID']  . "  '\">View more</button>
+//
