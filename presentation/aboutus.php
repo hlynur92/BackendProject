@@ -7,7 +7,7 @@
 <?php include 'partials/navigation.php';?>
 <?php
     require __DIR__ . "../../business/MailController.php";
-    require __DIR__ . "/../business/CompanyController.php.php";
+    require __DIR__ . "/../business/CompanyController.php";
 
 
 ?>
@@ -31,9 +31,18 @@
         <!-- Example row of columns -->
         <div class="row border-0">
             <div class="col-md-6">
+
                 <h3>Company information</h3>
-                <h4></h4>
-                <p class="mr-4">Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+                <h4> Title: <?php echo $company[0]['Title'] ?></h4>
+                <p class="mr-4">Content: <?php echo $company[0]['Content'] ?></p>
+                <p>Opening Hours: <?php echo $company[0]['OpeningHours'] ?></p>
+                <h5>Contact Information</h5>
+                <p>Email: <?php echo $company[0]['Email'] ?></p>
+                <p>PhoneNr: <?php echo $company[0]['PhoneNr'] ?></p>
+                <h5>Address</h5>
+                <p>Street: <?php echo $company[0]['Street'] ?></p>
+                <p>City: <?php echo $company[0]['City'] ?></p>
+                <p>ZipCode: <?php echo $company[0]['ZipCode'] ?></p>
             </div>
             <div class="col-md-6">
                 <h3 class="ml-4">Contact us</h3>
