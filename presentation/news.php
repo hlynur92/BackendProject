@@ -35,20 +35,24 @@ $news = $instance->getAllNews();
             <?php
             // var_dump($news);
             foreach ($news as $post){
+
                 $template = "
                         <div class=\"card-group col-md-6\">
-                            <div class=\"card mb-2\">
-                                <img name=\"productimg\" class=\"card-img-top\" width=\"10%\" height=\"10%\" src=" . $GLOBALS['URL'] . $post['TitleImg'] . " preserveAspectRatio=\"xMidYMid slice\" focusable=\"false\" role=\"img\" aria-label=\"Placeholder: Thumbnail\">          
-                                <div class=\"card-body d-flex flex-column align-items-start\">
+                            <div class=\"card mb-2 d-flex flex-column d-inline-block h-75\">
+                                <img name=\"productimg\" class=\"bd-placeholder-img card-img-top h-25 d-inline-block\" width=\"10%\" height=\"10%\" src=" . $GLOBALS['URL'] . $post['TitleImg'] . " preserveAspectRatio=\"xMidYMid slice\" focusable=\"false\" role=\"img\" aria-label=\"Placeholder: Thumbnail\">          
+                                <div class=\"card-body d-flex flex-column\">
                                         <h3 class=\"card-title\" name=\"productname\">
-                                            <a class='text-dark' href=''>" . $post['Title'] . "</a>
+                                            <a class='text-dark' href='". $GLOBALS['URL'] . "Presentation/news-detail.php?newsid=" . $post['NewsID']  ."'>" . $post['Title'] . "</a>
                                         </h3>
-                                    <p class=\"mb-1 card-text text-muted\">" . $post['CreationDate'] . "</p>
-                                    <p name=\"description\" class=\"card-text mb-auto\">" . $post['Content'] . "</p>
-                                        <a href=''>Continue Reading></a> 
-                                        
-                                        <button type=\"button\" class=\"btn btn-sm btn-success\" onclick=\"location.href='" . $GLOBALS['URL'] . "Presentation/news-detail.php?newsid=" . $news['NewsID']  . "'\">View more</button>
-                                 </div>    
+                                    <p class=\"mb-2 card-text text-muted\">" . $post['CreationDate'] . "</p>
+                                    <p name=\"description\" class=\"card-text mb-2\">" . substr($post['Content'],0,500) . "[...]</p>
+                              
+                                 </div>
+                                 <div
+                                 <div class=\"card-footer bg-transparent border-top-0 d-flex flex-column\">
+                                  <button type=\"button\" class=\"btn btn-sm btn-success align-bottom p-2\" onclick=\"location.href='" . $GLOBALS['URL'] . "Presentation/news-detail.php?newsid=" . $post['NewsID']  . "'\">Continue reading</button>
+
+                                 </div>   
                               </div>
                         </div>
                     ";
