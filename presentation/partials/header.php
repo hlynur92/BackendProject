@@ -1,4 +1,10 @@
+<?php
+session_start();
 
+if(!isset($_SESSION['cart'])){
+    $_SESSION['cart'] = array();
+}
+?>
 <!doctype html>
 <html lang="en">
 <head>

@@ -1,14 +1,11 @@
-
 <?php include 'includes/settings.php'; ?>
 <?php include 'presentation/partials/header.php';?>
 <body>
 
-
-<?php include 'presentation/partials/navigation.php';?>
 <?php
+    include 'presentation/partials/navigation.php';
     require __DIR__ . "/business/ProductController.php";
 ?>
-
 
 <?php
 $instance = new ProductController();

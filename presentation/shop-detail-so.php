@@ -1,4 +1,5 @@
 
+
 <?php include '../includes/settings.php'; ?>
 <?php include 'partials/header.php';?>
 
@@ -16,6 +17,7 @@
     $prodcontroller = new ProductController();
     $products = $prodcontroller->getSpecificSpecialOfferProduct($productid, $specialofferid);
     $product = $products[0];
+
 ?>
 
 <main role="main">
