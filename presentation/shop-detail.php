@@ -55,11 +55,11 @@ $product = $products[0];
                             </p>
                             <p class=\"lead font-weight-bold\">Description</p>
                             <p>" . $product['Description'] . "</p>
-                            <form class=\"d-flex justify-content-left\">
+                            <form method='post' class=\"d-flex justify-content-left\">
                                 <input type=\"number\" value=\"1\" aria-label=\"Search\" class=\"form-control\" style=\"width: 100px\" name='quantity'>
-                                <input class=\"btn btn-primary ml-4\" type=\"submit\" name='addtocart' value='Add to cart'>
+                                <button class=\"btn btn-primary ml-4\" type=\"submit\" name='addtocart'>Add to cart
                                     <i class=\"fa fa-cart-plus fa-lg\"></i>
-                                </input>
+                                </button>
                             </form>
                         </div>
                     </div>";
