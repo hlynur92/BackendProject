@@ -5,7 +5,12 @@
 <body>
 
 <?php include 'partials/navigation.php';?>
-<?php require __DIR__ . "/../business/ProductController.php"; ?>
+<?php
+$product_controller_path = __DIR__ . "/../business/ProductController.php";
+
+require $product_controller_path;
+?>
+
 
 <?php
 $instance = new ProductController();
@@ -48,7 +53,7 @@ $products = $instance->getAllProducts();
                                 </div>
                                 <div class=\"card-footer\">
                                         <div class=\"btn-group\">
-                                            <button type=\"button\" class=\"btn btn-sm btn-success\" onclick=\"location.href='" . $GLOBALS['URL'] . "Presentation/shop-detail-so.php?productid=" . $product['ProductID'] . "&specialofferid=" . $product['SpecialOfferID'] . "  '\">View more</button>
+                                            <button type=\"button\" class=\"btn btn-sm btn-success\" onclick=\"location.href='" . $GLOBALS['URL'] . "presentation/shop-detail-so.php?productid=" . $product['ProductID'] . "&specialofferid=" . $product['SpecialOfferID'] . "  '\">View more</button>
                                         </div>
                                         <h3 name=\"price\" class=\"text-info float-right\">" . round($discountPrice, 2) . " </h3>
                                 </div>
@@ -71,7 +76,7 @@ $products = $instance->getAllProducts();
                                 </div>    
                                 <div class=\"card-footer\">
                                        
-                                  <button type=\"button\" class=\"btn btn-sm btn-success\" onclick=\"location.href='" . $GLOBALS['URL'] . "Presentation/shop-detail.php?productid=" . $product['ProductID']  . "  '\">View more</button>
+                                  <button type=\"button\" class=\"btn btn-sm btn-success\" onclick=\"location.href='" . $GLOBALS['URL'] . "presentation/shop-detail.php?productid=" . $product['ProductID']  . "  '\">View more</button>
                                   <h3 name=\"price\" class=\"text-info float-right\">" . $product['Price'] . "<br></h3>
                                         
                                 </div>

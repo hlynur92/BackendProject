@@ -9,36 +9,29 @@ class CartController
     }
 
     public function existsInCart($productid){
+        $exists = array_search($productid, $_SESSION['cart']);
+        if ($exists != false){
+            return $exists;
+        }else{
             $_SESSION['message'] = 'Product already in cart';
-    }
-
-    public function addToCart($productid, $specialofferid, $quantity){
-        //$this->existsInCart($item);
-        $newdata = array(
-            "productid"=>$productid,
-            "specialofferid"=>$specialofferid,
-            "quantity"=>$quantity
-        );
-
-        if(!in_array($productid, $_SESSION['cart'])){
-            array_push($_SESSION['cart'], $newdata);
-            $_SESSION['message'] = 'Product added to cart';
-            //header('location', 'index.php');
+            return $exists;
         }
     }
 
-    public function addToCartSpecialOffer($productid, $specialofferid, $quantity){
-        //$this->existsInCart($item);
-        $newdata = array(
-            "productid"=>$productid,
-            "specialofferid"=>$specialofferid,
-            "quantity"=>$quantity
-        );
+    public function addToCart($productid, $specialofferid, $quantity){
+        $exists = $this->existsInCart($productid);
+        if ($exists != false){
+            $newdata = array(
+                "productid"=>$productid,
+                "specialofferid"=>$specialofferid,
+                "quantity"=>$quantity
+            );
 
-        if(!in_array($productid, $_SESSION['cart'])){
-            array_push($_SESSION['cart'], $newdata);
-            $_SESSION['message'] = 'Product added to cart';
-            //header('location', 'index.php');
+            if(!in_array($productid, $_SESSION['cart'])){
+                array_push($_SESSION['cart'], $newdata);
+                $_SESSION['message'] = 'Product added to cart';
+                //header('location', 'index.php');
+            }
         }
     }
 
