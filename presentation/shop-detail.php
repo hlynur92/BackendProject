@@ -5,11 +5,9 @@
 <body>
 
 <?php include 'partials/navigation.php';?>
+<?php require __DIR__ . "../../business/ProductController.php"; ?>
+<?php require __DIR__ . "../../business/CartController.php"; ?>
 
-<?php
-require __DIR__ . "../../business/ProductController.php";
-require __DIR__ . "../../business/CartController.php";
-?>
 <?php
     $productid = $_GET['productid'];
 
@@ -67,7 +65,7 @@ require __DIR__ . "../../business/CartController.php";
             if (isset($_POST['addtocart'])) {
                 if(!empty($_POST['quantity'])){
                     $quantity = $_POST['quantity'];
-                    $cartcontroller->addToCart($productid, $quantity);
+                    $cartcontroller->addToCart($productid, null, $quantity);
                 }
             }
             ?>

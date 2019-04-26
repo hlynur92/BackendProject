@@ -6,11 +6,9 @@
 <body>
 
 <?php include 'partials/navigation.php';?>
+<?php require __DIR__ . "../../business/ProductController.php"; ?>
+<?php require __DIR__ . "../../business/CartController.php"; ?>
 
-<?php
-    require __DIR__ . "../../business/ProductController.php";
-    require __DIR__ . "../../business/CartController.php";
-?>
 <?php
     $productid = $_GET['productid'];
     $specialofferid = $_GET['specialofferid'];
@@ -74,7 +72,7 @@
                 if (isset($_POST['addtocart'])) {
                     if(!empty($_POST['quantity'])){
                         $quantity = $_POST['quantity'];
-                        $cartcontroller->addToCartSpecialOffer($productid, $specialofferid, $quantity);
+                        $cartcontroller->addToCart($productid, $specialofferid, $quantity);
                     }
                 }
                 ?>

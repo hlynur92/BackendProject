@@ -5,12 +5,9 @@
 <body>
 
 <?php include 'partials/navigation.php';?>
-<?php
-    require __DIR__ . "../../business/MailController.php";
-    require __DIR__ . "/../business/CompanyController.php";
+<?php require __DIR__ . "../../business/MailController.php"; ?>
+<?php require __DIR__ . "/../business/CompanyController.php"; ?>
 
-
-?>
 <?php
     $instance = new CompanyController();
     $company = $instance->getCompanyInfo();

@@ -5,10 +5,8 @@
 <body>
 
 <?php include 'partials/navigation.php';?>
+<?php require __DIR__ . "../../business/NewsController.php"; ?>
 
-<?php
-require __DIR__ . "../../business/NewsController.php";
-?>
 <?php
 $newsid = $_GET['newsid'];
 

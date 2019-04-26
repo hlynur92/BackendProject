@@ -6,7 +6,6 @@
 
 <?php include 'partials/navigation.php';?>
 
-
 <main role="main">
 
     <section class="jumbotron jumbotron-fluid text-center mb-lg-5 bg-light">

@@ -12,11 +12,11 @@ class CartController
             $_SESSION['message'] = 'Product already in cart';
     }
 
-    public function addToCart($productid, $quantity){
+    public function addToCart($productid, $specialofferid, $quantity){
         //$this->existsInCart($item);
         $newdata = array(
             "productid"=>$productid,
-            "specialofferid"=>null,
+            "specialofferid"=>$specialofferid,
             "quantity"=>$quantity
         );
 
