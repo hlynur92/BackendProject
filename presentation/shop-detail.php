@@ -11,13 +11,13 @@ require __DIR__ . "../../business/ProductController.php";
 require __DIR__ . "../../business/CartController.php";
 ?>
 <?php
-$productid = $_GET['productid'];
+    $productid = $_GET['productid'];
 
-$prodcontroller = new ProductController();
-$cartcontroller = new CartController();
+    $prodcontroller = new ProductController();
+    $cartcontroller = new CartController();
 
-$products = $prodcontroller->getSpecificProduct($productid);
-$product = $products[0];
+    $products = $prodcontroller->getSpecificProduct($productid);
+    $product = $products[0];
 ?>
 
 <main role="main">

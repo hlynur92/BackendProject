@@ -1,8 +1,11 @@
 <?php
 include_once __DIR__ . "/../Persistence/ProductDAO.php";
 class ProductController{
+
     public function __construct(){
+
     }
+
     public function getLatestSpecialOffers(){
         $prodDAO = new ProductDAO();
         $products = $prodDAO->getLatestSpecialOffers();
@@ -24,6 +27,18 @@ class ProductController{
     public function getSpecificSpecialOfferProduct($productid, $specialofferid){
         $prodDAO = new ProductDAO();
         $products = $prodDAO->getSpecificSpecialOfferProduct($productid, $specialofferid);
+        return $products;
+    }
+
+    public function getCartProducts($productid){
+        $prodDAO = new ProductDAO();
+        $products = $prodDAO->getAllProducts();
+        return $products;
+    }
+
+    public function getSpecialOfferCartProducts($productid, $specialofferid){
+        $prodDAO = new ProductDAO();
+        $products = $prodDAO->getAllProducts();
         return $products;
     }
 }

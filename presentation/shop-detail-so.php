@@ -9,12 +9,15 @@
 
 <?php
     require __DIR__ . "../../business/ProductController.php";
+    require __DIR__ . "../../business/CartController.php";
 ?>
 <?php
     $productid = $_GET['productid'];
     $specialofferid = $_GET['specialofferid'];
 
     $prodcontroller = new ProductController();
+    $cartcontroller = new CartController();
+
     $products = $prodcontroller->getSpecificSpecialOfferProduct($productid, $specialofferid);
     $product = $products[0];
 
@@ -59,15 +62,21 @@
                             </p>
                             <p class=\"lead font-weight-bold\">Description</p>
                             <p>" . $product['Description'] . "</p>
-                            <form class=\"d-flex justify-content-left\">
-                                <input type=\"number\" value=\"1\" aria-label=\"Search\" class=\"form-control\" style=\"width: 100px\">
-                                <button class=\"btn btn-primary ml-4\" type=\"submit\">Add to cart
+                            <form method='post' class=\"d-flex justify-content-left\">
+                                <input type=\"number\" value=\"1\" aria-label=\"Search\" class=\"form-control\" style=\"width: 100px\" name='quantity'>
+                                <button class=\"btn btn-primary ml-4\" type=\"submit\" name='addtocart'>Add to cart
                                     <i class=\"fa fa-cart-plus fa-lg\"></i>
                                 </button>
                             </form>
                         </div>
                     </div>";
                 echo $template;
+                if (isset($_POST['addtocart'])) {
+                    if(!empty($_POST['quantity'])){
+                        $quantity = $_POST['quantity'];
+                        $cartcontroller->addToCartSpecialOffer($productid, $specialofferid, $quantity);
+                    }
+                }
                 ?>
 
             </div>
