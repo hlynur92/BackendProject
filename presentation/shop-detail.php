@@ -65,7 +65,10 @@ $product = $products[0];
                     </div>";
             echo $template;
             if (isset($_POST['addtocart'])) {
-                $cartcontroller->addToCart($productid);
+                if(!empty($_POST['quantity'])){
+                    $quantity = $_POST['quantity'];
+                    $cartcontroller->addToCart($productid, $quantity);
+                }
             }
             ?>
 
