@@ -10,13 +10,7 @@
 
 <?php include '../../includes/settings.php'; ?>
 <?php include '../partials/header-admin.php';?>
-<?php
-
-$product_controller_path = __DIR__ . "/../../business/ProductController.php";
-
-require $product_controller_path;
-?>
-
+<?php require  __DIR__ . "/../../business/ProductController.php"; ?>
 
 <?php
 $instance = new ProductController();

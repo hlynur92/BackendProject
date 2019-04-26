@@ -34,7 +34,6 @@ $products = $instance->getLatestSpecialOffers();
             <div class="row">
 
                 <?php
-                var_dump($_SESSION);
                 foreach ($products as $product){
                     $discount = $product['Discount']/100;
                     $discountPrice = $product['Price'] * ( 1 - $discount);
