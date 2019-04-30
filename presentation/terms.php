@@ -25,7 +25,7 @@
                             <ol>
                                 <li><strong>Application of Terms</strong>
                                     <ol>
-                                        <li>By visiting and/or taking any action on Bootstrap Themes, you confirm that you are in agreement with and bound by the terms outlined below. These terms apply to the website, emails, or any other communication.</li>
+                                        <li>By visiting and/or taking any action on DuckWorld inc., you confirm that you are in agreement with and bound by the terms outlined below. These terms apply to the website, emails, or any other communication.</li>
                                     </ol>
                                 </li>
                                 <li><strong>Security &amp; Payments</strong>
@@ -35,34 +35,24 @@
                                 </li>
                                 <li><strong>Refunds</strong>
                                     <ol>
-                                        <li>You have 14 days to evaluate your purchase. If your purchase fails to meet expectations set by the seller, or is critically flawed in some way, contact Bootstrap Themes and we will issue a full refund pending a review.</li>
-                                        <li>The issue of refunds is at the complete discretion of Bootstrap Themes.</li>
+                                        <li>You have 14 days to evaluate your purchase. If your purchase fails to meet expectations set by the seller, or is critically flawed in some way, contact DuckWorld inc. and we will issue a full refund pending a review.</li>
+                                        <li>The issue of refunds is at the complete discretion of DuckWorld inc.</li>
                                     </ol>
                                 </li>
                                 <li><strong>Support</strong>
                                     <ol>
-                                        <li>Support for a purchase is governed by the usage license you purchase.</li>
+                                        <li>Support for a purchase is available.</li>
                                     </ol>
                                 </li>
-                                <li><strong>Ownership</strong>
-                                    <ol>
-                                        <li>Ownership of the product is governed by the usage licenses.</li>
-                                    </ol>
-                                </li>
-                                <li><strong>Membership &amp; Content</strong>
-                                    <ol>
-                                        <li>Membership is a benefit for those who follow our terms and policies. We may at any time suspend or terminate your account.</li>
-                                        <li>We can view and/or remove any content for any reason at our own discretion. This will typically only be exercised for issues needing immediate resolution, such as, but not limited to, the posting of unauthorized content, offensive content, illegal content, or anything breaching anyone else’s rights.</li>
-                                    </ol>
-                                </li>
+
                                 <li><strong>Liability</strong>
                                     <ol>
-                                        <li>You indemnify us against all losses, costs (including legal costs), expenses, demands or liability that we incur arising out of, or in connection with, any claims against us relating to your use of Bootstrap Themes.</li>
+                                        <li>You indemnify us against all losses, costs (including legal costs), expenses, demands or liability that we incur arising out of, or in connection with, any claims against us relating to your use of DuckWorld inc.</li>
                                     </ol>
                                 </li>
                                 <li><strong>Requesting, Modifying or Deleting Your Data (GDPR)</strong>
                                     <ol>
-                                        <li>We are a small operation, but we work hard to make sure your data remains safe and we only collect what is needed to provide our services. If you want to request an export of your data, a modification to any data we have related to your account, or delete of all data permanently, please email themes@getbootstrap.com and we’ll complete your request in a timely manner.</li>
+                                        <li>We are a small operation, but we work hard to make sure your data remains safe and we only collect what is needed to provide our services. If you want to request an export of your data, a modification to any data we have related to your account, or delete of all data permanently, please email hello@duckworld.com and we’ll complete your request in a timely manner.</li>
                                     </ol>
                                 </li><li><strong>Changes to terms</strong>
                                     <ol>

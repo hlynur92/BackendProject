@@ -30,7 +30,7 @@
             <div class="col-md-6">
 
                 <h3>Company information</h3>
-                <h4> Title: <?php echo $company[0]['Title'] ?></h4>
+                <h4> Title: <?php echo $company[0]['Title']?></h4>
                 <p class="mr-4">Content: <?php echo $company[0]['Content'] ?></p>
                 <p>Opening Hours: <?php echo $company[0]['OpeningHours'] ?></p>
                 <h5>Contact Information</h5>

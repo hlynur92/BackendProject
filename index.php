@@ -5,11 +5,19 @@
 <?php
     include 'presentation/partials/navigation.php';
     require __DIR__ . "/business/ProductController.php";
+    require __DIR__ . "/business/NewsController.php";
+    require __DIR__ . "/business/CompanyController.php";
 ?>
 
 <?php
 $instance = new ProductController();
 $products = $instance->getLatestSpecialOffers();
+
+$instance = new NewsController();
+$news = $instance->getAllNews();
+
+$instance = new CompanyController();
+$company = $instance->getCompanyInfo();
 
 ?>
 
@@ -28,7 +36,7 @@ $products = $instance->getLatestSpecialOffers();
     </section>
 
     <div class="album py-5 bg-light">
-        <div class="container">
+        <div class="container border-1">
             <h2 class="text-center mb-5">Featured products</h2>
 
             <div class="row">
@@ -62,6 +70,62 @@ $products = $instance->getLatestSpecialOffers();
                 }
                 ?>
 
+            </div>
+            <h2 class="text-center m-5">Latest News from DuckWorld</h2>
+            <div class="row equal">
+
+                <?php
+                // var_dump($news);
+                foreach ($news as $post){
+
+                    $template = "
+                        <div class=\"card-group col-md-3\">
+                            <div class=\"card mb-2 d-flex flex-column d-inline-block h-100\">
+                                <img name=\"productimg\" class=\"bd-placeholder-img card-img-top h-25 d-inline-block\" width=\"10%\" height=\"10%\" src=" . $GLOBALS['URL'] . $post['TitleImg'] . " preserveAspectRatio=\"xMidYMid slice\" focusable=\"false\" role=\"img\" aria-label=\"Placeholder: Thumbnail\">          
+                                <div class=\"card-body d-flex flex-column\">
+                                        <h3 class=\"card-title\" name=\"productname\">
+                                            <a class='text-dark' href='". $GLOBALS['URL'] . "Presentation/news-detail.php?newsid=" . $post['NewsID']  ."'>" . $post['Title'] . "</a>
+                                        </h3>
+                                    <p class=\"mb-2 card-text text-muted\">" . $post['CreationDate'] . "</p>
+                                    <p name=\"description\" class=\"card-text mb-2\">" . substr($post['Content'],0,100) . "[...]</p>
+                              
+                                 </div>
+                                 <div
+                                 <div class=\"card-footer bg-transparent border-top-0 d-flex flex-column\">
+                                  <button type=\"button\" class=\"btn btn-sm btn-success align-bottom p-2\" onclick=\"location.href='" . $GLOBALS['URL'] . "Presentation/news-detail.php?newsid=" . $post['NewsID']  . "'\">Continue reading</button>
+
+                                 </div>   
+                              </div>
+                        </div>
+                    ";
+                    echo $template;
+                }
+                ?>
+            </div>
+
+            <div class="row border-0 bg-white border border-dark p-5 mt-5">
+
+                <div class="col-md-6">
+                    <p>
+                        <rect width="100%" height="100%" fill="#777">
+                            <img class="bd-placeholder-img rounded-circle" width="400" height="400" src="includes/images/about-us-web.jpg">
+                        </rect>
+                    </p>
+
+                </div>
+                <div class="col-md-6">
+                    <h2 class="text-left pb-5">About us</h2>
+                    <h4> <?php echo $company[0]['Title']?></h4>
+                    <p class="mr-4"><?php echo $company[0]['Content'] ?></p>
+                    <p>Opening Hours: <?php echo $company[0]['OpeningHours'] ?></p>
+                    <h5 class="mt-2">Contact Information</h5>
+                    <p>Email: <?php echo $company[0]['Email'] ?></p>
+                    <p>PhoneNr: <?php echo $company[0]['PhoneNr'] ?></p>
+                    <h5 class="mt-2">Address</h5>
+                    <p>Street: <?php echo $company[0]['Street'] ?></p>
+                    <p>City: <?php echo $company[0]['City'] ?></p>
+                    <p>ZipCode: <?php echo $company[0]['ZipCode'] ?></p>
+                </div>
             </div>
         </div>
     </div>

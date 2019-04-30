@@ -8,19 +8,16 @@
         <div class="col-6 col-md">
             <h5>Shortcuts</h5>
             <ul class="list-unstyled text-small">
-                <li><a class="text-muted" href="<?php echo $GLOBALS['URL']; ?>index.php"">Home</a></li>
-                <li><a class="text-muted" href="<?php echo $GLOBALS['URL']; ?>presentation/shop.php"">Shop</a></li>
-                <li><a class="text-muted" href="<?php echo $GLOBALS['URL']; ?>presentation/aboutus.php"">About us</a></li>
-                <li><a class="text-muted" href="<?php echo $GLOBALS['URL']; ?>presentation/news.php"">News</a></li>
+                <li><a class="text-muted" href="<?php echo $GLOBALS['URL']; ?>index.php">Home</a></li>
+                <li><a class="text-muted" href="<?php echo $GLOBALS['URL']; ?>presentation/shop.php">Shop</a></li>
+                <li><a class="text-muted" href="<?php echo $GLOBALS['URL']; ?>presentation/aboutus.php">About us</a></li>
+                <li><a class="text-muted" href="<?php echo $GLOBALS['URL']; ?>presentation/news.php">News</a></li>
             </ul>
         </div>
         <div class="col-6 col-md">
             <h5>Resources</h5>
             <ul class="list-unstyled text-small">
-                <li><a class="text-muted" href="#">Resource</a></li>
-                <li><a class="text-muted" href="#">Resource name</a></li>
-                <li><a class="text-muted" href="#">Another resource</a></li>
-                <li><a class="text-muted" href="#">Final resource</a></li>
+                <a class="text-muted" href="<?php echo $GLOBALS['URL']; ?>presentation/admin/index.php">Log in</a>
             </ul>
         </div>
         <div class="col-6 col-md">
