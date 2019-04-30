@@ -5,8 +5,8 @@
 <body>
 
 <?php include 'partials/navigation.php';?>
-<?php require __DIR__ . "../../business/ProductController.php"; ?>
-<?php require __DIR__ . "../../business/CartController.php"; ?>
+<?php include '../business/ProductController.php' ?>
+<?php include '../business/CartController.php' ?>
 
 <?php
     $productid = $_GET['productid'];

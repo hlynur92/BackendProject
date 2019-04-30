@@ -4,13 +4,14 @@
 
 <?php
     include 'presentation/partials/navigation.php';
-    require __DIR__ . "/business/ProductController.php";
+    include 'business/ProductController.php';
 ?>
 
 <?php
 $instance = new ProductController();
 $products = $instance->getLatestSpecialOffers();
 
+var_dump($_SESSION);
 ?>
 
 <main role="main">

@@ -30,7 +30,6 @@ class CartController
             if(!in_array($productid, $_SESSION['cart'])){
                 array_push($_SESSION['cart'], $newdata);
                 $_SESSION['message'] = 'Product added to cart';
-                //header('location', 'index.php');
             }
         }
     }

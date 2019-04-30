@@ -5,11 +5,15 @@
 <body>
 
 <?php include 'partials/navigation.php';?>
+<?php include '../business/CartController.php' ?>
 <?php include '../business/ProductController.php'?>
 
 <?php
-$productcontroller = new ProductController();
+    $productcontroller = new ProductController();
+    $cartcontroller = new CartController();
 
+    $products = $productcontroller->getCartProducts();
+    var_dump($products);
 ?>
 
 
@@ -34,15 +38,18 @@ $productcontroller = new ProductController();
                             <th> </th>
                         </tr>
                     </thead>
+                    <?php
+                        $template = "
+                            <tr>
+                                <td><img src=\"https://dummyimage.com/50x50/55595c/fff\" /> </td>
+                                <td>Product Name Dada</td>
+                                <td>In stock</td>
+                                <td><input class=\"form-control\" type=\"text\" value=\"1\" /></td>
+                                <td class=\"text-right\">124,90 €</td>
+                                <td class=\"text-right\"><button class=\"btn btn-sm btn-danger\"><i class=\"fa fa-trash\"></i> </button> </td>
+                            </tr>"
+                    ?>
                     <tbody>
-                        <tr>
-                            <td><img src="https://dummyimage.com/50x50/55595c/fff" /> </td>
-                            <td>Product Name Dada</td>
-                            <td>In stock</td>
-                            <td><input class="form-control" type="text" value="1" /></td>
-                            <td class="text-right">124,90 €</td>
-                            <td class="text-right"><button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> </button> </td>
-                        </tr>
                         <tr>
                             <td></td>
                             <td></td>
