@@ -9,18 +9,23 @@ class CartController
     }
 
     public function existsInCart($productid){
-        $exists = array_search($productid, $_SESSION['cart']);
-        if ($exists != false){
-            return $exists;
-        }else{
-            $_SESSION['message'] = 'Product already in cart';
-            return $exists;
+        $exists = false;
+
+        foreach ($_SESSION['cart'] as $item){
+            if($item['productid'] == $productid){
+                $_SESSION['message'] = 'Product already in cart';
+                $exists = true;
+                return $exists;
+            }else {
+                $exists = false;
+            }
         }
+        return $exists;
     }
 
     public function addToCart($productid, $specialofferid, $quantity){
         $exists = $this->existsInCart($productid);
-        if ($exists != false){
+        if (!$exists){
             $newdata = array(
                 "productid"=>$productid,
                 "specialofferid"=>$specialofferid,
