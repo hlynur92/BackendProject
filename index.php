@@ -8,8 +8,6 @@
     require __DIR__ . "/business/NewsController.php";
     require __DIR__ . "/business/CompanyController.php";
 
-    include 'business/ProductController.php';
-
 ?>
 
 <?php
