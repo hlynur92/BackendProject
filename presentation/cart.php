@@ -1,4 +1,3 @@
-
 <?php include '../includes/settings.php'; ?>
 <?php include 'partials/header.php';?>
 
@@ -14,6 +13,7 @@
 
     $products = $productcontroller->getCartProducts();
     var_dump($products);
+    var_dump($_SESSION);
 ?>
 
 
@@ -39,15 +39,39 @@
                         </tr>
                     </thead>
                     <?php
-                        $template = "
-                            <tr>
-                                <td><img src=\"https://dummyimage.com/50x50/55595c/fff\" /> </td>
-                                <td>Product Name Dada</td>
-                                <td>In stock</td>
-                                <td><input class=\"form-control\" type=\"text\" value=\"1\" /></td>
-                                <td class=\"text-right\">124,90 €</td>
-                                <td class=\"text-right\"><button class=\"btn btn-sm btn-danger\"><i class=\"fa fa-trash\"></i> </button> </td>
-                            </tr>"
+                        foreach ($products as $product){
+                            foreach ($_SESSION['cart'] as $item){
+                                if (!$item['specialofferid']){
+                                    if ($product['ProductID'] == $item['productid']){
+                                        $template = "
+                                        <tr>
+                                            <td><img src=\'" . $product['ImgPath'] . "'/> </td>
+                                            <td>" . $product['ProductName'] . "</td>
+                                            <td>In stock</td>
+                                            <td><input class=\"form-control\" type=\"text\" value=" . $item['quantity'] . " /></td>
+                                            <td class=\"text-right\">" . $product['Price'] . "</td>
+                                            <td class=\"text-right\"><button class=\"btn btn-sm btn-danger\"><i class=\"fa fa-trash\"></i> </button> </td>
+                                        </tr>";
+                                        echo $template;
+                                    }
+                                }else{
+                                    $discount = $product['Discount']/100;
+                                    $discountPrice = $product['Price'] * ( 1 - $discount);
+                                    if ($product['ProductID'] == $item['productid']){
+                                        $template = "
+                                        <tr>
+                                            <td><img src=\'" . $product['ImgPath'] . "'/> </td>
+                                            <td>" . $product['ProductName'] . "</td>
+                                            <td>In stock</td>
+                                            <td><input class=\"form-control\" type=\"text\" value=" . $item['quantity'] . " /></td>
+                                            <td class=\"text-right\">" . round($discountPrice, 2) . "</td>
+                                            <td class=\"text-right\"><button class=\"btn btn-sm btn-danger\"><i class=\"fa fa-trash\"></i> </button> </td>
+                                        </tr>";
+                                        echo $template;
+                                    }
+                                }
+                            }
+                        }
                     ?>
                     <tbody>
                         <tr>

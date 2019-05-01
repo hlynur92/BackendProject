@@ -18,7 +18,6 @@
 
     $products = $prodcontroller->getSpecificSpecialOfferProduct($productid, $specialofferid);
     $product = $products[0];
-
 ?>
 
 <main role="main">

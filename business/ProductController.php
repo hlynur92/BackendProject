@@ -32,10 +32,10 @@ class ProductController{
 
     public function getCartProducts(){
         $prodDAO = new ProductDAO();
-        $products[] = array();
+        $products = array();
         foreach ($_SESSION['cart'] as $item){
             if ($item['specialofferid'] != null){
-                $product = $prodDAO->getSpecificSpecialOfferProduct($item['productid'], $item['$specialofferid']);
+                $product = $prodDAO->getSpecificSpecialOfferProduct($item['productid'], $item['specialofferid']);
                 array_push($products, $product[0]);
             }
             else{

@@ -15,6 +15,7 @@
 <?php
 $instance = new ProductController();
 $products = $instance->getLatestSpecialOffers();
+<<<<<<< HEAD
 
 
 $instance = new NewsController();
@@ -23,6 +24,8 @@ $news = $instance->getAllNews();
 $instance = new CompanyController();
 $company = $instance->getCompanyInfo();
 
+=======
+>>>>>>> 5a374d66bb4e87f4496c72418baafc14d83b9acc
 ?>
 
 <main role="main">
