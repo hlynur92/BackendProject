@@ -7,11 +7,15 @@
     require __DIR__ . "/business/ProductController.php";
     require __DIR__ . "/business/NewsController.php";
     require __DIR__ . "/business/CompanyController.php";
+
+    include 'business/ProductController.php';
+
 ?>
 
 <?php
 $instance = new ProductController();
 $products = $instance->getLatestSpecialOffers();
+
 
 $instance = new NewsController();
 $news = $instance->getAllNews();

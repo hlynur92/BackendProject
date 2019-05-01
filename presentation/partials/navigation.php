@@ -1,3 +1,8 @@
+
+<?php
+
+?>
+
 <header>
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
         <a class="navbar-brand" href="#">
@@ -24,8 +29,8 @@
                 <li class="nav-item ml-3">
                     <a class="nav-link" href="<?php echo $GLOBALS['URL']; ?>presentation/admin/index.php">Log in</a>
                 </li>
-                <li class="nav-item dropdown ml-5">
-                    <button onclick='window.location.href ="<?php echo $GLOBALS['URL']; ?>presentation/cart.php";' class="btn btn-secondary dropdown bg-info" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <li class="nav-ite ml-5">
+                    <button onclick='window.location.href ="<?php echo $GLOBALS['URL']; ?>presentation/cart.php";' class="btn btn-secondary dropdown bg-info" type="button" aria-haspopup="true" aria-expanded="false">
                         Cart <i class="fa fa-shopping-cart fa-lg"></i>
                     </button>
 
