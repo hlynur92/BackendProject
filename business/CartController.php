@@ -2,8 +2,6 @@
 
 class CartController
 {
-    private $_productCart;
-
     public function __construct(){
 
     }
@@ -23,23 +21,53 @@ class CartController
         return $exists;
     }
 
-    public function addToCart($productid, $specialofferid, $quantity){
+    public function addToCart($productid, $specialofferid, $quantity)
+    {
         $exists = $this->existsInCart($productid);
-        if (!$exists){
+        if (!$exists) {
             $newdata = array(
-                "productid"=>$productid,
-                "specialofferid"=>$specialofferid,
-                "quantity"=>$quantity
+                "productid" => $productid,
+                "specialofferid" => $specialofferid,
+                "quantity" => $quantity
             );
 
-            if(!in_array($productid, $_SESSION['cart'])){
+            if (!in_array($productid, $_SESSION['cart'])) {
                 array_push($_SESSION['cart'], $newdata);
                 $_SESSION['message'] = 'Product added to cart';
             }
         }
     }
 
-    public function removeFromCart($productid){
+    public function changeQuantity($productid, $quantity){
+        for ($i = 0; $i < count($_SESSION['cart']); $i++ ){
+            if ($_SESSION['cart'][$i]['quantity'] == $productid){
+                $_SESSION['cart'][$i['quantity']] = $quantity;
+            }
+        }
+        /*
+        foreach ($_SESSION['cart'] as $item){
+            if ($item['productid'] == $productid){
+                $item['quantity'] = $quantity;
+                //$_SESSION['cart'][$item] = $item;
+            }
+        }
+        */
+    }
 
+    public function removeFromCart($productid){
+        for ($i = 0; $i < count($_SESSION['cart']); $i++ ){
+            if ($_SESSION['cart'][$i]['productid'] == $productid){
+                unset($_SESSION['cart'][$i]);
+            }
+        }
+        /*
+        $index = 0;
+        foreach ($_SESSION['cart'] as $item){
+            if ($item['productid'] == $productid){
+                unset($_SESSION['cart'][$index]);
+            }
+            $index++;
+        }
+        */
     }
 }

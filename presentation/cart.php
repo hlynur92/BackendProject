@@ -12,8 +12,7 @@
     $cartcontroller = new CartController();
 
     $products = $productcontroller->getCartProducts();
-    var_dump($products);
-    var_dump($_SESSION);
+    var_dump($_SESSION['cart']);
 ?>
 
 
@@ -27,8 +26,9 @@
     <div class="row">
         <div class="col-12">
             <div class="table-responsive">
-                <table class="table table-striped">
-                    <thead>
+                <form method="post">
+                    <table class="table table-striped">
+                        <thead>
                         <tr>
                             <th scope="col"> </th>
                             <th scope="col">Product</th>
@@ -37,43 +37,53 @@
                             <th scope="col" class="text-right">Price</th>
                             <th> </th>
                         </tr>
-                    </thead>
-                    <?php
+                        </thead>
+                        <?php
                         foreach ($products as $product){
                             foreach ($_SESSION['cart'] as $item){
-                                if (!$item['specialofferid']){
-                                    if ($product['ProductID'] == $item['productid']){
+                                if ($product['ProductID'] == $item['productid']){
+                                    if ($item['specialofferid'] == null){
                                         $template = "
                                         <tr>
-                                            <td><img src=\'" . $product['ImgPath'] . "'/> </td>
+                                            <td><img src=" . $GLOBALS['URL'] . $product['ImgPath'] . " width='80px' height='80px'> </td>
                                             <td>" . $product['ProductName'] . "</td>
                                             <td>In stock</td>
-                                            <td><input class=\"form-control\" type=\"text\" value=" . $item['quantity'] . " /></td>
+                                            <td><input class=\"form-control\" type=\"text\" value=" . $item['quantity'] . " name='quantity' /></td>
                                             <td class=\"text-right\">" . $product['Price'] . "</td>
-                                            <td class=\"text-right\"><button class=\"btn btn-sm btn-danger\"><i class=\"fa fa-trash\"></i> </button> </td>
+                                            <td class=\"text-right\"><button class=\"btn btn-sm btn-danger\" name='removeProduct'><i class=\"fa fa-trash\"></i> </button> </td>
                                         </tr>";
                                         echo $template;
-                                    }
-                                }else{
-                                    $discount = $product['Discount']/100;
-                                    $discountPrice = $product['Price'] * ( 1 - $discount);
-                                    if ($product['ProductID'] == $item['productid']){
+                                        if (isset($_POST['removeProduct'])){
+                                            $cartcontroller->removeFromCart($item['productid']);
+                                        }
+                                        if (isset($_POST['quantity'])){
+                                            $cartcontroller->changeQuantity($item['productid'], $_POST['quantity']);
+                                        }
+                                    }else if ($item['specialofferid'] != null){
+                                        $discount = $product['Discount']/100;
+                                        $discountPrice = $product['Price'] * ( 1 - $discount);
                                         $template = "
                                         <tr>
-                                            <td><img src=\'" . $product['ImgPath'] . "'/> </td>
+                                            <td><img src=" . $GLOBALS['URL'] . $product['ImgPath'] . " width='80px' height='80px'> </td>
                                             <td>" . $product['ProductName'] . "</td>
                                             <td>In stock</td>
-                                            <td><input class=\"form-control\" type=\"text\" value=" . $item['quantity'] . " /></td>
+                                            <td><input class=\"form-control\" type=\"text\" value=" . $item['quantity'] . " name='quantity' /></td>
                                             <td class=\"text-right\">" . round($discountPrice, 2) . "</td>
-                                            <td class=\"text-right\"><button class=\"btn btn-sm btn-danger\"><i class=\"fa fa-trash\"></i> </button> </td>
+                                            <td class=\"text-right\"><button class=\"btn btn-sm btn-danger\" name='removeProduct'><i class=\"fa fa-trash\"></i> </button> </td>
                                         </tr>";
                                         echo $template;
+                                        if (isset($_POST['removeProduct'])){
+                                            $cartcontroller->removeFromCart($item['productid']);
+                                        }
+                                        if (isset($_POST['quantity'])){
+                                            $cartcontroller->changeQuantity($item['productid'], $_POST['quantity']);
+                                        }
                                     }
                                 }
                             }
                         }
-                    ?>
-                    <tbody>
+                        ?>
+                        <tbody>
                         <tr>
                             <td></td>
                             <td></td>
@@ -98,8 +108,9 @@
                             <td><strong>Total</strong></td>
                             <td class="text-right"><strong>346,90 €</strong></td>
                         </tr>
-                    </tbody>
-                </table>
+                        </tbody>
+                    </table>
+                </form>
             </div>
         </div>
         <div class="col mb-2">
