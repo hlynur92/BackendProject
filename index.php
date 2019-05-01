@@ -15,9 +15,8 @@ $instance = new ProductController();
 $products = $instance->getLatestSpecialOffers();
 
 
-
 $instance = new NewsController();
-$news = $instance->getAllNews();
+$news = $instance->getLatestNews();
 
 $instance = new CompanyController();
 $company = $instance->getCompanyInfo();
@@ -32,8 +31,7 @@ $company = $instance->getCompanyInfo();
             <p class="lead text-muted">
                 Welcome to our online duck store and meet the cutest rubber ducks. They’re all premium ducks made of high quality materials and CE approved. Discover the hand painted details and special finishing. Absolute collectors items. Take your pick. Have a nice duck!</p>
             <p>
-                <a href="#" class="btn btn-primary my-2">Main call to action</a>
-                <a href="#" class="btn btn-secondary my-2">Secondary action</a>
+                <a href="<?php echo $GLOBALS['URL']; ?>presentation/aboutus.php" class="btn btn-primary my-2">Read more about us</a>
             </p>
         </div>
     </section>

@@ -13,5 +13,10 @@ class NewsController {
         $news = $newsDAO->getSpecificNews($newsid);
         return $news;
     }
+    public function getLatestNews(){
+        $newsDAO = new NewsDAO();
+        $news = $newsDAO->getLatestNews();
+        return $news;
+    }
 
 }
