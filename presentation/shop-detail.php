@@ -53,11 +53,35 @@
                             </p>
                             <p class=\"lead font-weight-bold\">Description</p>
                             <p>" . $product['Description'] . "</p>
-                            <form method='post' class=\"d-flex justify-content-left\">
-                                <input type=\"number\" value=\"1\" aria-label=\"Search\" class=\"form-control\" style=\"width: 100px\" name='quantity'>
-                                <button class=\"btn btn-primary ml-4\" type=\"submit\" name='addtocart'>Add to cart
-                                    <i class=\"fa fa-cart-plus fa-lg\"></i>
-                                </button>
+                             <form method='post' class=\"justify-content-left\">
+                                <div class=\"form-group clearfix\">
+                                    <input type=\"number\" value=\"1\" aria-label=\"Search\" class=\"form-control float-left\" style=\"width: 100px\" name='quantity'>
+                        
+                                    <button class=\"btn btn-primary ml-4 float-right\" type=\"submit\" name='addtocart'>Add to cart
+                                        <i class=\"fa fa-cart-plus fa-lg\"></i>
+                                    </button>
+                                 </div>   
+                                 <div class=\"form-group clearfix\">
+              
+                                    <select class=\"form-control\" id=\"formsize\">
+                                      <option selected>Select size</option>
+                                      <option>2</option>
+                                      <option>3</option>
+                                      <option>4</option>
+                                      <option>5</option>
+                                    </select>
+                                  </div>
+                                  <div class=\"form-group clearfix\">
+                           
+                                    <select class=\"form-control\" id=\"formcolour\">
+                                      <option selected>Select colour</option>
+                                      <option>2</option>
+                                      <option>3</option>
+                                      <option>4</option>
+                                      <option>5</option>
+                                    </select>
+                                  </div>
+                                
                             </form>
                         </div>
                     </div>";
