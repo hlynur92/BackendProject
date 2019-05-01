@@ -1,8 +1,8 @@
-<footer class="pt-4 my-md-0 pt-md-5 border-top container-fluid">
+<footer class="pt-4 my-md-0 pt-md-5 border-top container-fluid bg-dark text-light">
     <div class="container">
     <div class="row">
         <div class="col-12 col-md">
-            <img src="<?php echo $GLOBALS['URL']; ?>includes/images/duckworld.png" alt="">
+            <img src="<?php echo $GLOBALS['URL']; ?>includes/images/duckworld-light.png" alt="">
             <small class="d-block mb-3 text-muted">© 2017-2019</small>
         </div>
         <div class="col-6 col-md">
