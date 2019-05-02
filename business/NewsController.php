@@ -18,5 +18,9 @@ class NewsController {
         $news = $newsDAO->getLatestNews();
         return $news;
     }
+    public function deleteNews(){
+        $newsDAO = new NewsDAO();
+        $newsDAO->deleteNews();
+    }
 
 }

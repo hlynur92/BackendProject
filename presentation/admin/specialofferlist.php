@@ -14,7 +14,7 @@
 
 <?php
 $instance = new ProductController();
-$products = $instance->getAllProductVariations();
+$products = $instance->getAllSpecialOffers();
 
 ?>
 
@@ -46,7 +46,7 @@ $products = $instance->getAllProductVariations();
             <div class="card mb-3">
                 <div class="card-header">
                     <i class="fa fa-table"></i>
-                    Product administration</div>
+                    Special offer products administration</div>
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -64,8 +64,8 @@ $products = $instance->getAllProductVariations();
                             <tbody>
 
                             <?php
-                                foreach ($products as $product){
-                                    $template = "
+                            foreach ($products as $product){
+                                $template = "
                             <form method='post'>
                             <tr>
                                 <td name='productid'>" . $product['ProductID'] . "</td>
@@ -74,18 +74,18 @@ $products = $instance->getAllProductVariations();
                                 <td>" . $product['Description'] . "</td>
                                 <td>" . $product['Price'] . "</td>
          
-                                <td><button type='button' class='btn btn-warning' onclick=\"location.href='" . $GLOBALS['URL'] . "presentation/admin/editproduct.php?productid=" . $product['ProductID']  . "'\">Edit</button></td>
+                                <td><button type='button' class='btn btn-warning' onclick=\"location.href='" . $GLOBALS['URL'] . "presentation/admin/editoffer.php?offerid=" . $product['ProductID']  . "'\">Edit</button></td>
                                 
                                 <td><button type='button' href='#' name='removeproduct' class='btn btn-danger'>Remove</button></td>
 
                             </tr>
                             </form>
                             ";
-                            echo $template;
-                            if (isset($_POST['removeproduct'])) {
+                                echo $template;
+                                if (isset($_POST['removeproduct'])) {
 
-                                $instance->deleteProduct($_POST['productid']);
-                            }
+                                    $instance->deleteProduct($_POST['productid']);
+                                }
 
                             }
                             ?>

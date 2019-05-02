@@ -21,8 +21,9 @@
             <span>Products</span>
         </a>
         <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-            <a class="dropdown-item" href="dashboard.php">Edit Product</a>
-            <a class="dropdown-item" href="addProduct.php">Add Product</a>
+            <a class="dropdown-item" href="dashboard.php">Product list</a>
+            <a class="dropdown-item" href="editproduct.php">Edit Product</a>
+            <a class="dropdown-item" href="addproduct.php">Add Product</a>
         </div>
     </li>
     <li class="nav-item dropdown">
@@ -31,8 +32,9 @@
             <span>News</span>
         </a>
         <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-            <a class="dropdown-item" href="addNews.php">Add News</a>
-            <a class="dropdown-item" href="editNews.php">Edit News</a>
+            <a class="dropdown-item" href="newslist.php">News list</a>
+            <a class="dropdown-item" href="addnews.php">Add News</a>
+            <a class="dropdown-item" href="editnews.php">Edit News</a>
         </div>
     </li>
     <li class="nav-item dropdown">
@@ -41,8 +43,9 @@
             <span>Company</span>
         </a>
         <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-            <a class="dropdown-item" href="addCompany.php">Add Company details</a>
-            <a class="dropdown-item" href="editCompany.php">Edit Company details</a>
+            <a class="dropdown-item" href="companylist.php">Company list</a>
+            <a class="dropdown-item" href="addcompany.php">Add Company details</a>
+            <a class="dropdown-item" href="editcompany.php">Edit Company details</a>
 
         </div>
     </li>
@@ -52,8 +55,9 @@
             <span>Special Offers</span>
         </a>
         <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-            <a class="dropdown-item" href="addOffer.php">Add Special Offer</a>
-            <a class="dropdown-item" href="editOffer.php">Edit Special Offer</a>
+            <a class="dropdown-item" href="specialofferlist.php">Special Offer list</a>
+            <a class="dropdown-item" href="addoffer.php">Add Special Offer</a>
+            <a class="dropdown-item" href="editoffer.php">Edit Special Offer</a>
 
         </div>
     </li>
