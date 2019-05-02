@@ -13,6 +13,7 @@
 
     $products = $productcontroller->getCartProducts();
     var_dump($_SESSION['cart']);
+    echo count($_SESSION['cart']);
 ?>
 
 

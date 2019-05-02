@@ -55,12 +55,14 @@ class CartController
     }
 
     public function removeFromCart($productid){
+        /*
         for ($i = 0; $i < count($_SESSION['cart']); $i++ ){
             if ($_SESSION['cart'][$i]['productid'] == $productid){
                 unset($_SESSION['cart'][$i]);
             }
         }
-        /*
+        */
+
         $index = 0;
         foreach ($_SESSION['cart'] as $item){
             if ($item['productid'] == $productid){
@@ -68,6 +70,5 @@ class CartController
             }
             $index++;
         }
-        */
     }
 }

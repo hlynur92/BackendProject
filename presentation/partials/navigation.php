@@ -5,7 +5,7 @@
 
 <header>
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">
+        <a href="<?php echo $GLOBALS['URL']; ?>index.php" class="navbar-brand" href="#">
             <img src="<?php echo $GLOBALS['URL']; ?>includes/images/duckworld-logo-white.png" alt="">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
