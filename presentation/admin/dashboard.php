@@ -14,7 +14,7 @@
 
 <?php
 $instance = new ProductController();
-$products = $instance->getAllProducts();
+$products = $instance->getAllProductVariations();
 
 ?>
 
@@ -57,7 +57,6 @@ $products = $instance->getAllProducts();
                                 <th width="15%">Product name</th>
                                 <th width="25%">Description</th>
                                 <th width="10%">Price</th>
-                                <th width="10%">Edit Image</th>
                                 <th width="10%">Edit</th>
                                 <th width="10%">Remove</th>
                             </tr>
@@ -67,19 +66,26 @@ $products = $instance->getAllProducts();
                             <?php
                                 foreach ($products as $product){
                                     $template = "
+                            <form method='post'>
                             <tr>
-                                <td>" . $product['ProductID'] . "</td>
+                                <td name='productid'>" . $product['ProductID'] . "</td>
                                 <td style=\"max-width: 100px\"><image name=\"productimg\" class=\"bd-placeholder-img card-img-top\" max-width=\"100px\" height=\"100px\" src=" . $GLOBALS['URL'] . $product['ImgPath'] . " preserveAspectRatio=\"xMidYMid slice\" focusable=\"false\" role=\"img\" aria-label=\"Placeholder: Thumbnail\"></td>
                                 <td><strong>" . $product['ProductName'] . "</td>
                                 <td>" . $product['Description'] . "</td>
                                 <td>" . $product['Price'] . "</td>
-                                <td><a href='#'>Edit Image</a></td>
-                                <td><a href='#'>Edit</a></td>
-                                <td><a href='#'>Remove</a></td>
+         
+                                <td><button type='button' class='btn btn-warning' href='" . $GLOBALS['URL'] . "presentation/admin/editProduct.php?productid=" . $product['ProductID']  ."'>Edit</button></td>
+                                <td><button type='button' href='#' name='removeproduct' class='btn btn-danger'>Remove</button></td>
 
                             </tr>
+                            </form>
                             ";
                             echo $template;
+                            if (isset($_POST['removeproduct'])) {
+
+                                $instance->deleteProduct($_POST['productid']);
+                            }
+
                             }
                             ?>
 
@@ -87,7 +93,7 @@ $products = $instance->getAllProducts();
                         </table>
                     </div>
                 </div>
-                <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+                <div class="card-footer small text-muted"></div>
             </div>
 
         </div>

@@ -39,6 +39,22 @@ class ProductDAO
             echo "Error Message: " . $e;
         }
     }
+    public function getAllProductVariations(){
+        try{
+            $dbmanager = new DBConnection();
+
+            $dbconnection = $dbmanager->connectToDB();
+
+            $result = mysqli_query($dbconnection, "CALL GetAllProductVariations()") or die("Query Failed: " . mysqli_error($dbconnection));
+
+            $result = mysqli_fetch_all($result,MYSQLI_BOTH);
+
+            mysqli_close($dbconnection);
+            return $result;
+        }catch (mysqli_sql_exception $e){
+            echo "Error Message: " . $e;
+        }
+    }
 
     public function getSpecificProduct($productid){
         try{
@@ -54,6 +70,22 @@ class ProductDAO
 
             mysqli_close($dbconnection);
             return $result;
+        }catch (mysqli_sql_exception $e){
+            echo "Error Message: " . $e;
+        }
+    }
+    public function deleteProduct($productid){
+        try{
+            $dbmanager = new DBConnection();
+
+            $dbconnection = $dbmanager->connectToDB();
+
+            $productid = $dbmanager->sanitizeValue($productid);
+
+            mysqli_query($dbconnection, "CALL DeleteProduct(" . $productid . ")") or die("Query Failed: " . mysqli_error($dbconnection));
+
+            mysqli_close($dbconnection);
+
         }catch (mysqli_sql_exception $e){
             echo "Error Message: " . $e;
         }

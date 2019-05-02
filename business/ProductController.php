@@ -17,11 +17,20 @@ class ProductController{
         $products = $prodDAO->getAllProducts();
         return $products;
     }
+    public function getAllProductVariations(){
+        $prodDAO = new ProductDAO();
+        $products = $prodDAO->getAllProductVariations();
+        return $products;
+    }
 
     public function getSpecificProduct($productid){
         $prodDAO = new ProductDAO();
         $products = $prodDAO->getSpecificProduct($productid);
         return $products;
+    }
+    public function deleteProduct($productid){
+        $prodDAO = new ProductDAO();
+        $prodDAO->deleteProduct($productid);
     }
 
     public function getSpecificSpecialOfferProduct($productid, $specialofferid){
