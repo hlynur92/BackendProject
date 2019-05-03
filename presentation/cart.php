@@ -78,7 +78,7 @@
                                             <td><input class=\"form-control\" type=\"text\" value=" . $item['quantity'] . " name='quantity' /></td>
                                             <td class=\"text-right\">" . round($discountPrice, 2) . "</td>
                                             <td class=\"text-right\"><a href=" . $GLOBALS['URL'] . "presentation/cart.php?action=remove&productid=" . $item['productid'] . "><i class=\"fa fa-trash\"></i></a></td>
-                                            <td class=\"text-right\"><a href=" . $GLOBALS['URL'] . "presentation/cart.php?action=change&productid=" . $item['productid'] . "&quantity=" . $_POST['quantity'] . ">Update</a></td>
+                                            <td class=\"text-right\"><a href=" . $GLOBALS['URL'] . "presentation/cart.php?action=change&productid=" . $item['productid'] . "&quantity=" . $_POST['quantity'] . ">Update <i class=\"fa fa-refresh\" aria-hidden=\"true\"></i></a></td>
                                         </tr>";
                                         echo $template;
                                     }
