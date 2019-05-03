@@ -53,10 +53,9 @@ $products = $instance->getAllSpecialOffers();
                             <thead>
                             <tr>
                                 <th width="10%">Id</th>
-                                <th width="10%">Image</th>
-                                <th width="15%">Product name</th>
-                                <th width="25%">Description</th>
-                                <th width="10%">Price</th>
+                                <th width="15%">Discount</th>
+                                <th width="25%">Start date</th>
+                                <th width="10%">End date</th>
                                 <th width="10%">Edit</th>
                                 <th width="10%">Remove</th>
                             </tr>
@@ -68,23 +67,23 @@ $products = $instance->getAllSpecialOffers();
                                 $template = "
                             <form method='post'>
                             <tr>
-                                <td name='productid'>" . $product['ProductID'] . "</td>
-                                <td style=\"max-width: 100px\"><image name=\"productimg\" class=\"bd-placeholder-img card-img-top\" max-width=\"100px\" height=\"100px\" src=" . $GLOBALS['URL'] . $product['ImgPath'] . " preserveAspectRatio=\"xMidYMid slice\" focusable=\"false\" role=\"img\" aria-label=\"Placeholder: Thumbnail\"></td>
-                                <td><strong>" . $product['ProductName'] . "</td>
-                                <td>" . $product['Description'] . "</td>
-                                <td>" . $product['Price'] . "</td>
+                                <td name='productid'>" . $product['SpecialOfferID'] . "</td>
+                           
+                                <td><strong>" . $product['Discount'] . "</td>
+                                <td>" . $product['StartDate'] . "</td>
+                                <td>" . $product['EndDate'] . "</td>
          
-                                <td><button type='button' class='btn btn-warning' onclick=\"location.href='" . $GLOBALS['URL'] . "presentation/admin/editoffer.php?offerid=" . $product['ProductID']  . "'\">Edit</button></td>
+                                <td><button type='button' class='btn btn-warning' onclick=\"location.href='" . $GLOBALS['URL'] . "presentation/admin/editoffer.php?offerid=" . $product['SpecialOfferID']  . "'\">Edit</button></td>
                                 
-                                <td><button type='button' href='#' name='removeproduct' class='btn btn-danger'>Remove</button></td>
+                                <td><button type='button' href='#' name='removeoffer' class='btn btn-danger'>Remove</button></td>
 
                             </tr>
                             </form>
                             ";
                                 echo $template;
-                                if (isset($_POST['removeproduct'])) {
+                                if (isset($_POST['removeoffer'])) {
 
-                                    $instance->deleteProduct($_POST['productid']);
+                                    $instance->deleteOffer($_POST['specialofferid']);
                                 }
 
                             }

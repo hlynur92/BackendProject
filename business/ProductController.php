@@ -37,6 +37,10 @@ class ProductController{
         $prodDAO = new ProductDAO();
         $prodDAO->deleteProduct($productid);
     }
+    public function deleteOffer($specialofferid){
+        $prodDAO = new ProductDAO();
+        $prodDAO->deleteOffer($specialofferid);
+    }
 
     public function getSpecificSpecialOfferProduct($productid, $specialofferid){
         $prodDAO = new ProductDAO();

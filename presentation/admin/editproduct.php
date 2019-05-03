@@ -13,9 +13,12 @@
 <?php require  __DIR__ . "/../../business/ProductController.php"; ?>
 
 <?php
-$instance = new ProductController();
-$products = $instance->getAllProductVariations();
+$productid = $_GET['productid'];
 
+$prodcontroller = new ProductController();
+
+$products = $prodcontroller->getSpecificProduct($productid);
+$product = $products[0];
 ?>
 
 <body id="page-top">
@@ -49,44 +52,42 @@ $products = $instance->getAllProductVariations();
                     Edit Product administration</div>
                 <div class="card-body">
                     <form enctype="" method="post">
-                        <div class="form-group">
-                            <label for="productImage">Product Image</label>
-                            <img src="<?php echo $GLOBALS['URL'] . $products[0]['ImgPath']?>">
-                            <input type="text" class="form-control" id="productImage" placeholder="Image">
+                        <div class="form-group mb-4 mt-4">
+                            <img src="<?php echo $GLOBALS['URL'] . $product['ImgPath']?>" class="img-thumbnail" width="10%" height="10%">
                         </div>
                         <div class="form-group">
-                            <label for="productName">Product name</label>
-                            <input type="text" class="form-control" id="productName" placeholder="Product Name">
+                            <label for="productName"  class="font-weight-bold">Product name</label>
+                            <input type="text" class="form-control" id="productName" placeholder="Product Name" value="<?php echo $product['ProductName']?>">
                         </div>
                         <div class="form-group">
-                            <label for="price">Price</label>
-                            <input type="text" class="form-control" id="price" placeholder="Price">
+                            <label for="price" class="font-weight-bold">Price</label>
+                            <input type="text" class="form-control" id="price" placeholder="Price" value="<?php echo $product['Price']?>">
                         </div>
                         <div class="form-group">
-                            <label for="formcolour">Select colour</label>
+                            <label for="formcolour" class="font-weight-bold">Select colour</label>
                             <select class="form-control" id="formcolour">
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
+                                <option selected><?php echo $product['Colour']?></option>
+                                <option>Blue</option>
+                                <option>Green</option>
+                                <option>Yellow</option>
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="formsize">Select size</label>
+                            <label for="formsize" class="font-weight-bold">Select size</label>
                             <select class="form-control" id="formsize">
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
+                                <option selected><?php echo $product['Size']?></option>
+                                <option>Small</option>
+                                <option>Medium</option>
+                                <option>Large</option>
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="description">Description</label>
-                            <textarea type="text" class="form-control" id="description" placeholder="Description" rows="3">
+                            <label for="description" class="font-weight-bold">Description</label>
+                            <textarea type="text" class="form-control text-dark" id="description" rows="3"><?php echo $product['Description']?>
                             </textarea>
                         </div>
                         <div class="form-group">
-                            <label for="fileinput">File input</label>
+                            <label for="fileinput" class="font-weight-bold">File input</label>
                             <input type="file" class="form-control-file" id="fileinput">
                         </div>
                         <button class="btn btn-primary mt-5" type="submit">Submit form</button>

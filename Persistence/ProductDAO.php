@@ -105,6 +105,22 @@ class ProductDAO
             echo "Error Message: " . $e;
         }
     }
+    public function deleteOffer($specialofferid){
+        try{
+            $dbmanager = new DBConnection();
+
+            $dbconnection = $dbmanager->connectToDB();
+
+            $specialofferid = $dbmanager->sanitizeValue($specialofferid);
+
+            mysqli_query($dbconnection, "CALL DeleteOffer(" . $specialofferid . ")") or die("Query Failed: " . mysqli_error($dbconnection));
+
+            mysqli_close($dbconnection);
+
+        }catch (mysqli_sql_exception $e){
+            echo "Error Message: " . $e;
+        }
+    }
 
     public function getSpecificSpecialOfferProduct($productid, $specialofferid){
         try{
