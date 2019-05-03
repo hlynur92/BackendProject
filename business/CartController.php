@@ -2,10 +2,6 @@
 
 class CartController
 {
-    public function __construct(){
-
-    }
-
     public function existsInCart($productid){
         $exists = false;
 
@@ -38,37 +34,27 @@ class CartController
         }
     }
 
-    public function changeQuantity($productid, $quantity){
-        /*
-        for ($i = 0; $i < count($_SESSION['cart']); $i++ ){
-            if ($_SESSION['cart'][$i]['quantity'] == $productid){
-                $_SESSION['cart'][$i['quantity']] = $quantity;
+    public function changeQuantity($productid, $quantity, $type){
+        foreach ($_SESSION['cart'] as $index => $item){
+            if ($type == "add"){
+                if ($item['productid'] == $productid){
+                    $_SESSION['cart'][$index]['quantity'] += $quantity;
+                }
+            }elseif ($type == "subtract"){
+                if ($item['productid'] == $productid){
+                    if($_SESSION['cart'][$index]['quantity'] > 0){
+                        $_SESSION['cart'][$index]['quantity'] -= $quantity;
+                    }else{
+                        unset($_SESSION['cart'][$index]);
+                    }
+                }
             }
         }
-        */
-        /*
-        foreach ($_SESSION['cart'] as $item){
-            if ($item['productid'] == $productid){
-                $item['quantity'] = $quantity;
-                //$_SESSION['cart'][$item] = $item;
-            }
-        }
-        */
     }
 
     public function removeFromCart($productid){
-        /*
-        for ($i = 0; $i < count($_SESSION['cart']); $i++ ){
-            if ($_SESSION['cart'][$i]['productid'] == $productid){
-                unset($_SESSION['cart'][$i]);
-            }
-        }
-        */
         foreach ($_SESSION['cart'] as $index => $item){
-            //echo "fghgkjkjkjkj";
-            echo $item['productid'];
             if ($item['productid'] == $productid){
-                //var_dump($index['productid']);
                 unset($_SESSION['cart'][$index]);
             }
         }

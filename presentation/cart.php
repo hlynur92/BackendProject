@@ -13,16 +13,11 @@
 
     $products = $productcontroller->getCartProducts();
 
-    echo count($_SESSION['cart']);
-
-    if (isset($_GET['action'])){
-         if($_GET['action']=='remove'){
-             $cartcontroller->removeFromCart($_GET['productid']);
-         }
-    }
-    if (isset($_GET['action'])){
-        if ($_GET=='change'){
-            $cartcontroller->changeQuantity($_GET['productid'], $_GET['quantity']);
+    if (isset($_GET['action'])) {
+        if ($_GET['action'] == 'remove') {
+            $cartcontroller->removeFromCart($_GET['productid']);
+        } elseif ($_GET['action'] == 'change') {
+            $cartcontroller->changeQuantity($_GET['productid'], $_GET['quantity'], $_GET['type']);
         }
     }
 ?>
@@ -48,6 +43,7 @@
                             <th scope="col">Available</th>
                             <th scope="col" class="text-center">Quantity</th>
                             <th scope="col" class="text-right">Price</th>
+                            <th scope="col" class="text-right">Remove</th>
                             <th> </th>
                         </tr>
                         </thead>
@@ -56,29 +52,31 @@
                             foreach ($_SESSION['cart'] as $item){
                                 if ($product['ProductID'] == $item['productid']){
                                     if ($item['specialofferid'] == null){
+                                        $price = $product['Price'] * $item['quantity'];
                                         $template = "
                                         <tr>
                                             <td><img src=" . $GLOBALS['URL'] . $product['ImgPath'] . " width='80px' height='80px'> </td>
                                             <td><input type='hidden' name='productid' value=" . $item['productid'] . "></td>
                                             <td>" . $product['ProductName'] . "</td>
-                                            <td>In stock</td>
-                                            <td><input class=\"form-control\" type=\"text\" value=" . $item['quantity'] . " name='quantity' /></td>
-                                            <td class=\"text-right\">" . $product['Price'] . "</td>
+                                            <td>In stock</td><td><a href=" . $GLOBALS['URL'] . "presentation/cart.php?action=change&productid=" . $item['productid'] . "&quantity=1&type=subtract><i class=\"fa fa-minus\"></i></a><input class=\"form-control\" type=\"text\" value=" . $item['quantity'] . " name='quantity' /><a href=" . $GLOBALS['URL'] . "presentation/cart.php?action=change&productid=" . $item['productid'] . "&quantity=1&type=add><i class=\"fa fa-plus\"></i></a></td>
+                                            <td class=\"text-right\">" . $price . "</td>
                                             <td class=\"text-right\"><a href=" . $GLOBALS['URL'] . "presentation/cart.php?action=remove&productid=" . $item['productid'] . "><i class=\"fa fa-trash\"></i></a></td>
                                         </tr>";
+                                        echo $template;
                                     }else if ($item['specialofferid'] != null){
                                         $discount = $product['Discount']/100;
                                         $discountPrice = $product['Price'] * ( 1 - $discount);
+                                        $discountPrice += $item['quantity'];
                                         $template = "
                                         <tr>
                                             <td><img src=" . $GLOBALS['URL'] . $product['ImgPath'] . " width='80px' height='80px'> </td>
                                             <td><input type='hidden' name='productid' value=" . $item['productid'] . "></td>
                                             <td>" . $product['ProductName'] . "</td>
                                             <td>In stock</td>
-                                            <td><input class=\"form-control\" type=\"text\" value=" . $item['quantity'] . " name='quantity' /></td>
+                                            <td><a href=" . $GLOBALS['URL'] . "presentation/cart.php?action=change&productid=" . $item['productid'] . "&quantity=1&type=subtract><i class=\"fa fa-minus\"></i></a><input class=\"form-control\" type=\"text\" value=" . $item['quantity'] . " name='quantity' /><a href=" . $GLOBALS['URL'] . "presentation/cart.php?action=change&productid=" . $item['productid'] . "&quantity=1&type=add><i class=\"fa fa-plus\"></i></a></td>
                                             <td class=\"text-right\">" . round($discountPrice, 2) . "</td>
                                             <td class=\"text-right\"><a href=" . $GLOBALS['URL'] . "presentation/cart.php?action=remove&productid=" . $item['productid'] . "><i class=\"fa fa-trash\"></i></a></td>
-                                            <td class=\"text-right\"><a href=" . $GLOBALS['URL'] . "presentation/cart.php?action=change&productid=" . $item['productid'] . "&quantity=" . $_POST['quantity'] . ">Update <i class=\"fa fa-refresh\" aria-hidden=\"true\"></i></a></td>
+                                            <td class=\"text-right\"></td>
                                         </tr>";
                                         echo $template;
                                     }
@@ -93,7 +91,28 @@
                             <td></td>
                             <td></td>
                             <td>Sub-Total</td>
-                            <td class="text-right">255,90 €</td>
+                            <td class="text-right">
+                                <?php
+                                $subtotal = 0;
+                                foreach ($products as $product){
+                                    foreach($_SESSION['cart'] as $item){
+                                        if ($product['ProductID'] == $item['productid']){
+                                            if($item['specialofferid'] == null){
+                                                $price = $product['Price'] * $item['quantity'];
+                                                $subtotal += $price;
+                                            }
+                                            if($item['specialofferid'] != null){
+                                                $discount = $product['Discount']/100;
+                                                $discountPrice = $product['Price'] * ( 1 - $discount);
+                                                $discountPrice *= $item['quantity'];
+                                                $subtotal += round($discountPrice, 2);
+                                            }
+                                        }
+                                    }
+                                }
+                                echo round($subtotal, 2) . " €";
+                                ?>
+                            </td>
                         </tr>
                         <tr>
                             <td></td>
@@ -109,7 +128,7 @@
                             <td></td>
                             <td></td>
                             <td><strong>Total</strong></td>
-                            <td class="text-right"><strong>346,90 €</strong></td>
+                            <td class="text-right"><strong><?php echo round($subtotal + 6.90, 2) . " €"; ?></strong></td>
                         </tr>
                         </tbody>
                     </table>
@@ -119,10 +138,10 @@
         <div class="col mb-2">
             <div class="row">
                 <div class="col-sm-12  col-md-6">
-                    <button onclick="window.location.href = 'shop.php';" class="btn btn-block btn-light">Continue Shopping</button>
+                    <button onclick='window.location.href ="<?php echo $GLOBALS['URL']; ?>presentation/shop.php";' class="btn btn-block btn-light">Continue Shopping</button>
                 </div>
                 <div class="col-sm-12 col-md-6 text-right">
-                    <button onclick="window.location.href = 'checkout.php';" class="btn btn-lg btn-block btn-success text-uppercase">Checkout</button>
+                    <button onclick='window.location.href ="<?php echo $GLOBALS['URL']; ?>presentation/checkout.php";' class="btn btn-lg btn-block btn-success text-uppercase">Checkout</button>
                 </div>
             </div>
         </div>
