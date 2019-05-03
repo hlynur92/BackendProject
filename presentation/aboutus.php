@@ -82,9 +82,11 @@
                         htmlspecialchars(trim($message));
                         htmlspecialchars(trim($subject));
 
-                        $mailcontroller = new MailController();
+                        if (filter_var($email, FILTER_VALIDATE_EMAIL)){
+                            $mailcontroller = new MailController();
 
-                        $mailcontroller->contactFormMail($email, $name, $subject, $message);
+                            $mailcontroller->contactFormMail($email, $name, $subject, $message);
+                        }
                     }else if ($subject == "Please select subject"){
                         echo "<script type='text/javascript'>";
                         echo "alert('Please Select a Subject');";

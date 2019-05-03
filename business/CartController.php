@@ -39,11 +39,13 @@ class CartController
     }
 
     public function changeQuantity($productid, $quantity){
+        /*
         for ($i = 0; $i < count($_SESSION['cart']); $i++ ){
             if ($_SESSION['cart'][$i]['quantity'] == $productid){
                 $_SESSION['cart'][$i['quantity']] = $quantity;
             }
         }
+        */
         /*
         foreach ($_SESSION['cart'] as $item){
             if ($item['productid'] == $productid){
@@ -62,13 +64,13 @@ class CartController
             }
         }
         */
-
-        $index = 0;
-        foreach ($_SESSION['cart'] as $item){
+        foreach ($_SESSION['cart'] as $index => $item){
+            //echo "fghgkjkjkjkj";
+            echo $item['productid'];
             if ($item['productid'] == $productid){
+                //var_dump($index['productid']);
                 unset($_SESSION['cart'][$index]);
             }
-            $index++;
         }
     }
 }

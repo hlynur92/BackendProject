@@ -18,9 +18,30 @@
                     <input type="checkbox" value="remember-me"> Remember me
                 </label>
             </div>
-            <button class="btn btn-lg btn-primary btn-block" type="submit" onclick="Location.href=''">Sign in</button>
+            <button class="btn btn-lg btn-primary btn-block" type="submit" name="signinbtn">Sign in</button>
             <p class="mt-5 mb-3 text-muted text-center">© 2017-2019</p>
         </form>
+        <?php
+        if (isset($_POST['signinbtn'])){
+            $email = $_REQUEST['email'];
+            $password = $_REQUEST['password'];
+
+            htmlspecialchars(trim($email));
+            htmlspecialchars(trim($password));
+
+            if (filter_var($email, FILTER_VALIDATE_EMAIL)){
+                $uppercase = preg_match('@[A-Z]@', $password);
+                $lowercase = preg_match('@[a-z]@', $password);
+                $number    = preg_match('@[0-9]@', $password);
+
+                if($uppercase || $lowercase || $number || strlen($password) >= 8) {
+                    $accountcontroller = new AccountController();
+
+                    $accountcontroller->login($email, $password);
+                }
+            }
+        }
+        ?>
 
     </div>
 </div>
