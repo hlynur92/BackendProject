@@ -54,6 +54,22 @@ class NewsDAO {
             echo "Error Message: " . $e;
         }
     }
+    public function deleteNews($newsid){
+        try{
+            $dbmanager = new DBConnection();
+
+            $dbconnection = $dbmanager->connectToDB();
+
+            $productid = $dbmanager->sanitizeValue($newsid);
+
+            mysqli_query($dbconnection, "CALL DeleteNews(" . $newsid . ")") or die("Query Failed: " . mysqli_error($dbconnection));
+
+            mysqli_close($dbconnection);
+
+        }catch (mysqli_sql_exception $e){
+            echo "Error Message: " . $e;
+        }
+    }
 
 }
 

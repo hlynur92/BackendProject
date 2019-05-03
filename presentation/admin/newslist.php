@@ -10,11 +10,11 @@
 
 <?php include '../../includes/settings.php'; ?>
 <?php include '../partials/header-admin.php';?>
-<?php require  __DIR__ . "/../../business/ProductController.php"; ?>
+<?php require  __DIR__ . "/../../business/NewsController.php"; ?>
 
 <?php
-$instance = new ProductController();
-$products = $instance->getAllProductVariations();
+$instance = new NewsController();
+$news = $instance->getAllNews();
 
 ?>
 
@@ -46,7 +46,7 @@ $products = $instance->getAllProductVariations();
             <div class="card mb-3">
                 <div class="card-header">
                     <i class="fa fa-table"></i>
-                    Product administration</div>
+                    News administration</div>
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -54,9 +54,9 @@ $products = $instance->getAllProductVariations();
                             <tr>
                                 <th width="10%">Id</th>
                                 <th width="10%">Image</th>
-                                <th width="15%">Product name</th>
-                                <th width="25%">Description</th>
-                                <th width="10%">Price</th>
+                                <th width="15%">Title</th>
+                                <th width="25%">Content</th>
+                                <th width="10%">Date</th>
                                 <th width="10%">Edit</th>
                                 <th width="10%">Remove</th>
                             </tr>
@@ -64,28 +64,27 @@ $products = $instance->getAllProductVariations();
                             <tbody>
 
                             <?php
-                                foreach ($products as $product){
-                                    $template = "
+                            foreach ($news as $post){
+                                $template = "
                             <form method='post'>
                             <tr>
-                                <td name='productid'>" . $product['ProductID'] . "</td>
-                                <td style=\"max-width: 100px\"><image name=\"productimg\" class=\"bd-placeholder-img card-img-top\" max-width=\"100px\" height=\"100px\" src=" . $GLOBALS['URL'] . $product['ImgPath'] . " preserveAspectRatio=\"xMidYMid slice\" focusable=\"false\" role=\"img\" aria-label=\"Placeholder: Thumbnail\"></td>
-                                <td><strong>" . $product['ProductName'] . "</td>
-                                <td>" . $product['Description'] . "</td>
-                                <td>" . $product['Price'] . "</td>
+                                <td name='productid'>" . $post['NewsID'] . "</td>
+                                <td style=\"max-width: 100px\"><image name=\"productimg\" class=\"bd-placeholder-img card-img-top\" max-width=\"100px\" height=\"100px\" src=" . $GLOBALS['URL'] . $post['TitleImg'] . " preserveAspectRatio=\"xMidYMid slice\" focusable=\"false\" role=\"img\" aria-label=\"Placeholder: Thumbnail\"></td>
+                                <td><strong>" . $post['Title'] ."</td>
+                                <td>" . substr($post['Content'],0,100) . "</td>
+                                <td>" . $post['CreationDate'] . "</td>
          
-                                <td><button type='button' class='btn btn-warning' onclick=\"location.href='" . $GLOBALS['URL'] . "presentation/admin/editproduct.php?productid=" . $product['ProductID']  . "'\">Edit</button></td>
-                                
-                                <td><button type='button' href='#' name='removeproduct' class='btn btn-danger'>Remove</button></td>
+                                <td><button type='button' class='btn btn-warning' onclick=\"location.href='" . $GLOBALS['URL'] . "presentation/admin/editnews.php?newsid=" . $post['NewsID']  . "'\">Edit</button></td>
+                                <td><button type='button' href='#' name='removenews' class='btn btn-danger'>Remove</button></td>
 
                             </tr>
                             </form>
                             ";
-                            echo $template;
-                            if (isset($_POST['removeproduct'])) {
+                                echo $template;
+                                if (isset($_POST['removenews'])) {
 
-                                $instance->deleteProduct($_POST['productid']);
-                            }
+                                    $instance->deleteNews($_POST['newsid']);
+                                }
 
                             }
                             ?>
@@ -116,4 +115,3 @@ $products = $instance->getAllProductVariations();
 </body>
 
 </html>
-

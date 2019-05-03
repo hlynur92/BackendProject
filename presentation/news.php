@@ -45,7 +45,7 @@ $news = $instance->getAllNews();
                                  </div>
                                  <div
                                  <div class=\"card-footer bg-transparent border-top-0 d-flex flex-column\">
-                                  <button type=\"button\" class=\"btn btn-sm btn-success align-bottom p-2\" onclick=\"location.href='" . $GLOBALS['URL'] . "Presentation/news-detail.php?newsid=" . $post['NewsID']  . "'\">Continue reading</button>
+                                  <button type=\"button\" class=\"btn btn-sm btn-success align-bottom p-2\" onclick=\"location.href='" . $GLOBALS['URL'] . "presentation/news-detail.php?newsid=" . $post['NewsID']  . "'\">Continue reading</button>
 
                                  </div>   
                               </div>

@@ -11,6 +11,11 @@ class ProductController{
         $products = $prodDAO->getLatestSpecialOffers();
         return $products;
     }
+    public function getAllSpecialOffers(){
+        $prodDAO = new ProductDAO();
+        $products = $prodDAO->getAllSpecialOffers();
+        return $products;
+    }
 
     public function getAllProducts(){
         $prodDAO = new ProductDAO();
