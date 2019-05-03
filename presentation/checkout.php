@@ -38,7 +38,7 @@ $products = $productcontroller->getCartProducts();
                                                 <h6 class=\"my-0\">" . $product['ProductName'] . "</h6>
                                                 <small class=\"text-muted\">" . $product['Description'] . "</small>
                                             </div>
-                                            <span class=\"text-muted\">" . $price . "</span>
+                                            <span class=\"text-muted\">" . $price . "$</span>
                                         </li>";
                                         echo $template;
                                     }elseif ($item['specialofferid'] != null){
@@ -51,7 +51,7 @@ $products = $productcontroller->getCartProducts();
                                                 <h6 class=\"my-0\">" . $product['ProductName'] . "</h6>
                                                 <small class=\"text-muted\">" . $product['Description'] . "</small>
                                             </div>
-                                            <span class=\"text-muted\">" . round($discountPrice, 2) . "</span>
+                                            <span class=\"text-muted\">" . round($discountPrice, 2) . "$</span>
                                         </li>";
                                         echo $template;
                                     }
@@ -60,6 +60,10 @@ $products = $productcontroller->getCartProducts();
                         }
                     ?>
 
+                    <li class="list-group-item d-flex justify-content-between">
+                        <span>Shipping Fee (USD)</span>
+                        <strong>6.90$</strong>
+                    </li>
                     <li class="list-group-item d-flex justify-content-between">
                         <span>Total (USD)</span>
                         <strong><?php
@@ -80,7 +84,8 @@ $products = $productcontroller->getCartProducts();
                                     }
                                 }
                             }
-                            echo round($subtotal, 2) . " €";
+                            $subtotal += 6.90;
+                            echo round($subtotal, 2) . "$";
                             ?></strong>
                     </li>
                 </ul>
@@ -115,8 +120,16 @@ $products = $productcontroller->getCartProducts();
                     </div>
 
                     <div class="mb-3">
-                        <label for="address">Address</label>
-                        <input type="text" class="form-control" name="address" id="address" placeholder="1234 Main St" required="">
+                        <label for="address">Street</label>
+                        <input type="text" class="form-control" name="street" id="street" placeholder="1234 Main St" required="">
+                        <div class="invalid-feedback">
+                            Please enter your shipping address.
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="address">City</label>
+                        <input type="text" class="form-control" name="city" id="city" placeholder="City Name" required="">
                         <div class="invalid-feedback">
                             Please enter your shipping address.
                         </div>
@@ -125,7 +138,7 @@ $products = $productcontroller->getCartProducts();
                     <div class="row">
                         <div class="col-md-5 mb-3">
                             <label for="country">Country</label>
-                            <select class="custom-select d-block w-100" id="country" required="">
+                            <select class="custom-select d-block w-100" name="country" id="country" required="">
                                 <option value="">Choose...</option>
                                 <option>United States</option>
                             </select>
@@ -136,7 +149,7 @@ $products = $productcontroller->getCartProducts();
 
                         <div class="col-md-3 mb-3">
                             <label for="zip">Zip</label>
-                            <input type="text" class="form-control" id="zip" placeholder="" required="">
+                            <input type="text" class="form-control" name="zipcode" id="zip" placeholder="" required="">
                             <div class="invalid-feedback">
                                 Zip code required.
                             </div>
@@ -159,7 +172,7 @@ $products = $productcontroller->getCartProducts();
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <label for="cc-name">Name on card</label>
-                            <input type="text" class="form-control" id="cc-name" placeholder="" required="">
+                            <input type="text" class="form-control" name="cc-name" id="cc-name" placeholder="" required="">
                             <small class="text-muted">Full name as displayed on card</small>
                             <div class="invalid-feedback">
                                 Name on card is required
@@ -167,7 +180,7 @@ $products = $productcontroller->getCartProducts();
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="cc-number">Credit card number</label>
-                            <input type="text" class="form-control" id="cc-number" placeholder="" required="">
+                            <input type="text" class="form-control" name="cc-number" id="cc-number" placeholder="" required="">
                             <div class="invalid-feedback">
                                 Credit card number is required
                             </div>
@@ -176,14 +189,14 @@ $products = $productcontroller->getCartProducts();
                     <div class="row">
                         <div class="col-md-3 mb-3">
                             <label for="cc-expiration">Expiration</label>
-                            <input type="text" class="form-control" id="cc-expiration" placeholder="" required="">
+                            <input type="text" class="form-control" name="cc-expiration" id="cc-expiration" placeholder="" required="">
                             <div class="invalid-feedback">
                                 Expiration date required
                             </div>
                         </div>
                         <div class="col-md-3 mb-3">
                             <label for="cc-expiration">CVV</label>
-                            <input type="text" class="form-control" id="cc-cvv" placeholder="" required="">
+                            <input type="text" class="form-control" name="cc-cvv" id="cc-cvv" placeholder="" required="">
                             <div class="invalid-feedback">
                                 Security code required
                             </div>
@@ -192,6 +205,42 @@ $products = $productcontroller->getCartProducts();
                     <hr class="mb-4">
                     <button onclick="window.location.href = 'payment.php';" class="btn btn-primary btn-lg btn-block" type="submit" name="checkout">Continue to checkout</button>
                 </form>
+                <?php
+                if (isset($_POST['checkout'])){
+                    $firstname = $_REQUEST['firstname'];
+                    $lastname = $_REQUEST['lastname'];
+                    $email = $_REQUEST['email'];
+                    $street = $_REQUEST['street'];
+                    $city = $_REQUEST['city'];
+                    $country = $_REQUEST['country'];
+                    $zipcode = $_REQUEST['zipcode'];
+                    $ccname = $_REQUEST['cc-name'];
+                    $ccnumber = $_REQUEST['cc-number'];
+                    $ccexpiration = $_REQUEST['cc-expiration'];
+                    $cccvv = $_REQUEST['cc-cvv'];
+
+                    if ($firstname != null && $lastname != null && $email != null && $street != null && $city != null && $country != null && $zipcode != null && $ccname != null && $ccnumber != null && $ccexpiration != null && $cccvv != null){
+                        if ($country != "Choose..."){
+                            htmlspecialchars(trim($firstname));
+                            htmlspecialchars(trim($lastname));
+                            htmlspecialchars(trim($email));
+                            htmlspecialchars(trim($street));
+                            htmlspecialchars(trim($city));
+                            htmlspecialchars(trim($country));
+                            htmlspecialchars(trim($zipcode));
+                            htmlspecialchars(trim($ccname));
+                            htmlspecialchars(trim($ccnumber));
+                            htmlspecialchars(trim($ccexpiration));
+                            htmlspecialchars(trim($cccvv));
+
+
+                            if (filter_var($email, FILTER_VALIDATE_EMAIL)){
+
+                            }
+                        }
+                    }
+                }
+                ?>
             </div>
         </div>
     </div>

@@ -48,14 +48,14 @@ $products = $instance->getAllProducts();
                                     <h3 name=\"productname\">" . $product['ProductName'] . "</h3>
                                     <p name=\"description\" class=\"card-text\">" . $product['Description'] . "</p>
                                     <div class=\"justify-content-between text-right\">
-                                        <small name=\"price\" class=\"text-info\"><del> " . $product['Price'] . " </del>Discount: " . $product['Discount'] . "% <br></small>
+                                        <small name=\"price\" class=\"text-info\"><del> " . $product['Price'] . "$</del>Discount: " . $product['Discount'] . "% <br></small>
                                     </div>
                                 </div>
                                 <div class=\"card-footer\">
                                         <div class=\"btn-group\">
                                             <button type=\"button\" class=\"btn btn-sm btn-success\" onclick=\"location.href='" . $GLOBALS['URL'] . "presentation/shop-detail-so.php?productid=" . $product['ProductID'] . "&specialofferid=" . $product['SpecialOfferID'] . "  '\">View more</button>
                                         </div>
-                                        <h3 name=\"price\" class=\"text-info float-right\">" . round($discountPrice, 2) . " </h3>
+                                        <h3 name=\"price\" class=\"text-info float-right\">" . round($discountPrice, 2) . "$</h3>
                                 </div>
                             </div>
                         </div>
@@ -77,7 +77,7 @@ $products = $instance->getAllProducts();
                                 <div class=\"card-footer\">
                                        
                                   <button type=\"button\" class=\"btn btn-sm btn-success\" onclick=\"location.href='" . $GLOBALS['URL'] . "presentation/shop-detail.php?productid=" . $product['ProductID']  . "  '\">View more</button>
-                                  <h3 name=\"price\" class=\"text-info float-right\">" . $product['Price'] . "<br></h3>
+                                  <h3 name=\"price\" class=\"text-info float-right\">" . $product['Price'] . "$<br></h3>
                                         
                                 </div>
                             </div>
