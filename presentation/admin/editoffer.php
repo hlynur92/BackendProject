@@ -62,7 +62,7 @@ $specialoffer = $specialoffer[0];
                         </div>
                         <div class="form-group date">
                             <label for="startdate" class="font-weight-bold">Start date</label>
-                            <input type="text" class="form-control date" id="startdate" placeholder="Start Date" value="<?php echo $specialoffer['StartDate']?>">
+                            <input type="text" class="form-control date" id="startdate datepicker" placeholder="Start Date" value="<?php echo $specialoffer['StartDate']?>">
 
                         </div>
                         <div class="form-group">

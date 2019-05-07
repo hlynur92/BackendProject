@@ -55,8 +55,8 @@ $news = $newscontroller->getSpecificNews($newsid);
                             <img src="<?php echo $GLOBALS['URL'] . $news[0]['TitleImg']?>" class="img-thumbnail" width="10%" height="10%">
                         </div>
                         <div class="form-group">
-                            <label for="productName"  class="font-weight-bold">Product name</label>
-                            <input type="text" class="form-control" id="productName" placeholder="Product Name" value="<?php echo $news[0]['Title']?>">
+                            <label for="title"  class="font-weight-bold">Title</label>
+                            <input type="text" class="form-control" id="title" placeholder="News Title" value="<?php echo $news[0]['Title']?>">
                         </div>
                         <div class="form-group">
                             <label for="price" class="font-weight-bold">Creation Date</label>

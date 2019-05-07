@@ -14,3 +14,4 @@
                 </div>
             </div>
     </footer>
+<script src="<?php echo $GLOBALS['URL']; ?>includes/js/bootstrap-datetimepicker.min.js"></script>
