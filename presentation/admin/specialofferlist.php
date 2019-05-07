@@ -53,7 +53,7 @@ $products = $instance->getAllSpecialOffers();
                             <thead>
                             <tr>
                                 <th width="10%">Id</th>
-                                <th width="15%">Discount</th>
+                                <th width="15%">Discount in percent</th>
                                 <th width="25%">Start date</th>
                                 <th width="10%">End date</th>
                                 <th width="10%">Edit</th>

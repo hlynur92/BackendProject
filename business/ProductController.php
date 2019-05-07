@@ -46,6 +46,11 @@ class ProductController{
         $products = $prodDAO->getSpecificSpecialOfferProduct($productid, $specialofferid);
         return $products;
     }
+    public function getSpecificSpecialOffer($specialofferid){
+        $prodDAO = new ProductDAO();
+        $offers = $prodDAO->getSpecificSpecialOffer($specialofferid);
+        return $offers;
+    }
 
     public function getCartProducts(){
         $prodDAO = new ProductDAO();
