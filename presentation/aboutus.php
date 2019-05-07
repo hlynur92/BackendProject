@@ -77,10 +77,6 @@
                     $subject = $_REQUEST['subject'];
 
                     if ($subject != "Please select subject" && $name != null && $email != null && $message != null){
-                        htmlspecialchars(trim($name));
-                        htmlspecialchars(trim($email));
-                        htmlspecialchars(trim($message));
-                        htmlspecialchars(trim($subject));
 
                         if (filter_var($email, FILTER_VALIDATE_EMAIL)){
                             $mailcontroller = new MailController();

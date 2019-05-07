@@ -1,7 +1,7 @@
 <?php
 
-class CartController
-{
+class CartController{
+
     public function existsInCart($productid){
         $exists = false;
 

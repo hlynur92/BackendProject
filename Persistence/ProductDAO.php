@@ -22,6 +22,7 @@ class ProductDAO
             echo "Error Message: " . $e;
         }
     }
+
     public function getAllSpecialOffers(){
         try{
             $dbmanager = new DBConnection();
@@ -54,6 +55,7 @@ class ProductDAO
             echo "Error Message: " . $e;
         }
     }
+
     public function getAllProductVariations(){
         try{
             $dbmanager = new DBConnection();
@@ -89,6 +91,7 @@ class ProductDAO
             echo "Error Message: " . $e;
         }
     }
+
     public function deleteProduct($productid){
         try{
             $dbmanager = new DBConnection();

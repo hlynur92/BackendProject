@@ -1,7 +1,7 @@
 <?php
 
-class AccountController
-{
+class AccountController{
+
     public function login($email, $password){
 
     }

@@ -1,15 +1,19 @@
 
 <?php include '../includes/settings.php'; ?>
 <?php include 'partials/header.php';?>
-
 <body>
 
 <?php include 'partials/navigation.php';?>
 <?php include '../business/ProductController.php'?>
+<?php include '../business/CheckoutController.php'?>
 <?php
 $productcontroller = new ProductController();
+$checkoutcontroller = new CheckoutController();
 
 $products = $productcontroller->getCartProducts();
+
+$stripePublic = "pk_test_3qkW309BvmwW8DCpBeuXsA2W004Z5bmIdX";
+$subtotal = 0;
 ?>
 
 
@@ -67,7 +71,6 @@ $products = $productcontroller->getCartProducts();
                     <li class="list-group-item d-flex justify-content-between">
                         <span>Total (USD)</span>
                         <strong><?php
-                            $subtotal = 0;
                             foreach ($products as $product){
                                 foreach($_SESSION['cart'] as $item){
                                     if ($product['ProductID'] == $item['productid']){
@@ -187,16 +190,25 @@ $products = $productcontroller->getCartProducts();
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-3 mb-3">
+                        <div class="col-md-2 mb-3">
                             <label for="cc-expiration">Expiration</label>
-                            <input type="text" class="form-control" name="cc-expiration" id="cc-expiration" placeholder="" required="">
+                            <input type="text" class="form-control" name="cc-expiration-mm" id="cc-expiration-mm" placeholder="MM" required="">
                             <div class="invalid-feedback">
                                 Expiration date required
                             </div>
                         </div>
-                        <div class="col-md-3 mb-3">
+
+                        <div class="col-md-2 mb-3">
+                            <label for="cc-expiration">(MM/YYYY)</label>
+                            <input type="text" class="form-control" name="cc-expiration-yyyy" id="cc-expiration-yyyy" placeholder="YYYY" required="">
+                            <div class="invalid-feedback">
+                                Expiration date required
+                            </div>
+                        </div>
+
+                        <div class="col-md-2 mb-3">
                             <label for="cc-expiration">CVV</label>
-                            <input type="text" class="form-control" name="cc-cvv" id="cc-cvv" placeholder="" required="">
+                            <input type="text" class="form-control" name="cc-cvv" id="cc-cvv" placeholder="123" required="">
                             <div class="invalid-feedback">
                                 Security code required
                             </div>
@@ -216,26 +228,53 @@ $products = $productcontroller->getCartProducts();
                     $zipcode = $_REQUEST['zipcode'];
                     $ccname = $_REQUEST['cc-name'];
                     $ccnumber = $_REQUEST['cc-number'];
-                    $ccexpiration = $_REQUEST['cc-expiration'];
+                    $ccexpirationmonth = $_REQUEST['cc-expiration-mm'];
+                    $ccexpirationyear = $_REQUEST['cc-expiration-yyyy'];
                     $cccvv = $_REQUEST['cc-cvv'];
 
-                    if ($firstname != null && $lastname != null && $email != null && $street != null && $city != null && $country != null && $zipcode != null && $ccname != null && $ccnumber != null && $ccexpiration != null && $cccvv != null){
+                    if ($firstname != null && $lastname != null && $email != null && $street != null && $city != null && $country != null && $zipcode != null && $ccname != null && $ccnumber != null && $ccexpirationmonth != null && $ccexpirationyear != null && $cccvv != null){
                         if ($country != "Choose..."){
-                            htmlspecialchars(trim($firstname));
-                            htmlspecialchars(trim($lastname));
-                            htmlspecialchars(trim($email));
-                            htmlspecialchars(trim($street));
-                            htmlspecialchars(trim($city));
-                            htmlspecialchars(trim($country));
-                            htmlspecialchars(trim($zipcode));
-                            htmlspecialchars(trim($ccname));
-                            htmlspecialchars(trim($ccnumber));
-                            htmlspecialchars(trim($ccexpiration));
-                            htmlspecialchars(trim($cccvv));
-
 
                             if (filter_var($email, FILTER_VALIDATE_EMAIL)){
+                                $customerAddress = array(
+                                    "country" => $country,
+                                    "zipcode" => $zipcode,
+                                    "city" => $city,
+                                    "street" => $street
+                                );
 
+                                $cardData = array(
+                                    "cc-name" => $ccname,
+                                    "cc-number" => $ccnumber,
+                                    "cc-expiration-mm" => $ccexpirationmonth,
+                                    "cc-expiration-yyyy" => $ccexpirationyear,
+                                    "cc-cvv" => $cccvv
+                                );
+
+                                $orderData = array(
+                                    "firstname" => $firstname,
+                                    "lastname" => $lastname,
+                                    "email" => $email,
+                                    "totalprice" => $subtotal,
+                                    "address" => $customerAddress,
+                                    "card" => $cardData,
+                                    "products" => array()
+                                );
+
+                                foreach ($products as $product){
+                                    foreach ($_SESSION['cart'] as $item){
+                                        if ($product['ProductID'] == $item['productid']){
+                                            $orderProducts = array(
+                                                "productid" => $item['productid'],
+                                                "quantity" => $item['quantity'],
+                                                "price" => $product['Price']
+                                            );
+                                            array_push($orderData['products'], $orderProducts);
+                                        }
+                                    }
+                                }
+
+                                $checkoutcontroller->checkoutOrder($orderData);
                             }
                         }
                     }
@@ -245,6 +284,7 @@ $products = $productcontroller->getCartProducts();
         </div>
     </div>
 </main>
+
 <?php include '../presentation/partials/footer.php';?>
 
 </body>

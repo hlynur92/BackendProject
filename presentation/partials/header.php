@@ -16,6 +16,6 @@ if(!isset($_SESSION['cart'])){
     <link rel="stylesheet" href="<?php echo $GLOBALS['URL']; ?>includes/css/bootstrap.min.css">
     <link rel="stylesheet" href="<?php echo $GLOBALS['URL']; ?>includes/css/style.css">
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-
+    <script src="https://checkout.stripe.com/checkout.js"></script>
     <title>Welcome to DuckWorld</title>
 </head>
