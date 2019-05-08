@@ -68,25 +68,45 @@
                         <textarea name="message" class="form-control" id="email" rows="3"></textarea>
                     </div>
                     <button name="submit" type="submit" class="btn btn-primary ml-4">Send</button>
-                </form></p>
+                    <input type="text" value="" name="g-recaptcha-response" id="g-recaptcha-response">
+                </form>
+                <script>
+                    grecaptcha.ready(function() {
+                        grecaptcha.execute('6Lc9MqIUAAAAAATjUzEGIrqiLkeckUc9AWPwiZzn', {action: 'homepage'}).then(function(token) {
+                            //console.log(token);
+                            document.getElementById('g-recaptcha-response').value=token;
+                        });
+                    });
+                </script>
+                </p>
                 <?php
                 if(isset($_POST['submit'])){
-                    $name = $_REQUEST['name'];
-                    $email = $_REQUEST['email'];
-                    $message = $_REQUEST['message'];
-                    $subject = $_REQUEST['subject'];
+                    function getCaptcha($SecretKey){
+                        $response = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret=6Lc9MqIUAAAAAG1GRGCMrBFxGritkt1vkJ5aE-Sj&response=6Lc9MqIUAAAAAG1GRGCMrBFxGritkt1vkJ5aE-Sj');
+                        $return = json_decode($response);
+                        return $return;
+                    }
+                    $return = getCaptcha($_POST['g-recaptcha-response']);
+                    var_dump($return);
 
-                    if ($subject != "Please select subject" && $name != null && $email != null && $message != null){
+                    if($return->success == true && $return->score > 0.5){
+                        $name = $_REQUEST['name'];
+                        $email = $_REQUEST['email'];
+                        $message = $_REQUEST['message'];
+                        $subject = $_REQUEST['subject'];
 
-                        if (filter_var($email, FILTER_VALIDATE_EMAIL)){
-                            $mailcontroller = new MailController();
+                        if ($subject != "Please select subject" && $name != null && $email != null && $message != null){
 
-                            $mailcontroller->contactFormMail($email, $name, $subject, $message);
+                            if (filter_var($email, FILTER_VALIDATE_EMAIL)){
+                                $mailcontroller = new MailController();
+
+                                $mailcontroller->contactFormMail($email, $name, $subject, $message);
+                            }
+                        }else if ($subject == "Please select subject"){
+                            echo "<script type='text/javascript'>";
+                            echo "alert('Please Select a Subject');";
+                            echo "</script>";
                         }
-                    }else if ($subject == "Please select subject"){
-                        echo "<script type='text/javascript'>";
-                        echo "alert('Please Select a Subject');";
-                        echo "</script>";
                     }
                 }
                 ?>

@@ -143,7 +143,16 @@ $subtotal = 0;
                             <label for="country">Country</label>
                             <select class="custom-select d-block w-100" name="country" id="country" required="">
                                 <option value="">Choose...</option>
-                                <option>United States</option>
+                                <option>Denmark</option>
+                                <option>Iceland</option>
+                                <option>England</option>
+                                <option>Germany</option>
+                                <option>France</option>
+                                <option>Spain</option>
+                                <option>Poland</option>
+                                <option>Sweden</option>
+                                <option>Norway</option>
+                                <option>Finland</option>
                             </select>
                             <div class="invalid-feedback">
                                 Please select a valid country.
