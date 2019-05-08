@@ -68,21 +68,23 @@
                         <textarea name="message" class="form-control" id="email" rows="3"></textarea>
                     </div>
                     <button name="submit" type="submit" class="btn btn-primary ml-4">Send</button>
-                    <input type="text" value="" name="g-recaptcha-response" id="g-recaptcha-response">
+                    <input type="hidden" value="" name="g-recaptcha-response" id="g-recaptcha-response">
                 </form>
                 <script>
                     grecaptcha.ready(function() {
-                        grecaptcha.execute('6Lc9MqIUAAAAAATjUzEGIrqiLkeckUc9AWPwiZzn', {action: 'homepage'}).then(function(token) {
+                        grecaptcha.execute('<?php echo $GLOBALS['SITE_KEY'] ?>', {action: 'homepage'}).then(function(token) {
                             //console.log(token);
                             document.getElementById('g-recaptcha-response').value=token;
                         });
                     });
+
+
                 </script>
                 </p>
                 <?php
                 if(isset($_POST['submit'])){
                     function getCaptcha($SecretKey){
-                        $response = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret=6Lc9MqIUAAAAAG1GRGCMrBFxGritkt1vkJ5aE-Sj&response=6Lc9MqIUAAAAAG1GRGCMrBFxGritkt1vkJ5aE-Sj');
+                        $response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=" . $GLOBALS['SECRET_KEY'] . "&response={$SecretKey}");
                         $return = json_decode($response);
                         return $return;
                     }

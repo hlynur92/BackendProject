@@ -19,5 +19,5 @@ if(!isset($_SESSION['cart'])){
 
     <title>Welcome to DuckWorld</title>
 
-    <script src="https://www.google.com/recaptcha/api.js?render=6Lc9MqIUAAAAAATjUzEGIrqiLkeckUc9AWPwiZzn"></script>
+    <script src="https://www.google.com/recaptcha/api.js?render=<?php echo $GLOBALS['SITE_KEY'] ?>"></script>
 </head>
