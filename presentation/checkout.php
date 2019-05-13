@@ -282,7 +282,6 @@ $subtotal = 0;
                                         }
                                     }
                                 }
-
                                 $checkoutcontroller->checkoutOrder($orderData);
                             }
                         }
