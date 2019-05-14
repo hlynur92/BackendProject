@@ -14,9 +14,7 @@
 <?php require __DIR__ . "/../../business/ImageController.php"; ?>
 
 <?php
-
-
-//$prodcontroller = new ProductController();
+$productcontroller = new ProductController();
 
 //$products = $prodcontroller->addProduct();
 //$product = $products[0];
@@ -56,15 +54,15 @@
 
                             <div class="form-group">
                                 <label for="productName"  class="font-weight-bold">Product name</label>
-                                <input type="text" class="form-control" id="productName" placeholder="Product Name" value="">
+                                <input type="text" class="form-control" name="productname" id="productName" placeholder="Product Name" value="">
                             </div>
                             <div class="form-group">
                                 <label for="price" class="font-weight-bold">Price</label>
-                                <input type="text" class="form-control" id="price" placeholder="Price" value="">
+                                <input type="text" class="form-control" name="price" id="price" placeholder="Price" value="">
                             </div>
                             <div class="form-group">
                                 <label for="formcolour" class="font-weight-bold">Select colour</label>
-                                <select class="form-control" id="formcolour">
+                                <select class="form-control" name="colour" id="formcolour">
                                     <option>Blue</option>
                                     <option>Green</option>
                                     <option>Yellow</option>
@@ -72,7 +70,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="formsize" class="font-weight-bold">Select size</label>
-                                <select class="form-control" id="formsize">
+                                <select class="form-control" name="size" id="formsize">
                                     <option>Small</option>
                                     <option>Medium</option>
                                     <option>Large</option>
@@ -80,7 +78,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="description" class="font-weight-bold">Description</label>
-                                <textarea type="text" class="form-control text-dark" id="description" rows="3">
+                                <textarea type="text" name="description" class="form-control text-dark" id="description" rows="3">
                             </textarea>
                             </div>
                             <div class="form-group">
@@ -116,7 +114,29 @@
 <?php
 if(isset($_POST['submit'])){
     $imagecontroller = new ImageController();
-    $imagecontroller->uploadImage("product");
+    $uploadpath = $imagecontroller->uploadImage("product");
+
+    if ($uploadpath != null){
+        //productname
+        $productname = $_REQUEST['productname'];
+        //price
+        $price = $_REQUEST['price'];
+        //colour
+        $colour = $_REQUEST['colour'];
+        //size
+        $size = $_REQUEST['size'];
+        //description
+        $description = $_REQUEST['description'];
+
+        if ($productname != null && $price != null && $colour != null && $size != null && $description != null){
+            $productcontroller->createNewProduct($productname, $price, $colour, $size, $description, $uploadpath);
+        }else{
+            echo "Unsuccessful Entry";
+        }
+
+    }else{
+        echo "Unsuccessful Submit";
+    }
 }
 ?>
 

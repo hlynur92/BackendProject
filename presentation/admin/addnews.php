@@ -97,6 +97,12 @@
 <?php
 if(isset($_POST['submit'])){
     $imagecontroller = new ImageController();
-    $imagecontroller->uploadImage("news");
+    $uploadpath = $imagecontroller->uploadImage("news");
+
+    if ($uploadpath != null){
+
+    }else{
+        echo "Unsuccessful Submit";
+    }
 }
 ?>

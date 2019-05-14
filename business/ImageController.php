@@ -19,6 +19,7 @@ class ImageController
                     } else{
                         move_uploaded_file($_FILES["imgfile"]["tmp_name"], "../../includes/images/product-img/" . $filename);
                         echo "Your file was uploaded successfully.";
+                        return "includes/images/product-img/" . $filename;
                     }
                 }else{
                     if(file_exists("../../includes/images/" . $filename)){
@@ -26,13 +27,16 @@ class ImageController
                     } else{
                         move_uploaded_file($_FILES["imgfile"]["tmp_name"], "../../includes/images/" . $filename);
                         echo "Your file was uploaded successfully.";
+                        return "includes/images/" . $filename;
                     }
                 }
             } else{
                 echo "Error: There was a problem uploading your file. Please try again.";
+                return null;
             }
         } else{
             echo "Error: " . $_FILES["imgfile"]["error"];
+            return null;
         }
     }
 
@@ -41,7 +45,8 @@ class ImageController
         if(array_key_exists($ext, $allowed)){
             return true;
         }else{
-            die("Error: Please select a valid file format.");
+            echo "Error: Please select a valid file format.";
+            return null;
         }
     }
 
@@ -50,7 +55,8 @@ class ImageController
         if($filesize < $maxsize) {
             return true;
         }else{
-            die("Error: File size is larger than the allowed limit.");
+            echo "Error: File size is larger than the allowed limit.";
+            return null;
         }
     }
 }

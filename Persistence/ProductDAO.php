@@ -108,6 +108,7 @@ class ProductDAO
             echo "Error Message: " . $e;
         }
     }
+
     public function deleteOffer($specialofferid){
         try{
             $dbmanager = new DBConnection();
@@ -144,6 +145,7 @@ class ProductDAO
             echo "Error Message: " . $e;
         }
     }
+
     public function getSpecificSpecialOffer($specialofferid){
         try{
             $dbmanager = new DBConnection();
@@ -158,6 +160,27 @@ class ProductDAO
 
             mysqli_close($dbconnection);
             return $result;
+        }catch (mysqli_sql_exception $e){
+            echo "Error Message: " . $e;
+        }
+    }
+
+    public function createNewProduct($productname, $price, $colour, $size, $description, $imgPath){
+        try{
+            $dbmanager = new DBConnection();
+
+            $dbconnection = $dbmanager->connectToDB();
+
+            $productname = $dbmanager->sanitizeValue($productname);
+            $price = $dbmanager->sanitizeValue($price);
+            $colour = $dbmanager->sanitizeValue($colour);
+            $size = $dbmanager->sanitizeValue($size);
+            $description = $dbmanager->sanitizeValue($description);
+            $imgPath = $dbmanager->sanitizeValue($imgPath);
+
+            mysqli_query($dbconnection, "CALL CreateNewProduct('" . $productname . "', '" . $description . "', " . $price . ", '" . $imgPath . "', '" . $colour . "', '" . $size . "')") or die("Query Failed: " . mysqli_error($dbconnection));
+
+            mysqli_close($dbconnection);
         }catch (mysqli_sql_exception $e){
             echo "Error Message: " . $e;
         }

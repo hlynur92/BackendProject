@@ -7,4 +7,10 @@ class CompanyController{
         $company = $CompanyDao->GetCompanyInfo();
         return $company;
     }
+
+
+    public function deleteCompany($companyid){
+        $CompanyDao = new CompanyDAO();
+        $CompanyDao->deleteCompany($companyid);
+    }
 }

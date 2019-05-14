@@ -18,4 +18,21 @@ class CompanyDAO{
             echo "Error Message: " . $e;
         }
     }
+
+    public function deleteCompany($companyid){
+        try{
+            $dbmanager = new DBConnection();
+
+            $dbconnection = $dbmanager->connectToDB();
+
+            $companyid = $dbmanager->sanitizeValue($companyid);
+
+            mysqli_query($dbconnection, "CALL DeleteCompany(" . $companyid . ")") or die("Query Failed: " . mysqli_error($dbconnection));
+
+            mysqli_close($dbconnection);
+
+        }catch (mysqli_sql_exception $e){
+            echo "Error Message: " . $e;
+        }
+    }
 }

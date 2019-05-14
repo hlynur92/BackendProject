@@ -67,4 +67,9 @@ class ProductController{
         }
         return $products;
     }
+
+    public function createNewProduct($productname, $price, $colour, $size, $description, $imgPath){
+        $prodDAO = new ProductDAO();
+        $prodDAO->createNewProduct($productname, $price, $colour, $size, $description, $imgPath);
+    }
 }
