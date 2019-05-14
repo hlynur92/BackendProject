@@ -1,6 +1,6 @@
 <?php
 
-class ImageConroller
+class ImageController
 {
     public function uploadImage($type){
         if(isset($_FILES["imgfile"]) && $_FILES["imgfile"]["error"] == 0){

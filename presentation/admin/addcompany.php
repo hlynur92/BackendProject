@@ -114,7 +114,7 @@
 </html>
 <?php
 if(isset($_POST['submit'])){
-    $imagecontroller = new ImageConroller();
+    $imagecontroller = new ImageController();
     $imagecontroller->uploadImage("company");
 }
 ?>
