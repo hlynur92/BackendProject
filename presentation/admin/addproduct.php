@@ -11,6 +11,7 @@
 <?php include '../../includes/settings.php'; ?>
 <?php include '../partials/header-admin.php';?>
 <?php require  __DIR__ . "/../../business/ProductController.php"; ?>
+<?php require  __DIR__ . "/../../business/ImageConroller.php"; ?>
 
 <?php
 
@@ -51,7 +52,7 @@
                         <i class="fa fa-table"></i>
                         Add Product administration</div>
                     <div class="card-body">
-                        <form enctype="" method="post">
+                        <form enctype="multipart/form-data"  method="post">
 
                             <div class="form-group">
                                 <label for="productName"  class="font-weight-bold">Product name</label>
@@ -86,7 +87,7 @@
                                 <label for="fileinput" class="font-weight-bold">File input</label>
                                 <input type="file" class="form-control-file" id="fileinput" name="imgfile">
                             </div>
-                            <button class="btn btn-primary mt-5" type="submit">Submit form</button>
+                            <button class="btn btn-primary mt-5" name="submit" type="submit">Submit form</button>
                         </form>
                     </div>
                     <div class="card-footer small text-muted"></div>
@@ -113,34 +114,10 @@
     </html>
 
 <?php
-if (isset($_POST['submit'])){
-    if(($_FILES['imgfile']['type']=="image/jpeg" ||
-            $_FILES['imgfile']['type']=="image/pjpeg" ||
-            $_FILES['imgfile']['type']=="image/gif" ||
-            $_FILES['imgfile']['type']=="image/jpg")&& (
-            $_FILES['imgfile']['size']< 3000000
-        )){
-        if ($_FILES['imgfile']['error']>0){
-            echo "Error: ". $_FILES['imgfile']['error'];
-        }else{
-            echo "Name: ".$_FILES['imgfile']['name']."<br>";
-            echo "Type: ".$_FILES['imgfile']['type']."<br>";
-            echo "Size: ".($_FILES['imgfile']['size']/1024)."<br>";
-            echo "Tmp_name: ".$_FILES['imgfile']['tmp_name']."<br>";
-
-            if (file_exists("upload/".$_FILES['imgfile']['name'])){
-                echo "can't upload: ". $_FILES['imgfile']['name']. " Exists";
-            }else{
-                move_uploaded_file($_FILES['imgfile']['tmp_name'],
-                    "upload/".$_FILES['imgfile']['name']);
-                echo "stored in: upload/".$_FILES['imgfile']['name'];
-
-                $sql = "INSERT INTO `Product` (`ImgPath`) VALUES 
-                        (NULL, '". $_FILES['name']."')";
-                echo $sql;
-                mysqli_query($conn,$sql);
-
-            }
-        }
-    }
+if(isset($_POST['submit'])){
+    $imagecontroller = new ImageConroller();
+    $imagecontroller->uploadImage("product");
 }
+?>
+
+

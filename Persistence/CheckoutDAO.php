@@ -111,7 +111,7 @@ class CheckoutDAO
             $lastname = $dbmanager->sanitizeValue($orderData['lastname']);
 
             if ($customer == null){
-                mysqli_query($dbconnection, "CALL InsertCustomer('" . $email . "', '" . $firstname . "', '" . $lastname . "')") or die("Query Failed: " . mysqli_error($dbconnection));
+                mysqli_query($dbconnection, "CALL InsertCustomer('" . $email . "', '" . $firstname . "', '" . $lastname . "')") or die("Customer Query Failed: " . mysqli_error($dbconnection));
             }
 
             mysqli_close($dbconnection);
@@ -132,10 +132,10 @@ class CheckoutDAO
 
             if ($address == null){
                 if ($zip == null){
-                    mysqli_query($dbconnection, "CALL InsertZip('" . $zipcode . "', '" . $city . "', " . $country[0]['CountryID'] . ")") or die("Query Failed: " . mysqli_error($dbconnection));
-                    mysqli_query($dbconnection, "CALL InsertAddress('" . $street . "', '" . $zipcode . "')") or die("Query Failed: " . mysqli_error($dbconnection));
+                    mysqli_query($dbconnection, "CALL InsertZip('" . $zipcode . "', '" . $city . "', " . $country[0]['CountryID'] . ")") or die("Zip Query Failed: " . mysqli_error($dbconnection));
+                    mysqli_query($dbconnection, "CALL InsertAddress('" . $street . "', '" . $zipcode . "')") or die("Address Query Failed: " . mysqli_error($dbconnection));
                 }else{
-                    mysqli_query($dbconnection, "CALL InsertAddress('" . $street . "', '" . $zipcode . "')") or die("Query Failed: " . mysqli_error($dbconnection));
+                    mysqli_query($dbconnection, "CALL InsertAddress('" . $street . "', '" . $zipcode . "')") or die("Address Query Failed: " . mysqli_error($dbconnection));
                 }
                 $addressID = mysqli_insert_id($dbconnection);
             }else{
@@ -163,7 +163,7 @@ class CheckoutDAO
             $issuedate = date("Y-m-d");
 
             $dynamicsql = "INSERT INTO ProductOrder(OrderDate, AddressID, TotalPrice, IssueDate, CompanyID, Email) values ('" . $orderdate . "', " . $addressID[0] . ", " . $totalprice . ", '" . $issuedate . "', 1, '" . $email . "')";
-            mysqli_query($dbconnection, $dynamicsql) or die("Query Failed: " . mysqli_error($dbconnection));
+            mysqli_query($dbconnection, $dynamicsql) or die("Order Query Failed: " . mysqli_error($dbconnection));
 
             $orderID = mysqli_insert_id($dbconnection);
 
@@ -184,7 +184,7 @@ class CheckoutDAO
             foreach ($orderData['products'] as $product){
                 $quantity = $dbmanager->sanitizeValue($product['quantity']);
                 $productid = $dbmanager->sanitizeValue($product['productid']);
-                mysqli_query($dbconnection, "CALL StoreOrderRows(" . $quantity . ", " . $productid . ", " . $orderID . ")") or die("Query Failed2: " . mysqli_error($dbconnection));
+                mysqli_query($dbconnection, "CALL StoreOrderRows(" . $quantity . ", " . $productid . ", " . $orderID . ")") or die("OrderRows Query Failed2: " . mysqli_error($dbconnection));
             }
 
             mysqli_close($dbconnection);
@@ -213,6 +213,7 @@ class CheckoutDAO
             $this->InsertOrderRows($orderData, $orderid);
 
             mysqli_close($dbconnection);
+            return $orderid;
         }catch (mysqli_sql_exception $e){
             echo "Error Message: " . $e;
         }

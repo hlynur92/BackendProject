@@ -48,7 +48,7 @@
                     <i class="fa fa-table"></i>
                     Edit Company administration</div>
                 <div class="card-body">
-                    <form enctype="" method="post">
+                    <form enctype="multipart/form-data" method="post">
                         <div class="form-group">
                             <label for="companyName" class="font-weight-bold">Company name</label>
                             <input type="text" class="form-control" id="companyName" placeholder="Company Name" value="">
@@ -85,9 +85,9 @@
                         </div>
                         <div class="form-group">
                             <label for="fileinput" class="font-weight-bold">File input</label>
-                            <input type="file" class="form-control-file" id="fileinput">
+                            <input type="file" class="form-control-file" id="fileinput" name="imgfile">
                         </div>
-                        <button class="btn btn-primary mt-5" type="submit">Submit form</button>
+                        <button class="btn btn-primary mt-5" name="submit" type="submit">Submit form</button>
                     </form>
                 </div>
                 <div class="card-footer small text-muted"></div>
@@ -112,4 +112,10 @@
 </body>
 
 </html>
+<?php
+if(isset($_POST['submit'])){
+    $imagecontroller = new ImageConroller();
+    $imagecontroller->uploadImage("company");
+}
+?>
 

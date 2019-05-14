@@ -4,6 +4,7 @@ class CheckoutController{
 
     public function checkoutOrder($orderData){
         $checkoutDAO = new CheckoutDAO();
-        $checkoutDAO->checkoutOrder($orderData);
+        $orderid = $checkoutDAO->checkoutOrder($orderData);
+        return $orderid;
     }
 }

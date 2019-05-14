@@ -14,6 +14,7 @@ $products = $productcontroller->getCartProducts();
 
 $stripePublic = "pk_test_3qkW309BvmwW8DCpBeuXsA2W004Z5bmIdX";
 $subtotal = 0;
+$orderid = 0;
 ?>
 
 
@@ -224,7 +225,7 @@ $subtotal = 0;
                         </div>
                     </div>
                     <hr class="mb-4">
-                    <button onclick="window.location.href = 'payment.php';" class="btn btn-primary btn-lg btn-block" type="submit" name="checkout">Continue to checkout</button>
+                    <button onclick="window.location.href ='payment.php';" class="btn btn-primary btn-lg btn-block" type="submit" name="checkout">Continue to checkout</button>
                 </form>
                 <?php
                 if (isset($_POST['checkout'])){
@@ -282,7 +283,8 @@ $subtotal = 0;
                                         }
                                     }
                                 }
-                                $checkoutcontroller->checkoutOrder($orderData);
+                                $orderid = $checkoutcontroller->checkoutOrder($orderData);
+
                             }
                         }
                     }
