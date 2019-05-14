@@ -54,13 +54,14 @@ class NewsDAO {
             echo "Error Message: " . $e;
         }
     }
+
     public function deleteNews($newsid){
         try{
             $dbmanager = new DBConnection();
 
             $dbconnection = $dbmanager->connectToDB();
 
-            $productid = $dbmanager->sanitizeValue($newsid);
+            $newsid = $dbmanager->sanitizeValue($newsid);
 
             mysqli_query($dbconnection, "CALL DeleteNews(" . $newsid . ")") or die("Query Failed: " . mysqli_error($dbconnection));
 
@@ -71,6 +72,25 @@ class NewsDAO {
         }
     }
 
+    public function createNewNews($title, $creationdate, $description, $imgpath){
+        try{
+            $dbmanager = new DBConnection();
+
+            $dbconnection = $dbmanager->connectToDB();
+
+            $title = $dbmanager->sanitizeValue($title);
+            $creationdate = $dbmanager->sanitizeValue($creationdate);
+            $description = $dbmanager->sanitizeValue($description);
+            $imgpath = $dbmanager->sanitizeValue($imgpath);
+
+            mysqli_query($dbconnection, "CALL CreateNewNews('" . $title . "', '" . $description . "', '" . $imgpath . "', '" . $creationdate . "', " . 1 . ")") or die("Query Failed: " . mysqli_error($dbconnection));
+
+            mysqli_close($dbconnection);
+
+        }catch (mysqli_sql_exception $e){
+            echo "Error Message: " . $e;
+        }
+    }
 }
 
 //<button type=\"button\" class=\"btn btn-sm btn-success\" onclick=\"location.href='" . $GLOBALS['URL'] . "Presentation/news-detail.php?newsid=" . $news['NewsID']  . "  '\">View more</button>

@@ -11,11 +11,11 @@
 <?php include '../../includes/settings.php'; ?>
 <?php include '../partials/header-admin.php';?>
 <?php require  __DIR__ . "/../../business/NewsController.php"; ?>
+<?php require __DIR__ . "/../../business/ImageController.php"; ?>
 
 <?php
 //$newsid = $_GET['newsid'];
-
-//$newscontroller = new NewsController();
+$newscontroller = new NewsController();
 //$news = $newscontroller->getSpecificNews($newsid);
 
 ?>
@@ -53,16 +53,16 @@
                     <form enctype="multipart/form-data" method="post">
                         <div class="form-group">
                             <label for="title"  class="font-weight-bold">Title</label>
-                            <input type="text" class="form-control" id="title" placeholder="News title" value="">
+                            <input type="text" class="form-control" name="title" id="title" placeholder="News title" value="">
                         </div>
                         <div class="form-group">
                             <label for="creationdate" class="font-weight-bold">Creation Date</label>
-                            <input type="text" class="form-control" id="creationdate" placeholder="Creation Date" value="">
+                            <input type="text" class="form-control" name="creationdate" id="creationdate" placeholder="Creation Date" value="">
                         </div>
 
                         <div class="form-group">
                             <label for="description" class="font-weight-bold">Description</label>
-                            <textarea type="text" class="form-control text-dark" id="description" rows="6">
+                            <textarea type="text" class="form-control text-dark" name="description" id="description" rows="6">
                             </textarea>
                         </div>
                         <div class="form-group">
@@ -100,7 +100,13 @@ if(isset($_POST['submit'])){
     $uploadpath = $imagecontroller->uploadImage("news");
 
     if ($uploadpath != null){
+        $title = $_REQUEST['title'];
+        $creationdate = $_REQUEST['creationdate'];
+        $description = $_REQUEST['description'];
 
+        if ($title != null && $creationdate != null && $description != null){
+            $newscontroller->createNewNews($title, $creationdate, $description, $uploadpath);
+        }
     }else{
         echo "Unsuccessful Submit";
     }

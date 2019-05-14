@@ -26,4 +26,8 @@ class NewsController {
         $newsDAO->deleteNews($newsid);
     }
 
+    public function createNewNews($title, $creationdate, $description, $imgpath){
+        $newsDAO = new NewsDAO();
+        $newsDAO->createNewNews($title, $creationdate, $description, $imgpath);
+    }
 }

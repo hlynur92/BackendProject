@@ -117,15 +117,10 @@ if(isset($_POST['submit'])){
     $uploadpath = $imagecontroller->uploadImage("product");
 
     if ($uploadpath != null){
-        //productname
         $productname = $_REQUEST['productname'];
-        //price
         $price = $_REQUEST['price'];
-        //colour
         $colour = $_REQUEST['colour'];
-        //size
         $size = $_REQUEST['size'];
-        //description
         $description = $_REQUEST['description'];
 
         if ($productname != null && $price != null && $colour != null && $size != null && $description != null){
@@ -133,7 +128,6 @@ if(isset($_POST['submit'])){
         }else{
             echo "Unsuccessful Entry";
         }
-
     }else{
         echo "Unsuccessful Submit";
     }
