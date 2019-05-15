@@ -113,7 +113,7 @@ $companycontroller = new CompanyController();
         <!-- /.container-fluid -->
 
         <!-- Sticky Footer -->
-        <?php //include '../partials/footer-admin.php';?>
+        <?php include '../partials/footer-admin.php';?>
 
     </div>
     <!-- /.content-wrapper -->

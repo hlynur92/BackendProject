@@ -2,7 +2,7 @@
 
 class AddressDAO
 {
-    public function GetCountryID($country){
+    public function getCountryID($country){
         try{
             $dbmanager = new DBConnection();
 
@@ -15,13 +15,13 @@ class AddressDAO
             $result = mysqli_fetch_all($result,MYSQLI_BOTH);
 
             mysqli_close($dbconnection);
-            return $result;
+            return $result[0]['CountryID'];
         }catch (mysqli_sql_exception $e){
             echo "Error Message: " . $e;
         }
     }
 
-    public function CheckZip($zip){
+    public function checkZip($zip){
         try{
             $dbmanager = new DBConnection();
 
@@ -38,7 +38,7 @@ class AddressDAO
         }
     }
 
-    public function CheckAddress($street, $zip){
+    public function checkAddress($street, $zip){
         try{
             $dbmanager = new DBConnection();
 
@@ -55,7 +55,7 @@ class AddressDAO
         }
     }
 
-    public function GetAddressID($street, $zip){
+    public function getAddressID($street, $zip){
         try{
             $dbmanager = new DBConnection();
 
@@ -72,7 +72,7 @@ class AddressDAO
         }
     }
 
-    public function InsertAddress($addressresult, $zipresult, $zipcode, $street, $city, $countryid){
+    public function insertAddress($addressresult, $zipresult, $zipcode, $street, $city, $countryid){
         try{
             $dbmanager = new DBConnection();
 
@@ -87,12 +87,40 @@ class AddressDAO
                 }
                 $addressID = mysqli_insert_id($dbconnection);
             }else{
-                $addressID = $this->GetAddressID($street, $zipcode);
+                $addressID = $this->getAddressID($street, $zipcode);
                 $addressID = $addressID[0][0];
             }
 
             mysqli_close($dbconnection);
             return $addressID;
+        }catch (mysqli_sql_exception $e){
+            echo "Error Message: " . $e;
+        }
+    }
+
+    public function editPostalCode($zipcode, $city, $countryid){
+        try{
+            $dbmanager = new DBConnection();
+
+            $dbconnection = $dbmanager->connectToDB();
+
+            mysqli_query($dbconnection, "CALL EditPostalCode('" . $zipcode . "', '" . $city . "', " . $countryid . ")") or die("Query Failed: " . mysqli_error($dbconnection));
+
+            mysqli_close($dbconnection);
+        }catch (mysqli_sql_exception $e){
+            echo "Error Message: " . $e;
+        }
+    }
+
+    public function editAddress($addressid, $street, $zipcode){
+        try{
+            $dbmanager = new DBConnection();
+
+            $dbconnection = $dbmanager->connectToDB();
+
+            mysqli_query($dbconnection, "CALL EditAddress(" . $addressid . ", '" . $street . "', '" . $zipcode . "')") or die("Address Query Failed: " . mysqli_error($dbconnection));
+
+            mysqli_close($dbconnection);
         }catch (mysqli_sql_exception $e){
             echo "Error Message: " . $e;
         }

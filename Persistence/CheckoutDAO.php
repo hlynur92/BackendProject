@@ -3,7 +3,7 @@
 class CheckoutDAO
 {
 
-    public function CheckCustomer($orderData){
+    public function checkCustomer($orderData){
         try{
             $dbmanager = new DBConnection();
 
@@ -22,7 +22,7 @@ class CheckoutDAO
         }
     }
 
-    public function InsertCustomer($orderData, $customer){
+    public function insertCustomer($orderData, $customer){
         try{
             $dbmanager = new DBConnection();
 
@@ -42,7 +42,7 @@ class CheckoutDAO
         }
     }
 
-    public function InsertOrder($orderData, $addressID){
+    public function insertOrder($orderData, $addressID){
         try{
             $dbmanager = new DBConnection();
 
@@ -67,7 +67,7 @@ class CheckoutDAO
         }
     }
 
-    public function InsertOrderRows($orderData, $orderID){
+    public function insertOrderRows($orderData, $orderID){
         try{
             $dbmanager = new DBConnection();
 
@@ -97,14 +97,14 @@ class CheckoutDAO
 
             $orderData = $dbmanager->sanitizeArray($orderData);
 
-            $countryid = $addressDAO->GetCountryID($orderData);
-            $customer = $this->CheckCustomer($orderData);
-            $zip = $addressDAO->CheckZip($orderData['address']['zipcode']);
-            $address = $addressDAO->CheckAddress($orderData['address']['street'], $orderData['address']['zipcode']);
-            $this->InsertCustomer($orderData, $customer);
-            $addressid = $addressDAO->InsertAddress($address, $zip, $orderData['address']['zipcode'], $orderData['address']['street'], $orderData['address']['city'], $countryid);
-            $orderid = $this->InsertOrder($orderData, $addressid);
-            $this->InsertOrderRows($orderData, $orderid);
+            $countryid = $addressDAO->getCountryID($orderData);
+            $customer = $this->checkCustomer($orderData);
+            $zip = $addressDAO->checkZip($orderData['address']['zipcode']);
+            $address = $addressDAO->checkAddress($orderData['address']['street'], $orderData['address']['zipcode']);
+            $this->insertCustomer($orderData, $customer);
+            $addressid = $addressDAO->insertAddress($address, $zip, $orderData['address']['zipcode'], $orderData['address']['street'], $orderData['address']['city'], $countryid);
+            $orderid = $this->insertOrder($orderData, $addressid);
+            $this->insertOrderRows($orderData, $orderid);
 
             mysqli_close($dbconnection);
             return $orderid;
