@@ -146,7 +146,6 @@ if(isset($_POST['submit'])){
     if ($company[0]['CompanyID'] != null && $companyname != null && $phonenr != null && $email != null && $openinghours != null && $company[0]['AddressID'] != null && $street != null && $zipcode != null && $city != null && $country != null && $description != null){
         if ($country != "Choose..."){
             if (filter_var($email, FILTER_VALIDATE_EMAIL)){
-
                 $instance->editCompany($company[0]['CompanyID'], $companyname, $phonenr, $email, $openinghours, $company[0]['AddressID'], $street, $zipcode, $city, $country, $description);
             }
         }

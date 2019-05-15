@@ -57,14 +57,13 @@ $prodcontroller = new ProductController();
                             <input type="text" class="form-control" name="discount" id="discount" placeholder="Discount" value="">
                         </div>
                         <div class="form-group date">
-                            <label for="startdate" class="font-weight-bold">Start date</label>
+                            <label for="startdate" class="font-weight-bold">Start date (YYYY-DD-MM)</label>
                             <input type="text" class="form-control date" name="startdate" id="startdate datepicker" placeholder="Start Date" value="">
 
                         </div>
                         <div class="form-group">
-                            <label for="enddate" class="font-weight-bold">End date</label>
+                            <label for="enddate" class="font-weight-bold">End date (YYYY-DD-MM)</label>
                             <input type="text" class="form-control" name="enddate" id="enddate" placeholder="End Date" value="">
-
                         </div>
 
                         <button class="btn btn-primary mt-5" name="submit" type="submit">Submit form</button>

@@ -203,4 +203,23 @@ class ProductDAO
             echo "Error Message: " . $e;
         }
     }
+
+    public function editSpecialOffer($specialofferid, $discount, $startdate, $enddate){
+        try{
+            $dbmanager = new DBConnection();
+
+            $dbconnection = $dbmanager->connectToDB();
+
+            $specialofferid = $dbmanager->sanitizeValue($specialofferid);
+            $discount = $dbmanager->sanitizeValue($discount);
+            $startdate = $dbmanager->sanitizeValue($startdate);
+            $enddate = $dbmanager->sanitizeValue($enddate);
+
+            mysqli_query($dbconnection, "CALL EditSpecialOffer(" . $specialofferid . ", " . $discount . ", '" . $startdate . "', '" . $enddate . "')") or die("Query Failed: " . mysqli_error($dbconnection));
+
+            mysqli_close($dbconnection);
+        }catch (mysqli_sql_exception $e){
+            echo "Error Message: " . $e;
+        }
+    }
 }

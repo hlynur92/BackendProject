@@ -80,4 +80,9 @@ class ProductController{
         $prodDAO = new ProductDAO();
         $prodDAO->createNewSpecialOffer($discount, $startdate, $enddate);
     }
+
+    public function editSpecialOffer($specialofferid, $discount, $startdate, $enddate){
+        $prodDAO = new ProductDAO();
+        $prodDAO->editSpecialOffer($specialofferid, $discount, $startdate, $enddate);
+    }
 }

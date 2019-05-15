@@ -53,25 +53,20 @@ $specialoffer = $specialoffer[0];
                 <div class="card-body">
                     <form enctype="" method="post">
                         <div class="form-group">
-                            <label for="offerid"  class="font-weight-bold">Special Offer ID</label>
-                            <input type="text" class="form-control" id="offerid" placeholder="Offer ID" value="<?php echo $specialoffer['SpecialOfferID']?>">
-                        </div>
-                        <div class="form-group">
                             <label for="discount" class="font-weight-bold">Discount percentage</label>
-                            <input type="text" class="form-control" id="discount" placeholder="Discount" value="<?php echo $specialoffer['Discount']?>">
+                            <input type="text" class="form-control" name="discount" id="discount" placeholder="Discount" value="<?php echo $specialoffer['Discount']?>">
                         </div>
                         <div class="form-group date">
-                            <label for="startdate" class="font-weight-bold">Start date</label>
-                            <input type="text" class="form-control date" id="startdate datepicker" placeholder="Start Date" value="<?php echo $specialoffer['StartDate']?>">
+                            <label for="startdate" class="font-weight-bold">Start date (YYYY-DD-MM)</label>
+                            <input type="text" class="form-control date" name="startdate" id="startdate datepicker" placeholder="Start Date" value="<?php echo $specialoffer['StartDate']?>">
 
                         </div>
                         <div class="form-group">
-                            <label for="enddate" class="font-weight-bold">End date</label>
-                            <input type="text" class="form-control" id="enddate" placeholder="End Date" value="<?php echo $specialoffer['EndDate']?>">
-
+                            <label for="enddate" class="font-weight-bold">End date (YYYY-DD-MM)</label>
+                            <input type="text" class="form-control" name="enddate" id="enddate" placeholder="End Date" value="<?php echo $specialoffer['EndDate']?>">
                         </div>
 
-                        <button class="btn btn-primary mt-5" type="submit">Submit form</button>
+                        <button class="btn btn-primary mt-5" name="submit" type="submit">Submit form</button>
                     </form>
                 </div>
                 <div class="card-footer small text-muted"></div>
@@ -96,4 +91,18 @@ $specialoffer = $specialoffer[0];
 </body>
 
 </html>
+<?php
+if(isset($_POST['submit'])){
+    $discount = $_REQUEST['discount'];
+    $startdate = $_REQUEST['startdate'];
+    $enddate = $_REQUEST['enddate'];
 
+    var_dump($discount);
+    var_dump($startdate);
+    var_dump($enddate);
+
+    if ($specialofferid != null && $discount != null && $startdate != null && $enddate != null){
+        $prodcontroller->editSpecialOffer($specialoffer['SpecialOfferID'], $discount, $startdate, $enddate);
+    }
+}
+?>
