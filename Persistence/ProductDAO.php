@@ -7,38 +7,6 @@ class ProductDAO
 
     }
 
-    public function getLatestSpecialOffers(){
-        try{
-            $dbmanager = new DBConnection();
-
-            $dbconnection = $dbmanager->connectToDB();
-
-            $result = mysqli_query($dbconnection, "CALL GetLatestSpecialOffers()") or die("Query Failed: " . mysqli_error($dbconnection));
-            $result = mysqli_fetch_all($result,MYSQLI_BOTH);
-
-            mysqli_close($dbconnection);
-            return $result;
-        }catch (mysqli_sql_exception $e){
-            echo "Error Message: " . $e;
-        }
-    }
-
-    public function getAllSpecialOffers(){
-        try{
-            $dbmanager = new DBConnection();
-
-            $dbconnection = $dbmanager->connectToDB();
-
-            $result = mysqli_query($dbconnection, "CALL GetAllSpecialOffers()") or die("Query Failed: " . mysqli_error($dbconnection));
-            $result = mysqli_fetch_all($result,MYSQLI_BOTH);
-
-            mysqli_close($dbconnection);
-            return $result;
-        }catch (mysqli_sql_exception $e){
-            echo "Error Message: " . $e;
-        }
-    }
-
     public function getAllProducts(){
         try{
             $dbmanager = new DBConnection();
@@ -109,6 +77,27 @@ class ProductDAO
         }
     }
 
+    public function createNewProduct($productname, $price, $colour, $size, $description, $imgPath){
+        try{
+            $dbmanager = new DBConnection();
+
+            $dbconnection = $dbmanager->connectToDB();
+
+            $productname = $dbmanager->sanitizeValue($productname);
+            $price = $dbmanager->sanitizeValue($price);
+            $colour = $dbmanager->sanitizeValue($colour);
+            $size = $dbmanager->sanitizeValue($size);
+            $description = $dbmanager->sanitizeValue($description);
+            $imgPath = $dbmanager->sanitizeValue($imgPath);
+
+            mysqli_query($dbconnection, "CALL CreateNewProduct('" . $productname . "', '" . $description . "', " . $price . ", '" . $imgPath . "', '" . $colour . "', '" . $size . "')") or die("Query Failed: " . mysqli_error($dbconnection));
+
+            mysqli_close($dbconnection);
+        }catch (mysqli_sql_exception $e){
+            echo "Error Message: " . $e;
+        }
+    }
+
     public function deleteOffer($specialofferid){
         try{
             $dbmanager = new DBConnection();
@@ -165,20 +154,49 @@ class ProductDAO
         }
     }
 
-    public function createNewProduct($productname, $price, $colour, $size, $description, $imgPath){
+    public function getLatestSpecialOffers(){
         try{
             $dbmanager = new DBConnection();
 
             $dbconnection = $dbmanager->connectToDB();
 
-            $productname = $dbmanager->sanitizeValue($productname);
-            $price = $dbmanager->sanitizeValue($price);
-            $colour = $dbmanager->sanitizeValue($colour);
-            $size = $dbmanager->sanitizeValue($size);
-            $description = $dbmanager->sanitizeValue($description);
-            $imgPath = $dbmanager->sanitizeValue($imgPath);
+            $result = mysqli_query($dbconnection, "CALL GetLatestSpecialOffers()") or die("Query Failed: " . mysqli_error($dbconnection));
+            $result = mysqli_fetch_all($result,MYSQLI_BOTH);
 
-            mysqli_query($dbconnection, "CALL CreateNewProduct('" . $productname . "', '" . $description . "', " . $price . ", '" . $imgPath . "', '" . $colour . "', '" . $size . "')") or die("Query Failed: " . mysqli_error($dbconnection));
+            mysqli_close($dbconnection);
+            return $result;
+        }catch (mysqli_sql_exception $e){
+            echo "Error Message: " . $e;
+        }
+    }
+
+    public function getAllSpecialOffers(){
+        try{
+            $dbmanager = new DBConnection();
+
+            $dbconnection = $dbmanager->connectToDB();
+
+            $result = mysqli_query($dbconnection, "CALL GetAllSpecialOffers()") or die("Query Failed: " . mysqli_error($dbconnection));
+            $result = mysqli_fetch_all($result,MYSQLI_BOTH);
+
+            mysqli_close($dbconnection);
+            return $result;
+        }catch (mysqli_sql_exception $e){
+            echo "Error Message: " . $e;
+        }
+    }
+
+    public function createNewSpecialOffer($discount, $startdate, $enddate){
+        try{
+            $dbmanager = new DBConnection();
+
+            $dbconnection = $dbmanager->connectToDB();
+
+            $discount = $dbmanager->sanitizeValue($discount);
+            $startdate = $dbmanager->sanitizeValue($startdate);
+            $enddate = $dbmanager->sanitizeValue($enddate);
+
+            mysqli_query($dbconnection, "CALL CreateNewSpecialOffer(" . $discount . ", '" . $startdate . "', '" . $enddate . "')") or die("Query Failed: " . mysqli_error($dbconnection));
 
             mysqli_close($dbconnection);
         }catch (mysqli_sql_exception $e){

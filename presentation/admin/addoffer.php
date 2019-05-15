@@ -15,7 +15,7 @@
 <?php
 //$specialofferid = $_GET['offerid'];
 
-//$prodcontroller = new ProductController();
+$prodcontroller = new ProductController();
 
 //$specialoffer = $prodcontroller->getSpecificSpecialOffer($specialofferid);
 //$specialoffer = $specialoffer[0];
@@ -54,20 +54,20 @@
                     <form enctype="" method="post">
                         <div class="form-group">
                             <label for="discount" class="font-weight-bold">Discount percentage</label>
-                            <input type="text" class="form-control" id="discount" placeholder="Discount" value="">
+                            <input type="text" class="form-control" name="discount" id="discount" placeholder="Discount" value="">
                         </div>
                         <div class="form-group date">
                             <label for="startdate" class="font-weight-bold">Start date</label>
-                            <input type="text" class="form-control date" id="startdate datepicker" placeholder="Start Date" value="">
+                            <input type="text" class="form-control date" name="startdate" id="startdate datepicker" placeholder="Start Date" value="">
 
                         </div>
                         <div class="form-group">
                             <label for="enddate" class="font-weight-bold">End date</label>
-                            <input type="text" class="form-control" id="enddate" placeholder="End Date" value="">
+                            <input type="text" class="form-control" name="enddate" id="enddate" placeholder="End Date" value="">
 
                         </div>
 
-                        <button class="btn btn-primary mt-5" type="submit">Submit form</button>
+                        <button class="btn btn-primary mt-5" name="submit" type="submit">Submit form</button>
                     </form>
                 </div>
                 <div class="card-footer small text-muted"></div>
@@ -92,4 +92,15 @@
 </body>
 
 </html>
+<?php
+if(isset($_POST['submit'])){
+    $discount = $_REQUEST['discount'];
+    $startdate = $_REQUEST['startdate'];
+    $enddate = $_REQUEST['enddate'];
+
+    if ($discount != null && $startdate != null && $enddate != null){
+        $prodcontroller->createNewSpecialOffer($discount, $startdate, $enddate);
+    }
+}
+?>
 

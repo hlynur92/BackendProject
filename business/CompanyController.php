@@ -8,9 +8,13 @@ class CompanyController{
         return $company;
     }
 
-
     public function deleteCompany($companyid){
         $CompanyDao = new CompanyDAO();
         $CompanyDao->deleteCompany($companyid);
+    }
+
+    public function createNewCompany($companyname, $phonenr, $email, $openinghours, $street, $zipcode, $city, $country, $description){
+        $CompanyDao = new CompanyDAO();
+        $CompanyDao->createNewCompany($companyname, $phonenr, $email, $openinghours, $street, $zipcode, $city, $country, $description);
     }
 }
