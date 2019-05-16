@@ -50,11 +50,10 @@ $productcontroller = new ProductController();
                         <i class="fa fa-table"></i>
                         Add Product administration</div>
                     <div class="card-body">
-<<<<<<< HEAD
+
                         <form enctype="multipart/form-data" method="post" action="addproduct.php">
-=======
-                        <form enctype="multipart/form-data"  method="post">
->>>>>>> 8fb683778dda5361ac95cc0c5bc09dcc26231f1f
+
+
 
                             <div class="form-group">
                                 <label for="productName"  class="font-weight-bold">Product name</label>
@@ -88,12 +87,11 @@ $productcontroller = new ProductController();
                             <div class="form-group">
                                 <label for="fileinput" class="font-weight-bold">File input</label>
                                 <input type="file" class="form-control-file" id="fileinput" name="imgfile">
-                            </div>
-<<<<<<< HEAD
-                            <button name="submit_image" class="btn btn-primary mt-5" type="submit" value="Upload">Submit form</button>
-=======
+                            </div>card-img-top h-25 d-inline-block
+
+
                             <button class="btn btn-primary mt-5" name="submit" type="submit">Submit form</button>
->>>>>>> 8fb683778dda5361ac95cc0c5bc09dcc26231f1f
+
                         </form>
                     </div>
                     <div class="card-footer small text-muted"></div>
