@@ -32,9 +32,9 @@ $news = $instance->getAllNews();
             foreach ($news as $post){
 
                 $template = "
-                        <div class=\"card-group col-md-3\">
-                            <div class=\"card mb-2 d-flex flex-column d-inline-block h-100\">
-                                <img name=\"productimg\" class=\"bd-placeholder-img card-img-top h-25 d-inline-block\" width=\"10%\" height=\"10%\" src=" . $GLOBALS['URL'] . $post['TitleImg'] . " preserveAspectRatio=\"xMidYMid slice\" focusable=\"false\" role=\"img\" aria-label=\"Placeholder: Thumbnail\">          
+                        <div class=\"col-sm-3 mh-25 d-flex\" style=\"height:700px\">
+                            <div class=\"card mb-4 shadow-sm mh-100\">
+                                <img name=\"productimg\" class=\"bd-placeholder-img card-img-top h-25 d-inline-block\" width=\"100%\" height=\"100%\" src=" . $GLOBALS['URL'] . $post['TitleImg'] . " preserveAspectRatio=\"xMidYMid slice\" focusable=\"false\" role=\"img\" aria-label=\"Placeholder: Thumbnail\">          
                                 <div class=\"card-body d-flex flex-column\">
                                         <h3 class=\"card-title\" name=\"productname\">
                                             <a class='text-dark' href='". $GLOBALS['URL'] . "Presentation/news-detail.php?newsid=" . $post['NewsID']  ."'>" . $post['Title'] . "</a>

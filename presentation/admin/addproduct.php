@@ -51,7 +51,7 @@
                         <i class="fa fa-table"></i>
                         Add Product administration</div>
                     <div class="card-body">
-                        <form enctype="" method="post">
+                        <form enctype="multipart/form-data" method="post" action="addproduct.php">
 
                             <div class="form-group">
                                 <label for="productName"  class="font-weight-bold">Product name</label>
@@ -86,7 +86,7 @@
                                 <label for="fileinput" class="font-weight-bold">File input</label>
                                 <input type="file" class="form-control-file" id="fileinput" name="imgfile">
                             </div>
-                            <button class="btn btn-primary mt-5" type="submit">Submit form</button>
+                            <button name="submit_image" class="btn btn-primary mt-5" type="submit" value="Upload">Submit form</button>
                         </form>
                     </div>
                     <div class="card-footer small text-muted"></div>

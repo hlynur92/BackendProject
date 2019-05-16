@@ -40,11 +40,11 @@ $products = $instance->getAllProducts();
                         $discount = $product['Discount']/100;
                         $discountPrice = $product['Price'] * ( 1 - $discount);
                         $template = "
-                        <div class=\"col-md-3 card-group\">
-                            <div class=\"card mb-4 shadow-sm\">
-                                    <img name=\"productimg\" class=\"bd-placeholder-img card-img-top h-50 d-inline-block\" width=\"100%\" height=\"100%\" src=" . $GLOBALS['URL'] . $product['ImgPath'] . " preserveAspectRatio=\"xMidYMid slice\" focusable=\"false\" role=\"img\" aria-label=\"Placeholder: Thumbnail\">        
+                        <div class=\"col-sm-3 mh-25 d-flex\" style=\"height:500px\">
+                            <div class=\"card mb-4 shadow-sm mh-100\">
+                                    <img name=\"productimg\" class=\"bd-placeholder-img card-img-top h-25 d-inline-block\" width=\"100%\" height=\"100%\" src=" . $GLOBALS['URL'] . $product['ImgPath'] . " preserveAspectRatio=\"xMidYMid slice\" focusable=\"false\" role=\"img\" aria-label=\"Placeholder: Thumbnail\">        
                                     </img>
-                                <div class=\"card-body bg-light text-dark h-25 d-inline-block\">
+                                <div class=\"card-body bg-light text-dark\">
                                     <h3 name=\"productname\">" . $product['ProductName'] . "</h3>
                                     <p name=\"description\" class=\"card-text\">" . $product['Description'] . "</p>
                                     <div class=\"justify-content-between text-right\">
@@ -63,11 +63,11 @@ $products = $instance->getAllProducts();
                         echo $template;
                     }else{
                         $template = "
-                        <div class=\"col-md-3 card-group\">
-                            <div class=\"card mb-4 shadow-sm\">
-                                    <img name=\"productimg\" class=\"bd-placeholder-img card-img-top h-50 d-inline-block\" width=\"100%\" height=\"100%\" src=" . $GLOBALS['URL'] . $product['ImgPath'] . " preserveAspectRatio=\"xMidYMid slice\" focusable=\"false\" role=\"img\" aria-label=\"Placeholder: Thumbnail\">        
+                        <div class=\"col-sm-3 mh-25 d-flex\" style=\"height:500px\">
+                            <div class=\"card mb-4 shadow-sm mh-100\">
+                                    <img name=\"productimg\" class=\"bd-placeholder-img card-img-top h-25 d-inline-block\" width=\"100%\" height=\"100%\" src=" . $GLOBALS['URL'] . $product['ImgPath'] . " preserveAspectRatio=\"xMidYMid slice\" focusable=\"false\" role=\"img\" aria-label=\"Placeholder: Thumbnail\">        
                                     </img>
-                                <div class=\"card-body bg-light text-dark h-25 d-inline-block\">
+                                <div class=\"card-body bg-light text-dark\">
                                     <h3 name=\"productname\">" . $product['ProductName'] . "</h3>
                                     <p name=\"description\" class=\"card-text\">" . $product['Description'] . "</p>
                                     <p class=\"justify-content-between text-right\">

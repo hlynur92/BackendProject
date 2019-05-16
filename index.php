@@ -48,10 +48,10 @@ $company = $instance->getCompanyInfo();
                     $discountPrice = $product['Price'] * ( 1 - $discount);
                     $template = "
                         <div class=\"col-md-3 card-group\">
-                            <div class=\"card mb-4 shadow-sm\">
-                                    <img name=\"productimg\" class=\"bd-placeholder-img card-img-top h-50 d-inline-block\" width=\"100%\" height=\"100%\" src=" . $GLOBALS['URL'] . $product['ImgPath'] . " preserveAspectRatio=\"xMidYMid slice\" focusable=\"false\" role=\"img\" aria-label=\"Placeholder: Thumbnail\">        
+                            <div class=\"card mb-4 shadow-sm h-50\">
+                                    <img name=\"productimg\" class=\"bd-placeholder-img card-img-top h-25\" width=\"100%\" height=\"100%\" src=" . $GLOBALS['URL'] . $product['ImgPath'] . " preserveAspectRatio=\"xMidYMid slice\" focusable=\"false\" role=\"img\" aria-label=\"Placeholder: Thumbnail\">        
                                     </img>
-                                <div class=\"card-body bg-light text-dark h-25 d-inline-block\">
+                                <div class=\"card-body bg-light text-dark\">
                                     <h3 name=\"productname\">" . $product['ProductName'] . "</h3>
                                     <p name=\"description\" class=\"card-text\">" . $product['Description'] . "</p>
                                     <div class=\"justify-content-between text-right\">
@@ -81,8 +81,8 @@ $company = $instance->getCompanyInfo();
 
                     $template = "
                         <div class=\"card-group col-md-3\">
-                            <div class=\"card mb-2 d-flex flex-column d-inline-block h-100\">
-                                <img name=\"productimg\" class=\"bd-placeholder-img card-img-top h-25 d-inline-block\" width=\"10%\" height=\"10%\" src=" . $GLOBALS['URL'] . $post['TitleImg'] . " preserveAspectRatio=\"xMidYMid slice\" focusable=\"false\" role=\"img\" aria-label=\"Placeholder: Thumbnail\">          
+                            <div class=\"card mb-2 d-flex flex-column d-inline-block h-50\">
+                                <img name=\"productimg\" class=\"bd-placeholder-img card-img-top h-25\" width=\"100%\" height=\"100%\" src=" . $GLOBALS['URL'] . $post['TitleImg'] . " preserveAspectRatio=\"xMidYMid slice\" focusable=\"false\" role=\"img\" aria-label=\"Placeholder: Thumbnail\">          
                                 <div class=\"card-body d-flex flex-column\">
                                         <h3 class=\"card-title\" name=\"productname\">
                                             <a class='text-dark' href='". $GLOBALS['URL'] . "Presentation/news-detail.php?newsid=" . $post['NewsID']  ."'>" . $post['Title'] . "</a>
