@@ -13,12 +13,7 @@
 <?php require  __DIR__ . "/../../business/ProductController.php"; ?>
 <?php require __DIR__ . "/../../business/ImageController.php"; ?>
 
-<?php
-$productcontroller = new ProductController();
-
-//$products = $prodcontroller->addProduct();
-//$product = $products[0];
-?>
+<?php $productcontroller = new ProductController(); ?>
 
     <body id="page-top">
 

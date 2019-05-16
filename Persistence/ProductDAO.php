@@ -98,6 +98,49 @@ class ProductDAO
         }
     }
 
+    public function editProduct($productid, $productname, $price, $colour, $size, $description){
+        try{
+            $dbmanager = new DBConnection();
+
+            $dbconnection = $dbmanager->connectToDB();
+
+            $productid = $dbmanager->sanitizeValue($productid);
+            $productname = $dbmanager->sanitizeValue($productname);
+            $price = $dbmanager->sanitizeValue($price);
+            $colour = $dbmanager->sanitizeValue($colour);
+            $size = $dbmanager->sanitizeValue($size);
+            $description = $dbmanager->sanitizeValue($description);
+
+            mysqli_query($dbconnection, "CALL editProduct(" . $productid . ", '" . $productname . "', '" . $description . "', " . $price . ", '" . $colour . "', '" . $size . "')") or die("Query Failed: " . mysqli_error($dbconnection));
+
+            mysqli_close($dbconnection);
+        }catch (mysqli_sql_exception $e){
+            echo "Error Message: " . $e;
+        }
+    }
+
+    public function editProductWithImage($productid, $productname, $price, $colour, $size, $description, $uploadpath){
+        try{
+            $dbmanager = new DBConnection();
+
+            $dbconnection = $dbmanager->connectToDB();
+
+            $productid = $dbmanager->sanitizeValue($productid);
+            $productname = $dbmanager->sanitizeValue($productname);
+            $price = $dbmanager->sanitizeValue($price);
+            $colour = $dbmanager->sanitizeValue($colour);
+            $size = $dbmanager->sanitizeValue($size);
+            $description = $dbmanager->sanitizeValue($description);
+            $uploadpath = $dbmanager->sanitizeValue($uploadpath);
+
+            mysqli_query($dbconnection, "CALL EditProductWithImage(" . $productid . ", '" . $productname . "', '" . $description . "', " . $price . ", '" . $uploadpath . "', '" . $colour . "', '" . $size . "')") or die("Query Failed: " . mysqli_error($dbconnection));
+
+            mysqli_close($dbconnection);
+        }catch (mysqli_sql_exception $e){
+            echo "Error Message: " . $e;
+        }
+    }
+
     public function deleteOffer($specialofferid){
         try{
             $dbmanager = new DBConnection();

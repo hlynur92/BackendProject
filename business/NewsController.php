@@ -30,4 +30,13 @@ class NewsController {
         $newsDAO = new NewsDAO();
         $newsDAO->createNewNews($title, $creationdate, $description, $imgpath);
     }
+
+    public function editNews($newsid, $title, $creationdate, $description, $uploadpath){
+        $newsDAO = new NewsDAO();
+        if ($uploadpath != null){
+            $newsDAO->editNewsWithImage($newsid, $title, $creationdate, $description, $uploadpath);
+        }else{
+            $newsDAO->editNews($newsid, $title, $creationdate, $description);
+        }
+    }
 }

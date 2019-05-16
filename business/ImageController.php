@@ -3,6 +3,7 @@
 class ImageController
 {
     public function uploadImage($type){
+        var_dump($type);
         if(isset($_FILES["imgfile"]) && $_FILES["imgfile"]["error"] == 0){
             $allowed = array("jpg" => "image/jpg", "jpeg" => "image/jpeg", "png" => "image/png");
             $filename = $_FILES["imgfile"]["name"];

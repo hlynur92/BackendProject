@@ -50,29 +50,29 @@ $news = $newscontroller->getSpecificNews($newsid);
                     <i class="fa fa-table"></i>
                     Edit News administration</div>
                 <div class="card-body">
-                    <form enctype="" method="post">
+                    <form enctype="multipart/form-data" method="post">
                         <div class="form-group mb-4 mt-4">
                             <img src="<?php echo $GLOBALS['URL'] . $news[0]['TitleImg']?>" class="img-thumbnail" width="10%" height="10%">
                         </div>
                         <div class="form-group">
                             <label for="title"  class="font-weight-bold">Title</label>
-                            <input type="text" class="form-control" id="title" placeholder="News Title" value="<?php echo $news[0]['Title']?>">
+                            <input type="text" class="form-control" name="title" id="title" placeholder="News Title" value="<?php echo $news[0]['Title']?>">
                         </div>
                         <div class="form-group">
                             <label for="price" class="font-weight-bold">Creation Date</label>
-                            <input type="text" class="form-control" id="creationdate" placeholder="creationdate" value="<?php echo $news[0]['CreationDate']?>">
+                            <input type="text" class="form-control" name="creationdate" id="creationdate" placeholder="creationdate" value="<?php echo $news[0]['CreationDate']?>">
                         </div>
 
                         <div class="form-group">
                             <label for="description" class="font-weight-bold">Description</label>
-                            <textarea type="text" class="form-control text-dark" id="description" rows="6"><?php echo $news[0]['Content']?>
+                            <textarea type="text" class="form-control text-dark" name="description" id="description" rows="6"><?php echo $news[0]['Content']?>
                             </textarea>
                         </div>
                         <div class="form-group">
                             <label for="fileinput" class="font-weight-bold">File input</label>
-                            <input type="file" class="form-control-file" id="fileinput">
+                            <input type="file" class="form-control-file" name="imgfile" id="fileinput">
                         </div>
-                        <button class="btn btn-primary mt-5" type="submit">Submit form</button>
+                        <button class="btn btn-primary mt-5" name="submit" type="submit">Submit form</button>
                     </form>
                 </div>
                 <div class="card-footer small text-muted"></div>
@@ -97,4 +97,19 @@ $news = $newscontroller->getSpecificNews($newsid);
 </body>
 
 </html>
+<?php
+if(isset($_POST['submit'])){
+    $imagecontroller = new ImageController();
+    $uploadpath = $imagecontroller->uploadImage("news");
+
+    $newsid = $_GET['newsid'];
+    $title = $_REQUEST['title'];
+    $creationdate = $_REQUEST['creationdate'];
+    $description = $_REQUEST['description'];
+
+    if ($newsid != null && $title != null && $creationdate != null && $description != null){
+        $newscontroller->editNews($newsid, $title, $creationdate, $description, $uploadpath);
+    }
+}
+?>
 
