@@ -47,6 +47,15 @@ class ProductController{
         $prodDAO->createNewProduct($productname, $price, $colour, $size, $description, $imgPath);
     }
 
+    public function editProduct($productid, $productname, $price, $colour, $size, $description, $uploadpath){
+        $prodDAO = new ProductDAO();
+        if ($uploadpath == null){
+            $prodDAO->editProduct($productid, $productname, $price, $colour, $size, $description);
+        }else{
+            $prodDAO->editProductWithImage($productid, $productname, $price, $colour, $size, $description, $uploadpath);
+        }
+    }
+
     public function getAllSpecialOffers(){
         $prodDAO = new ProductDAO();
         $products = $prodDAO->getAllSpecialOffers();

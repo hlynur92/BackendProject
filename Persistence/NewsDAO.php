@@ -91,7 +91,44 @@ class NewsDAO {
             echo "Error Message: " . $e;
         }
     }
-}
 
-//<button type=\"button\" class=\"btn btn-sm btn-success\" onclick=\"location.href='" . $GLOBALS['URL'] . "Presentation/news-detail.php?newsid=" . $news['NewsID']  . "  '\">View more</button>
-//
+    public function editNewsWithImage($newsid, $title, $creationdate, $description, $uploadpath){
+        try{
+            $dbmanager = new DBConnection();
+
+            $dbconnection = $dbmanager->connectToDB();
+
+            $title = $dbmanager->sanitizeValue($title);
+            $creationdate = $dbmanager->sanitizeValue($creationdate);
+            $description = $dbmanager->sanitizeValue($description);
+            $uploadpath = $dbmanager->sanitizeValue($uploadpath);
+
+            mysqli_query($dbconnection, "CALL EditNewsWithImage(" . $newsid . ", '" . $title . "', '" . $description . "', '" . $uploadpath . "', '" . $creationdate . "')") or die("Query Failed: " . mysqli_error($dbconnection));
+
+            mysqli_close($dbconnection);
+
+        }catch (mysqli_sql_exception $e){
+            echo "Error Message: " . $e;
+        }
+    }
+
+    public function editNews($newsid, $title, $creationdate, $description){
+        try{
+            $dbmanager = new DBConnection();
+
+            $dbconnection = $dbmanager->connectToDB();
+
+            $newsid = $dbmanager->sanitizeValue($newsid);
+            $title = $dbmanager->sanitizeValue($title);
+            $creationdate = $dbmanager->sanitizeValue($creationdate);
+            $description = $dbmanager->sanitizeValue($description);
+
+            mysqli_query($dbconnection, "CALL EditNews(" . $newsid . ", '" . $title . "', '" . $description . "', '" . $creationdate . "')") or die("Query Failed: " . mysqli_error($dbconnection));
+
+            mysqli_close($dbconnection);
+
+        }catch (mysqli_sql_exception $e){
+            echo "Error Message: " . $e;
+        }
+    }
+}
