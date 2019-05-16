@@ -11,6 +11,7 @@
 <?php include '../../includes/settings.php'; ?>
 <?php include '../partials/header-admin.php';?>
 <?php require  __DIR__ . "/../../business/NewsController.php"; ?>
+<?php require __DIR__ . "/../../business/ImageController.php"; ?>
 
 <?php
 $newsid = $_GET['newsid'];

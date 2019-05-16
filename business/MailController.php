@@ -8,4 +8,13 @@ class MailController
             $mailDAO = new MailDAO();
             $mailDAO->storeUserMail($email, $name, $subject, $message);
         }
+
+        public function invoiceMail($orderid){
+            $mailDAO = new MailDAO();
+            $invoice = $mailDAO->invoiceMail($orderid);
+
+            $invoice = $invoice[0];
+
+            mail($invoice['CustomerEmail'],"Automatic Invoice", "Hello " . $invoice['CustomerName'] . ", This is an automatic Invoice creator thank you for your purchase.\r\n \r\nOrder Date: " . $invoice['OrderDate'] . ", Issue Date: " . $invoice['IssueDate'] . " \r\nOrder Number: " . $invoice['OrderNumber']. "\r\n\r\n\r\nAddress: " . $invoice['Street'] . ", " . $invoice['ZipCode'] . " " . $invoice['City']. ", " . $invoice['CountryName'] . "\r\n\r\n\r\nBest Regards\r\n" . $invoice['CompanyName'] . "\r\nPhone Number: " . $invoice['CompanyPhoneNr'] . "\r\nEmail: " . $invoice['CompanyEmail']. "");
+        }
 }

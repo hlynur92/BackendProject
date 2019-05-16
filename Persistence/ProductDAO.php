@@ -149,6 +149,7 @@ class ProductDAO
 
             $specialofferid = $dbmanager->sanitizeValue($specialofferid);
 
+            mysqli_query($dbconnection, "CALL DeleteOfferForeignKey(" . $specialofferid . ")") or die("Query Failed: " . mysqli_error($dbconnection));
             mysqli_query($dbconnection, "CALL DeleteOffer(" . $specialofferid . ")") or die("Query Failed: " . mysqli_error($dbconnection));
 
             mysqli_close($dbconnection);

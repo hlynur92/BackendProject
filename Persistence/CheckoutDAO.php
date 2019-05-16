@@ -1,5 +1,7 @@
 <?php
 
+include_once __DIR__ . "../../business/MailController.php";
+include_once __DIR__ . "/AddressDAO.php";
 class CheckoutDAO
 {
 
@@ -97,7 +99,7 @@ class CheckoutDAO
 
             $orderData = $dbmanager->sanitizeArray($orderData);
 
-            $countryid = $addressDAO->getCountryID($orderData);
+            $countryid = $addressDAO->getCountryID($orderData['address']['country']);
             $customer = $this->checkCustomer($orderData);
             $zip = $addressDAO->checkZip($orderData['address']['zipcode']);
             $address = $addressDAO->checkAddress($orderData['address']['street'], $orderData['address']['zipcode']);
@@ -106,6 +108,10 @@ class CheckoutDAO
             $orderid = $this->insertOrder($orderData, $addressid);
             $this->insertOrderRows($orderData, $orderid);
 
+            $mailcontroller = new MailController();
+
+            $mailcontroller->invoiceMail($orderid);
+
             mysqli_close($dbconnection);
             return $orderid;
         }catch (mysqli_sql_exception $e){
@@ -113,6 +119,3 @@ class CheckoutDAO
         }
     }
 }
-
-//mysqli_query($dbconnection, "CALL StoreOrder('" . $orderdate . "', " . $addressID[0] . ", " . $totalprice . ", '" . $issuedate . "', 1, '" . $email . "')") or die("Query Failed: " . mysqli_error($dbconnection));
-//$sqlquery = "CALL StoreOrder('" . $orderdate . "', " . $addressID[0] . ", " . $totalprice . ", '" . $issuedate . "', 1, '" . $email . "')";

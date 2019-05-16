@@ -25,4 +25,23 @@ class MailDAO{
             echo "Error Message: " . $e;
         }
     }
+
+    public function invoiceMail($orderid){
+        try{
+            $dbmanager = new DBConnection();
+
+            $dbconnection = $dbmanager->connectToDB();
+
+            $orderid = $dbmanager->sanitizeValue($orderid);
+
+            $result = mysqli_query($dbconnection, "CALL InvoiceMail('" . $orderid . "')") or die("Query Failed: " . mysqli_error($dbconnection));
+
+            $result = mysqli_fetch_all($result,MYSQLI_BOTH);
+
+            mysqli_close($dbconnection);
+            return $result;
+        }catch (mysqli_sql_exception $e){
+            echo "Error Message: " . $e;
+        }
+    }
 }
