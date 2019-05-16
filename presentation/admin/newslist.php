@@ -16,6 +16,11 @@
 $instance = new NewsController();
 $news = $instance->getAllNews();
 
+if (isset($_GET['action'])) {
+    if ($_GET['action'] == 'remove') {
+        $instance->deleteNews($_GET['newsid']);
+    }
+}
 ?>
 
 <body id="page-top">
@@ -75,17 +80,11 @@ $news = $instance->getAllNews();
                                 <td>" . $post['CreationDate'] . "</td>
          
                                 <td><button type='button' class='btn btn-warning' onclick=\"location.href='" . $GLOBALS['URL'] . "presentation/admin/editnews.php?newsid=" . $post['NewsID']  . "'\">Edit</button></td>
-                                <td><button type='button' href='#' name='removenews' class='btn btn-danger'>Remove</button></td>
-
+                                <td><a href=" . $GLOBALS['URL'] . "presentation/admin/newslist.php?action=remove&newsid=" . $post['NewsID'] . "><i class=\"fa fa-trash\"></i></a></td>  
                             </tr>
                             </form>
                             ";
                                 echo $template;
-                                if (isset($_POST['removenews'])) {
-
-                                    $instance->deleteNews($_POST['newsid']);
-                                }
-
                             }
                             ?>
 

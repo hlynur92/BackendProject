@@ -14,8 +14,14 @@
 
 <?php
 $instance = new CompanyController();
-$company = $instance->getCompanyInfo();
+$companys = $instance->getCompanyInfo();
 
+
+if (isset($_GET['action'])) {
+    if ($_GET['action'] == 'remove') {
+        $instance->deleteCompany($_GET['companyid']);
+    }
+}
 ?>
 
 <body id="page-top">
@@ -63,28 +69,23 @@ $company = $instance->getCompanyInfo();
                             <tbody>
 
                             <?php
-                            foreach ($company as $compani){
+                            foreach ($companys as $company){
                                 $template = "
                             <form method='post'>
                             <tr>
-                                <td name='productid'>" . $compani['CompanyID'] . "</td>
-                                <td>Tel: " . $compani['PhoneNr'] . "</td>
-                                <td>" . $compani['Email'] . "</td>
-                                <td>" . substr($compani['Content'],0,100) . "</td>
+                                <td name='productid'>" . $company['CompanyID'] . "</td>
+                                <td>Tel: " . $company['PhoneNr'] . "</td>
+                                <td>" . $company['Email'] . "</td>
+                                <td>" . substr($company['Content'],0,100) . "</td>
                                 
          
-                                <td><button type='button' class='btn btn-warning' onclick=\"location.href='" . $GLOBALS['URL'] . "presentation/admin/editcompany.php?companyid=" . $compani['CompanyID']  . "'\">Edit</button></td>
-                                <td><button type='button' href='#' name='removeproduct' class='btn btn-danger'>Remove</button></td>
-
+                                <td><button type='button' class='btn btn-warning' onclick=\"location.href='" . $GLOBALS['URL'] . "presentation/admin/editcompany.php?companyid=" . $company['CompanyID']  . "'\">Edit</button></td>
+                                <td><a href=" . $GLOBALS['URL'] . "presentation/admin/companylist.php?action=remove&companyid=" . $company['CompanyID'] . "><i class=\"fa fa-trash\"></i></a></td>  
+                           
                             </tr>
                             </form>
                             ";
                                 echo $template;
-                                if (isset($_POST['removecompany'])) {
-
-                                    $instance->deleteCompany($_POST['companyid']);
-                                }
-
                             }
                             ?>
 

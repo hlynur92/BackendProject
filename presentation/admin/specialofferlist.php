@@ -14,8 +14,14 @@
 
 <?php
 $instance = new ProductController();
-$products = $instance->getAllSpecialOffers();
+$specialoffers = $instance->getAllSpecialOffers();
 
+
+if (isset($_GET['action'])) {
+    if ($_GET['action'] == 'remove') {
+        $instance->deleteOffer($_GET['specialofferid']);
+    }
+}
 ?>
 
 <body id="page-top">
@@ -63,29 +69,24 @@ $products = $instance->getAllSpecialOffers();
                             <tbody>
 
                             <?php
-                            foreach ($products as $product){
+                            foreach ($specialoffers as $specialoffer){
                                 $template = "
                             <form method='post'>
                             <tr>
-                                <td name='productid'>" . $product['SpecialOfferID'] . "</td>
+                                <td name='productid'>" . $specialoffer['SpecialOfferID'] . "</td>
                            
-                                <td><strong>" . $product['Discount'] . "</td>
-                                <td>" . $product['StartDate'] . "</td>
-                                <td>" . $product['EndDate'] . "</td>
+                                <td><strong>" . $specialoffer['Discount'] . "</td>
+                                <td>" . $specialoffer['StartDate'] . "</td>
+                                <td>" . $specialoffer['EndDate'] . "</td>
          
-                                <td><button type='button' class='btn btn-warning' onclick=\"location.href='" . $GLOBALS['URL'] . "presentation/admin/editoffer.php?offerid=" . $product['SpecialOfferID']  . "'\">Edit</button></td>
+                                <td><button type='button' class='btn btn-warning' onclick=\"location.href='" . $GLOBALS['URL'] . "presentation/admin/editoffer.php?offerid=" . $specialoffer['SpecialOfferID']  . "'\">Edit</button></td>
                                 
-                                <td><button type='button' href='#' name='removeoffer' class='btn btn-danger'>Remove</button></td>
-
+                                <td><a href=" . $GLOBALS['URL'] . "presentation/admin/specialofferlist.php?action=remove&specialofferid=" . $specialoffer['SpecialOfferID'] . "><i class=\"fa fa-trash\"></i></a></td>
+                                        
                             </tr>
                             </form>
                             ";
                                 echo $template;
-                                if (isset($_POST['removeoffer'])) {
-
-                                    $instance->deleteOffer($_POST['specialofferid']);
-                                }
-
                             }
                             ?>
 

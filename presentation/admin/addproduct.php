@@ -11,11 +11,10 @@
 <?php include '../../includes/settings.php'; ?>
 <?php include '../partials/header-admin.php';?>
 <?php require  __DIR__ . "/../../business/ProductController.php"; ?>
+<?php require __DIR__ . "/../../business/ImageController.php"; ?>
 
 <?php
-
-
-//$prodcontroller = new ProductController();
+$productcontroller = new ProductController();
 
 //$products = $prodcontroller->addProduct();
 //$product = $products[0];
@@ -51,19 +50,23 @@
                         <i class="fa fa-table"></i>
                         Add Product administration</div>
                     <div class="card-body">
+<<<<<<< HEAD
                         <form enctype="multipart/form-data" method="post" action="addproduct.php">
+=======
+                        <form enctype="multipart/form-data"  method="post">
+>>>>>>> 8fb683778dda5361ac95cc0c5bc09dcc26231f1f
 
                             <div class="form-group">
                                 <label for="productName"  class="font-weight-bold">Product name</label>
-                                <input type="text" class="form-control" id="productName" placeholder="Product Name" value="">
+                                <input type="text" class="form-control" name="productname" id="productName" placeholder="Product Name" value="">
                             </div>
                             <div class="form-group">
                                 <label for="price" class="font-weight-bold">Price</label>
-                                <input type="text" class="form-control" id="price" placeholder="Price" value="">
+                                <input type="text" class="form-control" name="price" id="price" placeholder="Price" value="">
                             </div>
                             <div class="form-group">
                                 <label for="formcolour" class="font-weight-bold">Select colour</label>
-                                <select class="form-control" id="formcolour">
+                                <select class="form-control" name="colour" id="formcolour">
                                     <option>Blue</option>
                                     <option>Green</option>
                                     <option>Yellow</option>
@@ -71,7 +74,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="formsize" class="font-weight-bold">Select size</label>
-                                <select class="form-control" id="formsize">
+                                <select class="form-control" name="size" id="formsize">
                                     <option>Small</option>
                                     <option>Medium</option>
                                     <option>Large</option>
@@ -79,14 +82,18 @@
                             </div>
                             <div class="form-group">
                                 <label for="description" class="font-weight-bold">Description</label>
-                                <textarea type="text" class="form-control text-dark" id="description" rows="3">
+                                <textarea type="text" name="description" class="form-control text-dark" id="description" rows="3">
                             </textarea>
                             </div>
                             <div class="form-group">
                                 <label for="fileinput" class="font-weight-bold">File input</label>
                                 <input type="file" class="form-control-file" id="fileinput" name="imgfile">
                             </div>
+<<<<<<< HEAD
                             <button name="submit_image" class="btn btn-primary mt-5" type="submit" value="Upload">Submit form</button>
+=======
+                            <button class="btn btn-primary mt-5" name="submit" type="submit">Submit form</button>
+>>>>>>> 8fb683778dda5361ac95cc0c5bc09dcc26231f1f
                         </form>
                     </div>
                     <div class="card-footer small text-muted"></div>
@@ -113,34 +120,26 @@
     </html>
 
 <?php
-if (isset($_POST['submit'])){
-    if(($_FILES['imgfile']['type']=="image/jpeg" ||
-            $_FILES['imgfile']['type']=="image/pjpeg" ||
-            $_FILES['imgfile']['type']=="image/gif" ||
-            $_FILES['imgfile']['type']=="image/jpg")&& (
-            $_FILES['imgfile']['size']< 3000000
-        )){
-        if ($_FILES['imgfile']['error']>0){
-            echo "Error: ". $_FILES['imgfile']['error'];
+if(isset($_POST['submit'])){
+    $imagecontroller = new ImageController();
+    $uploadpath = $imagecontroller->uploadImage("product");
+
+    if ($uploadpath != null){
+        $productname = $_REQUEST['productname'];
+        $price = $_REQUEST['price'];
+        $colour = $_REQUEST['colour'];
+        $size = $_REQUEST['size'];
+        $description = $_REQUEST['description'];
+
+        if ($productname != null && $price != null && $colour != null && $size != null && $description != null){
+            $productcontroller->createNewProduct($productname, $price, $colour, $size, $description, $uploadpath);
         }else{
-            echo "Name: ".$_FILES['imgfile']['name']."<br>";
-            echo "Type: ".$_FILES['imgfile']['type']."<br>";
-            echo "Size: ".($_FILES['imgfile']['size']/1024)."<br>";
-            echo "Tmp_name: ".$_FILES['imgfile']['tmp_name']."<br>";
-
-            if (file_exists("upload/".$_FILES['imgfile']['name'])){
-                echo "can't upload: ". $_FILES['imgfile']['name']. " Exists";
-            }else{
-                move_uploaded_file($_FILES['imgfile']['tmp_name'],
-                    "upload/".$_FILES['imgfile']['name']);
-                echo "stored in: upload/".$_FILES['imgfile']['name'];
-
-                $sql = "INSERT INTO `Product` (`ImgPath`) VALUES 
-                        (NULL, '". $_FILES['name']."')";
-                echo $sql;
-                mysqli_query($conn,$sql);
-
-            }
+            echo "Unsuccessful Entry";
         }
+    }else{
+        echo "Unsuccessful Submit";
     }
 }
+?>
+
+

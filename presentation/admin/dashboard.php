@@ -16,6 +16,11 @@
 $instance = new ProductController();
 $products = $instance->getAllProductVariations();
 
+if (isset($_GET['action'])) {
+    if ($_GET['action'] == 'remove') {
+        $instance->deleteProduct($_GET['productid']);
+    }
+}
 ?>
 
 <body id="page-top">
@@ -66,28 +71,22 @@ $products = $instance->getAllProductVariations();
                             <?php
                                 foreach ($products as $product){
                                     $template = "
-                            <form method='post'>
-                            <tr>
-                                <td name='productid'>" . $product['ProductID'] . "</td>
-                                <td style=\"max-width: 100px\"><image name=\"productimg\" class=\"bd-placeholder-img card-img-top\" max-width=\"100px\" height=\"100px\" src=" . $GLOBALS['URL'] . $product['ImgPath'] . " preserveAspectRatio=\"xMidYMid slice\" focusable=\"false\" role=\"img\" aria-label=\"Placeholder: Thumbnail\"></td>
-                                <td><strong>" . $product['ProductName'] . "</td>
-                                <td>" . $product['Description'] . "</td>
-                                <td>" . $product['Price'] . "</td>
+                                    <form method='post'>
+                                        <tr>
+                                            <td name='productid'>" . $product['ProductID'] . "</td>
+                                            <td style=\"max-width: 100px\"><image name=\"productimg\" class=\"bd-placeholder-img card-img-top\" max-width=\"100px\" height=\"100px\" src=" . $GLOBALS['URL'] . $product['ImgPath'] . " preserveAspectRatio=\"xMidYMid slice\" focusable=\"false\" role=\"img\" aria-label=\"Placeholder: Thumbnail\"></td>
+                                            <td><strong>" . $product['ProductName'] . "</td>
+                                            <td>" . $product['Description'] . "</td>
+                                            <td>" . $product['Price'] . "</td>
          
-                                <td><button type='button' class='btn btn-warning' onclick=\"location.href='" . $GLOBALS['URL'] . "presentation/admin/editproduct.php?productid=" . $product['ProductID']  . "'\">Edit</button></td>
+                                            <td><button type='button' class='btn btn-warning' onclick=\"location.href='" . $GLOBALS['URL'] . "presentation/admin/editproduct.php?productid=" . $product['ProductID']  . "'\">Edit</button></td>
                                 
-                                <td><button type='button' href='#' name='removeproduct' class='btn btn-danger'>Remove</button></td>
-
-                            </tr>
-                            </form>
-                            ";
-                            echo $template;
-                            if (isset($_POST['removeproduct'])) {
-
-                                $instance->deleteProduct($_POST['productid']);
-                            }
-
-                            }
+                                            <td><a href=" . $GLOBALS['URL'] . "presentation/admin/dashboard.php?action=remove&productid=" . $product['ProductID'] . "><i class=\"fa fa-trash\"></i></a></td>
+                                        </tr>
+                                    </form>
+                                    ";
+                                    echo $template;
+                                }
                             ?>
 
                             </tbody>
