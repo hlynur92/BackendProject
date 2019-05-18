@@ -14,13 +14,11 @@
 $instance = new ProductController();
 $products = $instance->getLatestSpecialOffers();
 
-
 $instance = new NewsController();
 $news = $instance->getLatestNews();
 
 $instance = new CompanyController();
 $company = $instance->getCompanyInfo();
-
 ?>
 
 <main role="main">

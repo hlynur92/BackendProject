@@ -1,4 +1,15 @@
-
+<?php
+session_start();
+//unset($_SESSION['cart']);
+//unset($_SESSION['loggedin']);
+if(!isset($_SESSION['loggedin'])){
+    $_SESSION['loggedin'] = 0;
+}
+if ($_SESSION['loggedin'] == 0){
+    header("Location: " . $GLOBALS['URL'] . "index.php");
+    exit;
+}
+?>
 <!doctype html>
 <html lang="en">
 <head>

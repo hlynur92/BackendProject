@@ -13,6 +13,7 @@
 <?php require  __DIR__ . "/../../business/CompanyController.php"; ?>
 
 <?php
+
 $companycontroller = new CompanyController();
 //$company = $instance->getCompanyInfo();
 

@@ -284,7 +284,7 @@ $orderid = 0;
                                     }
                                 }
                                 $orderid = $checkoutcontroller->checkoutOrder($orderData);
-
+                                unset($_SESSION['cart']);
                             }
                         }
                     }

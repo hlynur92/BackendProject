@@ -1,6 +1,15 @@
 
 <?php include '../../includes/settings.php'; ?>
 <?php include '../partials/header.php';?>
+<?php require  __DIR__ . "/../../business/AccountController.php"; ?>
+<?php
+
+if ($_SESSION['loggedin'] == 1){
+    header("Location: " . $GLOBALS['URL'] . "presentation/admin/dashboard.php");
+    exit;
+}
+
+?>
 
 <body>
 

@@ -22,13 +22,26 @@
             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="fa fa-user-circle fa-fw"></i>
             </a>
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="<?php echo $GLOBALS['URL']; ?>index.php">Home</a>
-                <a class="dropdown-item" href="#">Activity Log</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Logout</a>
-            </div>
+            <form method="post">
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+                    <a class="dropdown-item" href="<?php echo $GLOBALS['URL']; ?>index.php">Home</a>
+                    <a class="dropdown-item" href="#">Activity Log</a>
+                    <div class="dropdown-divider"></div>
+                    <button class="dropdown-item" name="logout">Logout</button>
+                </div>
+            </form>
         </li>
     </ul>
 
 </nav>
+<?php
+
+if (isset($_POST['logout'])) {
+    $_SESSION['loggedin'] = 0;
+    if ($_SESSION['loggedin'] == 0){
+        header("Location: " . $GLOBALS['URL'] . "index.php");
+        exit;
+    }
+}
+
+?>

@@ -1,6 +1,10 @@
 <?php
 session_start();
 //unset($_SESSION['cart']);
+//unset($_SESSION['loggedin']);
+if(!isset($_SESSION['loggedin'])){
+    $_SESSION['loggedin'] = 0;
+}
 if(!isset($_SESSION['cart'])){
     $_SESSION['cart'] = array();
 }
