@@ -7,6 +7,10 @@
 <?php include '../business/ProductController.php'?>
 <?php include '../business/CheckoutController.php'?>
 <?php
+if(isset($_SESSION['cart']) && empty($_SESSION['cart'])) {
+    header("Location: " . $GLOBALS['URL'] . "presentation/cart.php");
+    exit;
+}
 $productcontroller = new ProductController();
 $checkoutcontroller = new CheckoutController();
 

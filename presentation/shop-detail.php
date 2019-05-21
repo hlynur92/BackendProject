@@ -16,6 +16,7 @@
 
     $products = $prodcontroller->getSpecificProduct($productid);
     $product = $products[0];
+    $productname = $product['ProductName'];
 ?>
 
 <main role="main">
@@ -48,6 +49,7 @@
                                 <a href=\"\"><span class=\"badge blue mr-1\">New</span></a>
                                 <a href=\"\"><span class=\"badge red mr-1\">Bestseller</span></a>
                             </div>
+                            <h3>" . $product['ProductName'] . "</h3>
                             <p class=\"lead\">
                             <span class=\"mr-1\"><del>" . $product['Price'] . "$</del></span>
                             </p>
@@ -60,36 +62,37 @@
                                     <button class=\"btn btn-primary ml-4 float-right\" type=\"submit\" name='addtocart'>Add to cart
                                         <i class=\"fa fa-cart-plus fa-lg\"></i>
                                     </button>
-                                 </div>   
-                                 <div class=\"form-group clearfix\">
-              
-                                    <select class=\"form-control\" id=\"formsize\">
-                                      <option selected>Select size</option>
-                                      <option>2</option>
-                                      <option>3</option>
-                                      <option>4</option>
-                                      <option>5</option>
+                                </div>   
+                                <div class=\"form-group clearfix\">
+                                    <select class=\"form-control\" name='size' id=\"formsize\">
+                                      <option>Small</option>
+                                      <option>Medium</option>
+                                      <option>Large</option>
                                     </select>
-                                  </div>
-                                  <div class=\"form-group clearfix\">
-                           
-                                    <select class=\"form-control\" id=\"formcolour\">
-                                      <option selected>Select colour</option>
-                                      <option>2</option>
-                                      <option>3</option>
-                                      <option>4</option>
-                                      <option>5</option>
+                                </div>
+                                <div class=\"form-group clearfix\">
+                                    <select class=\"form-control\" name='colour' id=\"formcolour\">
+                                        <option>Yellow</option>
+                                        <option>Blue</option>
+                                        <option>Green</option>
                                     </select>
-                                  </div>
-                                
+                                </div>
                             </form>
                         </div>
                     </div>";
             echo $template;
             if (isset($_POST['addtocart'])) {
                 if(!empty($_POST['quantity'])){
-                    $quantity = $_POST['quantity'];
-                    $cartcontroller->addToCart($productid, null, $quantity);
+                    if ($_POST['quantity'] != 0){
+                        if ($_POST['colour'] == 'Yellow' && $_POST['Size'] == 'Medium'){
+                            $quantity = $_POST['quantity'];
+                            $cartcontroller->addToCart($productid, null, $quantity);
+                        }else{
+                            $variantProduct = $prodcontroller->getVariantSelection($productname, $_POST['colour'], $_POST['size']);
+                            $variantProduct = $variantProduct[0];
+                            $cartcontroller->addToCart($variantProduct['ProductID'], null, $_POST['quantity']);
+                        }
+                    }
                 }
             }
             ?>
@@ -134,7 +137,9 @@
     </div>
 
 </main>
-<?php include '../presentation/partials/footer.php';?>
+<?php
+include '../presentation/partials/footer.php';
+?>
 </body>
 
 </html>

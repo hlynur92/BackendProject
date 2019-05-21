@@ -19,6 +19,7 @@ $news = $instance->getLatestNews();
 
 $instance = new CompanyController();
 $company = $instance->getCompanyInfo();
+var_dump($_SESSION);
 ?>
 
 <main role="main">

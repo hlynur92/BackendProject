@@ -71,7 +71,6 @@ class ProductDAO
             mysqli_query($dbconnection, "CALL DeleteProduct(" . $productid . ")") or die("Query Failed: " . mysqli_error($dbconnection));
 
             mysqli_close($dbconnection);
-
         }catch (mysqli_sql_exception $e){
             echo "Error Message: " . $e;
         }
@@ -136,6 +135,27 @@ class ProductDAO
             mysqli_query($dbconnection, "CALL EditProductWithImage(" . $productid . ", '" . $productname . "', '" . $description . "', " . $price . ", '" . $uploadpath . "', '" . $colour . "', '" . $size . "')") or die("Query Failed: " . mysqli_error($dbconnection));
 
             mysqli_close($dbconnection);
+        }catch (mysqli_sql_exception $e){
+            echo "Error Message: " . $e;
+        }
+    }
+
+    public function getVariantSelection($productname, $productcolour, $productsize){
+        try{
+            $dbmanager = new DBConnection();
+
+            $dbconnection = $dbmanager->connectToDB();
+
+            $productname = $dbmanager->sanitizeValue($productname);
+            $productcolour = $dbmanager->sanitizeValue($productcolour);
+            $productsize = $dbmanager->sanitizeValue($productsize);
+
+            $result = mysqli_query($dbconnection, "CALL GetVariantSelection('" . $productname . "', '" . $productcolour . "', '" . $productsize . "')") or die("Query Failed: " . mysqli_error($dbconnection));
+
+            $result = mysqli_fetch_all($result,MYSQLI_BOTH);
+
+            mysqli_close($dbconnection);
+            return $result;
         }catch (mysqli_sql_exception $e){
             echo "Error Message: " . $e;
         }

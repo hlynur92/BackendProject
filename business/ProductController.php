@@ -56,6 +56,12 @@ class ProductController{
         }
     }
 
+    public function getVariantSelection($productname, $productcolour, $productsize){
+        $prodDAO = new ProductDAO();
+        $products = $prodDAO->GetVariantSelection($productname, $productcolour, $productsize);
+        return $products;
+    }
+
     public function getAllSpecialOffers(){
         $prodDAO = new ProductDAO();
         $products = $prodDAO->getAllSpecialOffers();

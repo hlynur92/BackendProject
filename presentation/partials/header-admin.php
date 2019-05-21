@@ -6,7 +6,7 @@ if(!isset($_SESSION['loggedin'])){
     $_SESSION['loggedin'] = 0;
 }
 if ($_SESSION['loggedin'] == 0){
-    header("Location: " . $GLOBALS['URL'] . "index.php");
+    header("Location: " . $GLOBALS['URL'] . "presentation/admin/index.php");
     exit;
 }
 ?>

@@ -47,6 +47,9 @@ class CartController{
                     }else{
                         unset($_SESSION['cart'][$index]);
                     }
+                    if ($_SESSION['cart'][$index]['quantity'] == 0){
+                        unset($_SESSION['cart'][$index]);
+                    }
                 }
             }
         }
