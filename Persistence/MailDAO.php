@@ -9,7 +9,7 @@ class MailDAO{
 
     public function storeUserMail($email, $name, $subject, $message){
         try{
-            $dbmanager = new DBConnection();
+            $dbmanager = new onlineversion();
 
             $dbconnection = $dbmanager->connectToDB();
 
@@ -28,7 +28,7 @@ class MailDAO{
 
     public function invoiceMail($orderid){
         try{
-            $dbmanager = new DBConnection();
+            $dbmanager = new onlineversion();
 
             $dbconnection = $dbmanager->connectToDB();
 

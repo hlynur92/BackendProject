@@ -7,7 +7,7 @@ class CheckoutDAO
 
     public function checkCustomer($orderData){
         try{
-            $dbmanager = new DBConnection();
+            $dbmanager = new onlineversion();
 
             $dbconnection = $dbmanager->connectToDB();
 
@@ -26,7 +26,7 @@ class CheckoutDAO
 
     public function insertCustomer($orderData, $customer){
         try{
-            $dbmanager = new DBConnection();
+            $dbmanager = new onlineversion();
 
             $dbconnection = $dbmanager->connectToDB();
 
@@ -46,7 +46,7 @@ class CheckoutDAO
 
     public function insertOrder($orderData, $addressID){
         try{
-            $dbmanager = new DBConnection();
+            $dbmanager = new onlineversion();
 
             $dbconnection = $dbmanager->connectToDB();
 
@@ -71,7 +71,7 @@ class CheckoutDAO
 
     public function insertOrderRows($orderData, $orderID){
         try{
-            $dbmanager = new DBConnection();
+            $dbmanager = new onlineversion();
 
             $dbconnection = $dbmanager->connectToDB();
 
@@ -91,7 +91,7 @@ class CheckoutDAO
 
     public function checkoutOrder($orderData){
         try{
-            $dbmanager = new DBConnection();
+            $dbmanager = new onlineversion();
 
             $dbconnection = $dbmanager->connectToDB();
 

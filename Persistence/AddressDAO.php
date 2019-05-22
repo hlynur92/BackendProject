@@ -4,7 +4,7 @@ class AddressDAO
 {
     public function getCountryID($country){
         try{
-            $dbmanager = new DBConnection();
+            $dbmanager = new onlineversion();
 
             $dbconnection = $dbmanager->connectToDB();
 
@@ -23,7 +23,7 @@ class AddressDAO
 
     public function checkZip($zip){
         try{
-            $dbmanager = new DBConnection();
+            $dbmanager = new onlineversion();
 
             $dbconnection = $dbmanager->connectToDB();
 
@@ -40,7 +40,7 @@ class AddressDAO
 
     public function checkAddress($street, $zip){
         try{
-            $dbmanager = new DBConnection();
+            $dbmanager = new onlineversion();
 
             $dbconnection = $dbmanager->connectToDB();
 
@@ -57,7 +57,7 @@ class AddressDAO
 
     public function getAddressID($street, $zip){
         try{
-            $dbmanager = new DBConnection();
+            $dbmanager = new onlineversion();
 
             $dbconnection = $dbmanager->connectToDB();
 
@@ -74,7 +74,7 @@ class AddressDAO
 
     public function insertAddress($addressresult, $zipresult, $zipcode, $street, $city, $countryid){
         try{
-            $dbmanager = new DBConnection();
+            $dbmanager = new onlineversion();
 
             $dbconnection = $dbmanager->connectToDB();
 
@@ -100,7 +100,7 @@ class AddressDAO
 
     public function editPostalCode($zipcode, $city, $countryid){
         try{
-            $dbmanager = new DBConnection();
+            $dbmanager = new onlineversion();
 
             $dbconnection = $dbmanager->connectToDB();
 
@@ -114,7 +114,7 @@ class AddressDAO
 
     public function editAddress($addressid, $street, $zipcode){
         try{
-            $dbmanager = new DBConnection();
+            $dbmanager = new onlineversion();
 
             $dbconnection = $dbmanager->connectToDB();
 
