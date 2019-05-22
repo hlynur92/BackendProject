@@ -89,7 +89,6 @@
                         return $return;
                     }
                     $return = getCaptcha($_POST['g-recaptcha-response']);
-                    var_dump($return);
 
                     if($return->success == true && $return->score > 0.5){
                         $name = $_REQUEST['name'];
