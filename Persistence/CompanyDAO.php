@@ -6,7 +6,7 @@ class CompanyDAO{
 
     public function getCompanyInfo(){
         try{
-            $dbmanager = new onlineversion();
+            $dbmanager = new DBConnection();
 
             $dbconnection = $dbmanager->connectToDB();
 
@@ -22,7 +22,7 @@ class CompanyDAO{
 
     public function getSpecificCompanyInfo($companyid){
         try{
-            $dbmanager = new onlineversion();
+            $dbmanager = new DBConnection();
 
             $dbconnection = $dbmanager->connectToDB();
 
@@ -40,7 +40,7 @@ class CompanyDAO{
 
     public function deleteCompany($companyid){
         try{
-            $dbmanager = new onlineversion();
+            $dbmanager = new DBConnection();
 
             $dbconnection = $dbmanager->connectToDB();
 
@@ -57,7 +57,7 @@ class CompanyDAO{
 
     public function createNewCompany($companyname, $phonenr, $email, $openinghours, $street, $zipcode, $city, $country, $description){
         try{
-            $dbmanager = new onlineversion();
+            $dbmanager = new DBConnection();
 
             $dbconnection = $dbmanager->connectToDB();
 
@@ -90,7 +90,7 @@ class CompanyDAO{
 
     public function editCompany($companyid, $companyname, $phonenr, $email, $openinghours, $addressid, $street, $zipcode, $city, $country, $description){
         try{
-            $dbmanager = new onlineversion();
+            $dbmanager = new DBConnection();
 
             $dbconnection = $dbmanager->connectToDB();
 

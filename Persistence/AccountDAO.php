@@ -4,7 +4,7 @@ class AccountDAO
 {
     public function GetAdminInfo($email){
         try{
-            $dbmanager = new onlineversion();
+            $dbmanager = new DBConnection();
 
             $dbconnection = $dbmanager->connectToDB();
 

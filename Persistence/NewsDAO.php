@@ -5,7 +5,7 @@ class NewsDAO {
 
     public function getAllNews(){
         try{
-            $dbmanager = new onlineversion();
+            $dbmanager = new DBConnection();
 
             $dbconnection = $dbmanager->connectToDB();
 
@@ -22,7 +22,7 @@ class NewsDAO {
 
     public function getSpecificNews($newsid){
         try{
-            $dbmanager = new onlineversion();
+            $dbmanager = new DBConnection();
 
             $dbconnection = $dbmanager->connectToDB();
 
@@ -41,7 +41,7 @@ class NewsDAO {
 
     public function getLatestNews(){
         try{
-            $dbmanager = new onlineversion();
+            $dbmanager = new DBConnection();
 
             $dbconnection = $dbmanager->connectToDB();
 
@@ -57,7 +57,7 @@ class NewsDAO {
 
     public function deleteNews($newsid){
         try{
-            $dbmanager = new onlineversion();
+            $dbmanager = new DBConnection();
 
             $dbconnection = $dbmanager->connectToDB();
 
@@ -74,7 +74,7 @@ class NewsDAO {
 
     public function createNewNews($title, $creationdate, $description, $imgpath){
         try{
-            $dbmanager = new onlineversion();
+            $dbmanager = new DBConnection();
 
             $dbconnection = $dbmanager->connectToDB();
 
@@ -94,7 +94,7 @@ class NewsDAO {
 
     public function editNewsWithImage($newsid, $title, $creationdate, $description, $uploadpath){
         try{
-            $dbmanager = new onlineversion();
+            $dbmanager = new DBConnection();
 
             $dbconnection = $dbmanager->connectToDB();
 
@@ -114,7 +114,7 @@ class NewsDAO {
 
     public function editNews($newsid, $title, $creationdate, $description){
         try{
-            $dbmanager = new onlineversion();
+            $dbmanager = new DBConnection();
 
             $dbconnection = $dbmanager->connectToDB();
 

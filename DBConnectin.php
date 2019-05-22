@@ -1,6 +1,6 @@
 <?php
 
-class onlineversion{
+class DBConnection{
     private $_server = "mysql16.cliche.dk";
     private $_user = "majlander.dk";
     private $_password = "3xQM+6w,w2DU";

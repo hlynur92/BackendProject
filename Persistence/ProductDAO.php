@@ -9,7 +9,7 @@ class ProductDAO
 
     public function getAllProducts(){
         try{
-            $dbmanager = new onlineversion();
+            $dbmanager = new DBConnection();
 
             $dbconnection = $dbmanager->connectToDB();
 
@@ -26,7 +26,7 @@ class ProductDAO
 
     public function getAllProductVariations(){
         try{
-            $dbmanager = new onlineversion();
+            $dbmanager = new DBConnection();
 
             $dbconnection = $dbmanager->connectToDB();
 
@@ -43,7 +43,7 @@ class ProductDAO
 
     public function getSpecificProduct($productid){
         try{
-            $dbmanager = new onlineversion();
+            $dbmanager = new DBConnection();
 
             $dbconnection = $dbmanager->connectToDB();
 
@@ -62,7 +62,7 @@ class ProductDAO
 
     public function deleteProduct($productid){
         try{
-            $dbmanager = new onlineversion();
+            $dbmanager = new DBConnection();
 
             $dbconnection = $dbmanager->connectToDB();
 
@@ -78,7 +78,7 @@ class ProductDAO
 
     public function createNewProduct($productname, $price, $colour, $size, $description, $imgPath){
         try{
-            $dbmanager = new onlineversion();
+            $dbmanager = new DBConnection();
 
             $dbconnection = $dbmanager->connectToDB();
 
@@ -99,7 +99,7 @@ class ProductDAO
 
     public function editProduct($productid, $productname, $price, $colour, $size, $description){
         try{
-            $dbmanager = new onlineversion();
+            $dbmanager = new DBConnection();
 
             $dbconnection = $dbmanager->connectToDB();
 
@@ -120,7 +120,7 @@ class ProductDAO
 
     public function editProductWithImage($productid, $productname, $price, $colour, $size, $description, $uploadpath){
         try{
-            $dbmanager = new onlineversion();
+            $dbmanager = new DBConnection();
 
             $dbconnection = $dbmanager->connectToDB();
 
@@ -142,7 +142,7 @@ class ProductDAO
 
     public function getVariantSelection($productname, $productcolour, $productsize){
         try{
-            $dbmanager = new onlineversion();
+            $dbmanager = new DBConnection();
 
             $dbconnection = $dbmanager->connectToDB();
 
@@ -163,7 +163,7 @@ class ProductDAO
 
     public function deleteOffer($specialofferid){
         try{
-            $dbmanager = new onlineversion();
+            $dbmanager = new DBConnection();
 
             $dbconnection = $dbmanager->connectToDB();
 
@@ -181,7 +181,7 @@ class ProductDAO
 
     public function getSpecificSpecialOfferProduct($productid, $specialofferid){
         try{
-            $dbmanager = new onlineversion();
+            $dbmanager = new DBConnection();
 
             $dbconnection = $dbmanager->connectToDB();
 
@@ -201,7 +201,7 @@ class ProductDAO
 
     public function getSpecificSpecialOffer($specialofferid){
         try{
-            $dbmanager = new onlineversion();
+            $dbmanager = new DBConnection();
 
             $dbconnection = $dbmanager->connectToDB();
 
@@ -220,7 +220,7 @@ class ProductDAO
 
     public function getLatestSpecialOffers(){
         try{
-            $dbmanager = new onlineversion();
+            $dbmanager = new DBConnection();
 
             $dbconnection = $dbmanager->connectToDB();
 
@@ -236,7 +236,7 @@ class ProductDAO
 
     public function getAllSpecialOffers(){
         try{
-            $dbmanager = new onlineversion();
+            $dbmanager = new DBConnection();
 
             $dbconnection = $dbmanager->connectToDB();
 
@@ -252,7 +252,7 @@ class ProductDAO
 
     public function createNewSpecialOffer($discount, $startdate, $enddate){
         try{
-            $dbmanager = new onlineversion();
+            $dbmanager = new DBConnection();
 
             $dbconnection = $dbmanager->connectToDB();
 
@@ -270,7 +270,7 @@ class ProductDAO
 
     public function editSpecialOffer($specialofferid, $discount, $startdate, $enddate){
         try{
-            $dbmanager = new onlineversion();
+            $dbmanager = new DBConnection();
 
             $dbconnection = $dbmanager->connectToDB();
 
